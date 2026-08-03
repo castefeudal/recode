@@ -1,20 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "MARKOVMADE: RECODE — Life RPG",
   description: "Перепиши тело. Перепиши решения. Перепиши жизнь. Life RPG, где реальные действия меняют героя, отношения, Meridian и финал.",
   applicationName: "MARKOVMADE: RECODE",
-  manifest: "/manifest.webmanifest",
+  manifest: `${BASE_PATH}/manifest.webmanifest`,
   authors: [{ name: "Павел Марков / Pavel Markov / MARKOVMADE" }],
   other: {
     "codex-preview": "production",
     "theme-color": "#07090b",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/icon-192.png",
+    icon: `${BASE_PATH}/favicon.svg`,
+    shortcut: `${BASE_PATH}/favicon.svg`,
+    apple: `${BASE_PATH}/icon-192.png`,
   },
   openGraph: {
     title: "MARKOVMADE: RECODE — Life RPG",
@@ -22,13 +24,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     alternateLocale: "en_US",
-    images: [{ url: "/og-recode-v7.jpg", width: 1200, height: 630, alt: "MARKOVMADE: RECODE — Meridian changed by real choices" }],
+    images: [{ url: `${BASE_PATH}/og-recode-v7.jpg`, width: 1200, height: 630, alt: "MARKOVMADE: RECODE — Meridian changed by real choices" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MARKOVMADE: RECODE — Life RPG",
     description: "Recode your body. Recode your choices. Recode your life.",
-    images: ["/og-recode-v7.jpg"],
+    images: [`${BASE_PATH}/og-recode-v7.jpg`],
   },
 };
 

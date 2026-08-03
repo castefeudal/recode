@@ -1,3 +1,5 @@
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export type Lang = "ru" | "en";
 export type StatKey = "body" | "energy" | "balance" | "mind" | "discipline" | "connections";
 export type Screen = "today" | "story" | "quests" | "body" | "nutrition" | "recovery" | "mind" | "relations" | "work" | "city" | "profile";
@@ -95,7 +97,7 @@ let campaignPromise: Promise<Campaign> | null = null;
 
 export function loadCampaign(): Promise<Campaign> {
   if (campaign.scenes.length) return Promise.resolve(campaign);
-  campaignPromise ??= fetch("/content/season_01.json?v=7.0.0", { cache: "force-cache" })
+  campaignPromise ??= fetch(`${BASE_PATH}/content/season_01.json?v=7.0.0`, { cache: "force-cache" })
     .then(async (response) => {
       if (!response.ok) throw new Error(`campaign_http_${response.status}`);
       const loaded = await response.json() as Campaign;

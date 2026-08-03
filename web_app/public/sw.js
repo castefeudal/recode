@@ -1,17 +1,19 @@
-const VERSION = "recode-7.0.0";
+const VERSION = "recode-7.0.0-pages";
+const BASE_PATH = new URL(self.registration.scope).pathname.replace(/\/$/, "");
+const withBase = (path) => `${BASE_PATH}${path}`;
 const SHELL = `${VERSION}-shell`;
 const CONTENT = `${VERSION}-content`;
 const CORE = [
-  "/", "/manifest.webmanifest", "/favicon.svg", "/icon-192.png", "/icon-512.png",
-  "/art/key/hero-desktop-v6.avif", "/art/key/hero-desktop-v6.webp",
-  "/art/key/hero-mobile-v6.avif", "/art/key/hero-mobile-v6.webp",
-  "/art/key/cast-v6.avif", "/art/key/cast-v6.webp",
-  "/art/key/today-before-dawn-v7.webp", "/art/key/story-meridian-archive-v7.webp",
-  "/art/locations/meridian-world-state-v7.webp",
+  withBase("/"), withBase("/manifest.webmanifest"), withBase("/favicon.svg"), withBase("/icon-192.png"), withBase("/icon-512.png"),
+  withBase("/art/key/hero-desktop-v6.avif"), withBase("/art/key/hero-desktop-v6.webp"),
+  withBase("/art/key/hero-mobile-v6.avif"), withBase("/art/key/hero-mobile-v6.webp"),
+  withBase("/art/key/cast-v6.avif"), withBase("/art/key/cast-v6.webp"),
+  withBase("/art/key/today-before-dawn-v7.webp"), withBase("/art/key/story-meridian-archive-v7.webp"),
+  withBase("/art/locations/meridian-world-state-v7.webp"),
 ];
 const CONTENT_PATHS = new Set([
-  "/content/quests.json", "/content/events.json", "/content/exercises.json",
-  "/content/characters.json", "/content/season_01.json",
+  withBase("/content/quests.json"), withBase("/content/events.json"), withBase("/content/exercises.json"),
+  withBase("/content/characters.json"), withBase("/content/season_01.json"),
 ]);
 
 self.addEventListener("install", (event) => {
@@ -50,11 +52,11 @@ async function navigationResponse(request) {
     const response = await fetch(request);
     if (response.ok) {
       const cache = await caches.open(SHELL);
-      await cache.put("/", response.clone());
+      await cache.put(withBase("/"), response.clone());
     }
     return response;
   } catch {
-    const cached = await caches.match("/");
+    const cached = await caches.match(withBase("/"));
     return cached || new Response("Offline shell unavailable", { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } });
   }
 }
