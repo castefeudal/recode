@@ -1,0 +1,48 @@
+{
+  "product": "MARKOVMADE: RECODE — Life RPG",
+  "version": "7.0.0",
+  "generated_at": "2026-08-03T00:35:13+00:00",
+  "authorship": "Original concept, system and authorship: Павел Марков / Pavel Markov / MARKOVMADE",
+  "baseline_source_sha256": "326546923e0b442a09ac73d2680bf250cc9a3eeb54fe95983d34ae9c79eb4096",
+  "materials": [
+    {
+      "path": "VERSION",
+      "sha256": "746472de66b936ac885ca6d6e68058242b4e909e3260c6317f3ec719f78f76cc"
+    },
+    {
+      "path": "web_app/package-lock.json",
+      "sha256": "4e835c21127715e88ba83a1ed10e7595e52933fd5606bd6ffce06ff5107ffd77"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "eea28cff5cd757875ed744ea9703f2e215fac08dc0fe665c83eeffb846dc850e"
+    },
+    {
+      "path": "game/narrative/season_01.json",
+      "sha256": "6f06ce25012942effbe4d85d65677631c10406b1bb4079d9d09b28d24817696f"
+    },
+    {
+      "path": "tools/content/rebuild_season.py",
+      "sha256": "cb597afcfd593c9997a6935f6ae5ec54e897c21bd05f627458d9f2fcdb223f5f"
+    },
+    {
+      "path": "art_source/generated/recode-meridian-hero-desktop-v6.png",
+      "sha256": "7ccac2f7c8bb1a879891cedd9c6dade88363b498263189587410d749f2b415c7"
+    },
+    {
+      "path": "art_source/generated/recode-meridian-hero-mobile-v6.png",
+      "sha256": "c4759cf67ede46744ee2d4b9b14cbfdc3157848cce90e45aaa59a7c785eb28c0"
+    },
+    {
+      "path": "art_source/generated/recode-meridian-cast-v6.png",
+      "sha256": "4fa222a34765dfe9d046a35f863ed64f2029ee409a00b076c072895b49484b9b"
+    }
+  ],
+  "claims": {
+    "human_review_claimed": false,
+    "signed_native_binaries_claimed": false,
+    "production_web_deployment_claimed": false,
+    "production_web_deployment_access": "owner-only",
+    "exact_release_validation_required": true
+  }
+}

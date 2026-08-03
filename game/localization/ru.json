@@ -1,0 +1,20 @@
+{
+  "app.title": "MARKOVMADE: RECODE",
+  "app.subtitle": "Life RPG",
+  "app.slogan": "Перепиши тело. Перепиши решения. Перепиши жизнь.",
+  "nav.story": "История",
+  "nav.actions": "Действия",
+  "nav.profile": "Профиль",
+  "nav.space": "Пространство",
+  "nav.settings": "Настройки",
+  "onboarding.origin": "Выберите точку А",
+  "onboarding.class": "Выберите основной вектор",
+  "action.small": "Сделать одно небольшое действие",
+  "action.sleep": "Отметить сон",
+  "action.workout": "Записать тренировку",
+  "action.meal": "Отметить структуру питания",
+  "action.reflect": "Короткая рефлексия",
+  "return.message": "Прогресс сохранён. Начните с действия, которое реально выполнить сегодня.",
+  "safety.health": "Игра не диагностирует заболевания и не заменяет медицинскую помощь.",
+  "authorship": "Original concept, system and authorship: Павел Марков / Pavel Markov / MARKOVMADE"
+}

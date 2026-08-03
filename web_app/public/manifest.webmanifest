@@ -1,0 +1,50 @@
+{
+  "name": "MARKOVMADE: RECODE — Life RPG",
+  "short_name": "RECODE",
+  "description": "Перепиши тело. Перепиши решения. Перепиши жизнь.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07090b",
+  "theme_color": "#07090b",
+  "lang": "ru",
+  "categories": ["games", "lifestyle"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-recode-v7.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "MARKOVMADE: RECODE — Meridian changed by real choices"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Начать или продолжить",
+      "short_name": "Продолжить",
+      "url": "/"
+    }
+  ]
+}

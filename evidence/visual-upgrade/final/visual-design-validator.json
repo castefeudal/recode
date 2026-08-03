@@ -1,0 +1,64 @@
+{
+  "validator": "visual-design-source-gate",
+  "scope": "source contracts and static evidence only",
+  "checks": [
+    {
+      "name": "css_layer_order",
+      "status": "PASS",
+      "detail": "{'tokens.css': 25, 'base.css': 63, 'legacy.css': 99, 'visual-upgrade.css': 137}"
+    },
+    {
+      "name": "semantic_tokens",
+      "status": "PASS",
+      "detail": "missing=[]; declarations=206"
+    },
+    {
+      "name": "themes",
+      "status": "PASS",
+      "detail": "dark/light/high-contrast selectors"
+    },
+    {
+      "name": "accessibility_foundations",
+      "status": "PASS",
+      "detail": "focus, motion, contrast, safe area, target size"
+    },
+    {
+      "name": "component_inventory",
+      "status": "PASS",
+      "detail": "missing=[]; required=29"
+    },
+    {
+      "name": "typed_icon_system",
+      "status": "PASS",
+      "detail": "lines=40"
+    },
+    {
+      "name": "portable_design_css",
+      "status": "PASS",
+      "detail": "no external network or sandbox-specific design URLs"
+    },
+    {
+      "name": "balanced_css",
+      "status": "PASS",
+      "detail": "brace balance for authored design layers"
+    },
+    {
+      "name": "design_documentation",
+      "status": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "name": "visual_evidence",
+      "status": "PASS",
+      "detail": "missing_or_small=[]"
+    },
+    {
+      "name": "asset_integrity",
+      "status": "PASS",
+      "detail": "assets=25; zero_bytes=[]"
+    }
+  ],
+  "passed": 11,
+  "failed": 0,
+  "result": "PASS"
+}

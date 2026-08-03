@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markovmade.local/schemas/campaign-v2.json",
+  "title": "MARKOVMADE Creator Campaign v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schema_version", "version", "id", "title", "scenes", "assets"],
+  "properties": {
+    "format": { "const": "mmc" },
+    "schema_version": { "const": 2 },
+    "version": { "type": "integer", "minimum": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9_-]+$", "maxLength": 80 },
+    "title": { "$ref": "#/$defs/localized" },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/scene" }
+    },
+    "relationships": { "type": "array", "maxItems": 100 },
+    "quests": { "type": "array", "maxItems": 2000 },
+    "events": { "type": "array", "maxItems": 2000 },
+    "localization": { "type": "object" },
+    "assets": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": { "type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./-]+$" },
+          "alt": { "$ref": "#/$defs/localized" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ru", "en"],
+      "properties": {
+        "ru": { "type": "string", "maxLength": 20000 },
+        "en": { "type": "string", "maxLength": 20000 }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["origin", "relationship", "stat", "dominant_stat", "weak_stat", "skip_count", "real_action", "flag"] },
+        "id": { "type": "string", "maxLength": 120 },
+        "value": {},
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+    "effect": {
+      "type": "object",
+      "properties": {
+        "stat": { "enum": ["body", "energy", "balance", "mind", "discipline", "connections"] },
+        "resource": { "enum": ["xp", "focus", "momentum", "material"] },
+        "relationship": { "type": "string" },
+        "flag": { "type": "string" },
+        "delta": { "type": "integer", "minimum": -100, "maximum": 100 },
+        "value": { "type": "boolean" }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "intent", "next_scene_id", "effects", "requirements"],
+      "properties": {
+        "id": { "type": "string", "maxLength": 120 },
+        "text": { "$ref": "#/$defs/localized" },
+        "intent": { "enum": ["body", "energy", "balance", "mind", "discipline", "connections"] },
+        "next_scene_id": { "type": ["string", "null"] },
+        "effects": { "type": "array", "maxItems": 20, "items": { "$ref": "#/$defs/effect" } },
+        "requirements": { "type": "array", "maxItems": 20, "items": { "$ref": "#/$defs/requirement" } }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": ["id", "requirements", "text"],
+      "properties": {
+        "id": { "type": "string" },
+        "requirements": { "type": "array", "items": { "$ref": "#/$defs/requirement" } },
+        "text": { "$ref": "#/$defs/localized" }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "chapter_id", "speaker", "location", "text", "dialogue", "choices", "requirements", "variants", "content_warnings"],
+      "properties": {
+        "id": { "type": "string", "maxLength": 120 },
+        "chapter_id": { "type": "string", "maxLength": 120 },
+        "speaker": { "type": "string", "maxLength": 120 },
+        "location": { "type": "string", "maxLength": 240 },
+        "text": { "$ref": "#/$defs/localized" },
+        "dialogue": { "$ref": "#/$defs/localized" },
+        "choices": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/$defs/choice" } },
+        "requirements": { "type": "array", "maxItems": 20, "items": { "$ref": "#/$defs/requirement" } },
+        "variants": { "type": "array", "maxItems": 100, "items": { "$ref": "#/$defs/variant" } },
+        "content_warnings": { "type": "array", "maxItems": 20, "items": { "type": "string" } }
+      }
+    }
+  }
+}

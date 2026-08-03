@@ -1,0 +1,53 @@
+# Baseline visual upgrade command log
+2026-08-03T00:54:54Z
+$ sha256sum web_app/app/page.tsx web_app/app/globals.css
+7c7bba0e1ea1b9434ffe7e95d65f4f7ddfecdd3457d09447daa49f8fbe7461b4  web_app/app/page.tsx
+3e79525462196a8f65aaff27063ae916b9c35197430fedd73dcedba9aa4ba6ae  web_app/app/globals.css
+$ npm run typecheck
+
+> markovmade-recode-web-product@7.0.0 typecheck
+> tsc --noEmit -p tsconfig.typecheck.json
+
+error TS2688: Cannot find type definition file for 'eslint'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint'
+error TS2688: Cannot find type definition file for 'eslint-scope'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint-scope'
+error TS2688: Cannot find type definition file for 'estree'.
+  The file is in the program because:
+    Entry point for implicit type library 'estree'
+error TS2688: Cannot find type definition file for 'json-schema'.
+  The file is in the program because:
+    Entry point for implicit type library 'json-schema'
+error TS2688: Cannot find type definition file for 'json5'.
+  The file is in the program because:
+    Entry point for implicit type library 'json5'
+error TS2688: Cannot find type definition file for 'node'.
+  The file is in the program because:
+    Entry point for implicit type library 'node'
+error TS2688: Cannot find type definition file for 'react'.
+  The file is in the program because:
+    Entry point for implicit type library 'react'
+error TS2688: Cannot find type definition file for 'react-dom'.
+  The file is in the program because:
+    Entry point for implicit type library 'react-dom'
+TYPECHECK_RC=2
+$ npm run lint
+
+> markovmade-recode-web-product@7.0.0 lint
+> bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next
+
+scripts/sites-env.sh: line 52: exec: eslint: not found
+LINT_RC=127
+$ npm test
+
+> markovmade-recode-web-product@7.0.0 test
+> npm run build && node --experimental-strip-types --test tests/*.test.mjs
+
+
+> markovmade-recode-web-product@7.0.0 build
+> bash scripts/build-verified.sh
+
+scripts/build-verified.sh: line 7: /mnt/data/visual_work/repo/MARKOVMADE_RECODE_7.0.0_REMEDIATED_SOURCE/web_app/scripts/sites-env.sh: Permission denied
+TEST_RC=126

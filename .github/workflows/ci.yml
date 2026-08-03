@@ -1,0 +1,90 @@
+name: recode-ci
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.16.0"
+          cache: npm
+          cache-dependency-path: web_app/package-lock.json
+      - name: Install backend dependencies
+        run: |
+          python -m venv backend/.venv
+          backend/.venv/bin/pip install -r backend/requirements.txt
+          backend/.venv/bin/pip check
+      - name: Install locked Web dependencies
+        working-directory: web_app
+        run: npm ci
+      - name: Source, API and Web gates
+        run: |
+          bash scripts/verify_source.sh
+          backend/.venv/bin/python -m unittest backend/tests/test_integration.py
+          cd web_app
+          npm run typecheck
+          npm run lint
+          npm test
+          npm run validate:artifact
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-evidence
+          path: |
+            evidence
+            dist/test-results
+            web_app/dist
+  godot-linux:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with: {version: "4.6.0", use-dotnet: false}
+      - run: godot --headless --path game --quit
+      - run: mkdir -p dist/linux && godot --headless --path game --export-release "Linux" ../dist/linux/MARKOVMADE_RECODE.x86_64
+      - uses: actions/upload-artifact@v4
+        with: {name: linux-build, path: dist/linux}
+  windows:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with: {version: "4.6.0", use-dotnet: false}
+      - run: New-Item -ItemType Directory -Force dist/windows; godot --headless --path game --export-release "Windows Desktop" ../dist/windows/MARKOVMADE_RECODE.exe
+      - uses: actions/upload-artifact@v4
+        with: {name: windows-build, path: dist/windows}
+  android:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: "17"}
+      - uses: android-actions/setup-android@v3
+      - uses: chickensoft-games/setup-godot@v2
+        with: {version: "4.6.0", use-dotnet: false}
+      - run: mkdir -p dist/android && godot --headless --path game --export-debug "Android" ../dist/android/MARKOVMADE_RECODE.apk
+  apple-projects:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with: {version: "4.6.0", use-dotnet: false}
+      - run: mkdir -p dist/macos dist/ios && godot --headless --path game --export-release "macOS" ../dist/macos/MARKOVMADE_RECODE.zip
+      - run: godot --headless --path game --export-release "iOS" ../dist/ios/MARKOVMADE_RECODE.zip

@@ -1,0 +1,7 @@
+{
+  "typescript": "5.8.3",
+  "scope": "syntax/transpile only; not a substitute for project typecheck",
+  "files": 18,
+  "diagnostics": [],
+  "result": "PASS"
+}

@@ -1,0 +1,16 @@
+{
+  "version": "7.0.0",
+  "status": "passed",
+  "checks": {
+    "web package": true,
+    "godot runtime": true,
+    "backend runtime": true,
+    "sbom": true,
+    "provenance": true,
+    "readme": true,
+    "runbook": true,
+    "release notes": true,
+    "delivery manifest": true
+  },
+  "errors": []
+}

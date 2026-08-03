@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": {
+    "iOS capability check": true,
+    "Android capability check": true,
+    "desktop health cloud adapter disabled": true,
+    "mock restricted to debug/editor": true,
+    "manual provider remains available": true,
+    "no unconditional native availability": true
+  },
+  "errors": []
+}

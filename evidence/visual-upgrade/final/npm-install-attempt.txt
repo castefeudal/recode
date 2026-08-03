@@ -1,0 +1,5 @@
+[sites] validating writable install environment
+[sites] environment passed: HOME=/mnt/data/visual_work/repo/MARKOVMADE_RECODE_7.0.0_REMEDIATED_SOURCE/web_app/.sites-runtime/home, cache=/mnt/data/visual_work/repo/MARKOVMADE_RECODE_7.0.0_REMEDIATED_SOURCE/web_app/.sites-runtime/npm-cache
+[sites] downloading the complete locked vinext tarball
+curl: (22) The requested URL returned error: 404
+exit_code=22

@@ -1,0 +1,29 @@
+{
+  "format": "mmc",
+  "version": 1,
+  "id": "return_route",
+  "title": {
+    "ru": "Маршрут возвращения",
+    "en": "Return Route"
+  },
+  "scenes": [
+    {
+      "id": "start",
+      "text": {
+        "ru": "Четыре дня тишины. Прогресс всё ещё здесь.",
+        "en": "Four quiet days. Your progress is still here."
+      },
+      "choices": [
+        {
+          "id": "small",
+          "text": {
+            "ru": "Начать с десяти минут",
+            "en": "Start with ten minutes"
+          },
+          "next": null
+        }
+      ]
+    }
+  ],
+  "assets": []
+}

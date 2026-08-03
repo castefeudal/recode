@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/mnt/data/recode_work/MARKOVMADE_RECODE_7.0.0_COMPLETE_SOURCE/backend/app/main.py", line 58, in validate_runtime_config
+    raise RuntimeError("production requires JWT_SECRET with at least 32 bytes")
+RuntimeError: production requires JWT_SECRET with at least 32 bytes
+exit_code=1

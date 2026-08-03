@@ -1,0 +1,182 @@
+[
+  {
+    "id": "achievement_01",
+    "title": {
+      "ru": "Достижение 1",
+      "en": "Achievement 1"
+    },
+    "metric": "returns",
+    "threshold": 5
+  },
+  {
+    "id": "achievement_02",
+    "title": {
+      "ru": "Достижение 2",
+      "en": "Achievement 2"
+    },
+    "metric": "stability",
+    "threshold": 10
+  },
+  {
+    "id": "achievement_03",
+    "title": {
+      "ru": "Достижение 3",
+      "en": "Achievement 3"
+    },
+    "metric": "quests",
+    "threshold": 15
+  },
+  {
+    "id": "achievement_04",
+    "title": {
+      "ru": "Достижение 4",
+      "en": "Achievement 4"
+    },
+    "metric": "chapters",
+    "threshold": 20
+  },
+  {
+    "id": "achievement_05",
+    "title": {
+      "ru": "Достижение 5",
+      "en": "Achievement 5"
+    },
+    "metric": "support",
+    "threshold": 25
+  },
+  {
+    "id": "achievement_06",
+    "title": {
+      "ru": "Достижение 6",
+      "en": "Achievement 6"
+    },
+    "metric": "returns",
+    "threshold": 30
+  },
+  {
+    "id": "achievement_07",
+    "title": {
+      "ru": "Достижение 7",
+      "en": "Achievement 7"
+    },
+    "metric": "stability",
+    "threshold": 35
+  },
+  {
+    "id": "achievement_08",
+    "title": {
+      "ru": "Достижение 8",
+      "en": "Achievement 8"
+    },
+    "metric": "quests",
+    "threshold": 40
+  },
+  {
+    "id": "achievement_09",
+    "title": {
+      "ru": "Достижение 9",
+      "en": "Achievement 9"
+    },
+    "metric": "chapters",
+    "threshold": 45
+  },
+  {
+    "id": "achievement_10",
+    "title": {
+      "ru": "Достижение 10",
+      "en": "Achievement 10"
+    },
+    "metric": "support",
+    "threshold": 50
+  },
+  {
+    "id": "achievement_11",
+    "title": {
+      "ru": "Достижение 11",
+      "en": "Achievement 11"
+    },
+    "metric": "returns",
+    "threshold": 55
+  },
+  {
+    "id": "achievement_12",
+    "title": {
+      "ru": "Достижение 12",
+      "en": "Achievement 12"
+    },
+    "metric": "stability",
+    "threshold": 60
+  },
+  {
+    "id": "achievement_13",
+    "title": {
+      "ru": "Достижение 13",
+      "en": "Achievement 13"
+    },
+    "metric": "quests",
+    "threshold": 65
+  },
+  {
+    "id": "achievement_14",
+    "title": {
+      "ru": "Достижение 14",
+      "en": "Achievement 14"
+    },
+    "metric": "chapters",
+    "threshold": 70
+  },
+  {
+    "id": "achievement_15",
+    "title": {
+      "ru": "Достижение 15",
+      "en": "Achievement 15"
+    },
+    "metric": "support",
+    "threshold": 75
+  },
+  {
+    "id": "achievement_16",
+    "title": {
+      "ru": "Достижение 16",
+      "en": "Achievement 16"
+    },
+    "metric": "returns",
+    "threshold": 80
+  },
+  {
+    "id": "achievement_17",
+    "title": {
+      "ru": "Достижение 17",
+      "en": "Achievement 17"
+    },
+    "metric": "stability",
+    "threshold": 85
+  },
+  {
+    "id": "achievement_18",
+    "title": {
+      "ru": "Достижение 18",
+      "en": "Achievement 18"
+    },
+    "metric": "quests",
+    "threshold": 90
+  },
+  {
+    "id": "achievement_19",
+    "title": {
+      "ru": "Достижение 19",
+      "en": "Achievement 19"
+    },
+    "metric": "chapters",
+    "threshold": 95
+  },
+  {
+    "id": "achievement_20",
+    "title": {
+      "ru": "Достижение 20",
+      "en": "Achievement 20"
+    },
+    "metric": "support",
+    "threshold": 100
+  }
+]

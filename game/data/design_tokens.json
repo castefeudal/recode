@@ -1,0 +1,32 @@
+{
+  "colors": {
+    "deep_obsidian": "#050505",
+    "charcoal": "#0F0F0F",
+    "platinum": "#F2F2F2",
+    "markov_gold": "#D4AF37",
+    "operational_obsidian": "#0B0C0E",
+    "functional_gold": "#E0A82E",
+    "ivory": "#F6F4F0"
+  },
+  "fonts": {
+    "ui": "Manrope",
+    "display": "Unbounded",
+    "dramatic": "Cormorant Garamond"
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64
+  ],
+  "themes": [
+    "obsidian",
+    "ivory",
+    "soft",
+    "high_contrast"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "max_stat": 100,
+  "starting_resources": {
+    "xp": 0,
+    "momentum": 3,
+    "material": 0,
+    "focus": 2,
+    "reputation": 0
+  },
+  "stability_windows": [
+    7,
+    30
+  ],
+  "streak_shields": 2,
+  "return_reward": {
+    "xp": 40,
+    "momentum": 3
+  },
+  "burnout_rule": {
+    "discipline_over": 75,
+    "energy_under": 30,
+    "event": "burnout_risk"
+  },
+  "nutrition_notice": {
+    "ru": "Стартовая оценка, не медицинское назначение.",
+    "en": "A starting estimate, not a medical prescription."
+  }
+}

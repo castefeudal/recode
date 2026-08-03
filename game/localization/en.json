@@ -1,0 +1,20 @@
+{
+  "app.title": "MARKOVMADE: RECODE",
+  "app.subtitle": "Life RPG",
+  "app.slogan": "Recode your body. Recode your choices. Recode your life.",
+  "nav.story": "Story",
+  "nav.actions": "Actions",
+  "nav.profile": "Profile",
+  "nav.space": "Space",
+  "nav.settings": "Settings",
+  "onboarding.origin": "Choose your Point A",
+  "onboarding.class": "Choose your primary vector",
+  "action.small": "Take one small action",
+  "action.sleep": "Log sleep",
+  "action.workout": "Log a workout",
+  "action.meal": "Log meal structure",
+  "action.reflect": "Short reflection",
+  "return.message": "Your progress is safe. Start with an action you can realistically complete today.",
+  "safety.health": "The game does not diagnose conditions or replace medical care.",
+  "authorship": "Original concept, system and authorship: Павел Марков / Pavel Markov / MARKOVMADE"
+}

@@ -1,0 +1,32 @@
+{
+  "files": {
+    "web_app/app/design-system/tokens.css": {
+      "bytes": 6368,
+      "rules_or_nodes": 3,
+      "custom_property_mentions": 206,
+      "parse_errors": []
+    },
+    "web_app/app/design-system/base.css": {
+      "bytes": 4351,
+      "rules_or_nodes": 5,
+      "custom_property_mentions": 41,
+      "parse_errors": []
+    },
+    "web_app/app/design-system/legacy.css": {
+      "bytes": 50988,
+      "rules_or_nodes": 425,
+      "custom_property_mentions": 223,
+      "parse_errors": []
+    },
+    "web_app/app/design-system/visual-upgrade.css": {
+      "bytes": 56051,
+      "rules_or_nodes": 365,
+      "custom_property_mentions": 624,
+      "parse_errors": []
+    }
+  },
+  "total_bytes": 117758,
+  "custom_properties": 1094,
+  "parse_errors": [],
+  "result": "PASS"
+}

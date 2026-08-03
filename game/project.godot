@@ -1,0 +1,28 @@
+[application]
+config/name="MARKOVMADE: RECODE"
+config/description="Life RPG. Original concept, system and authorship: Павел Марков / Pavel Markov / MARKOVMADE"
+config/version="7.0.0"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+AppState="*res://autoload/AppState.gd"
+SaveService="*res://services/SaveService.gd"
+NarrativeService="*res://services/NarrativeService.gd"
+AccessibilityService="*res://services/AccessibilityService.gd"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
+[input]
+ui_accept={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":32),Object(InputEventJoypadButton,"button_index":0)]}
+open_actions={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":65)]}
+open_story={"deadzone":0.5,"events":[Object(InputEventKey,"physical_keycode":83)]}

@@ -1,0 +1,5 @@
+web_app/app/page.tsx: PASS
+web_app/app/game.ts: PASS
+web_app/app/infrastructure/cloud-api.ts: PASS
+web_app/app/infrastructure/save-storage.ts: PASS
+web_app/app/components/CloudPanel.tsx: PASS

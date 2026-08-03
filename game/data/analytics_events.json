@@ -1,0 +1,123 @@
+[
+  {
+    "id": "onboarding_completed",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "chapter_started",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "chapter_completed",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "quest_completed",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "player_returned",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "streak_recovered",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "room_upgraded",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "tutorial_skipped",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "crash_detected",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "purchase_started",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  },
+  {
+    "id": "purchase_completed",
+    "requires_consent": true,
+    "forbidden_payloads": [
+      "health_records",
+      "journal_text",
+      "body_photos",
+      "meal_details",
+      "private_dialogue"
+    ]
+  }
+]

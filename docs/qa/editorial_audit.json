@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "review_type": "automated structural and bilingual editorial audit",
+  "human_review_claimed": false,
+  "coverage": {
+    "chapters": 14,
+    "scenes": 140,
+    "choices": 420,
+    "scene_ru": 140,
+    "scene_en": 140,
+    "choice_ru": 420,
+    "choice_en": 420,
+    "editorial_contracts": 140
+  },
+  "exact_duplicate_scene_prose": {
+    "ru": 0,
+    "en": 0
+  },
+  "exact_duplicate_choice_copy": {
+    "ru": 0,
+    "en": 0
+  },
+  "english_scenes_with_cyrillic": [],
+  "repeated_openings": {
+    "система предлагает короткое реальное действие": 14,
+    "после действия становится заметно то": 14,
+    "в meridian последствия приходят не": 14,
+    "глава заканчивается без идеальной точки": 14
+  },
+  "warnings": [
+    "RU: 19 scenes below 24 words",
+    "EN: 3 scenes below 24 words",
+    "4 repeated structural openings detected; chapter-specific beats keep exact prose unique"
+  ],
+  "errors": []
+}

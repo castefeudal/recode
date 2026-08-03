@@ -1,0 +1,333 @@
+{
+  "renderer": "Chromium 144 via Chrome DevTools Protocol",
+  "evidence_scope": "Static visual evidence mirrors rendered with final design CSS; not a substitute for the unavailable production React build.",
+  "cases": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "scrollWidth": 1425,
+        "scrollHeight": 2360
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "img",
+          "cls": "heroImage",
+          "left": -13.8,
+          "right": 1438.8,
+          "width": 1452.6
+        }
+      ],
+      "interactiveCount": 7,
+      "smallInteractiveTargets": [],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "landing theme-dark",
+      "case": "landing-desktop"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "scrollWidth": 390,
+        "scrollHeight": 3286
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "img",
+          "cls": "heroImage",
+          "left": -3.63,
+          "right": 393.63,
+          "width": 397.25
+        }
+      ],
+      "interactiveCount": 6,
+      "smallInteractiveTargets": [],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "landing theme-dark",
+      "case": "landing-mobile"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "scrollWidth": 1425,
+        "scrollHeight": 1790
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "button",
+          "cls": "railBrand",
+          "left": -2.5,
+          "right": 85.5,
+          "width": 88
+        }
+      ],
+      "interactiveCount": 25,
+      "smallInteractiveTargets": [
+        {
+          "tag": "button",
+          "text": "◐",
+          "width": 39.2,
+          "height": 44
+        },
+        {
+          "tag": "button",
+          "text": "RU",
+          "width": 39.4,
+          "height": 44
+        }
+      ],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "game theme-dark screen-today",
+      "case": "today-desktop"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "scrollWidth": 390,
+        "scrollHeight": 2494
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 371.09,
+          "right": 440.69,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 398.38,
+          "right": 413.39,
+          "width": 15.02
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 443.88,
+          "right": 513.47,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 466.16,
+          "right": 491.19,
+          "width": 25.03
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 516.66,
+          "right": 586.25,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 538.94,
+          "right": 563.97,
+          "width": 25.03
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 589.44,
+          "right": 659.03,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 609.22,
+          "right": 639.25,
+          "width": 30.03
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 662.22,
+          "right": 731.81,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 676.98,
+          "right": 717.03,
+          "width": 40.05
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 735,
+          "right": 804.59,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 752.27,
+          "right": 787.31,
+          "width": 35.05
+        }
+      ],
+      "interactiveCount": 21,
+      "smallInteractiveTargets": [
+        {
+          "tag": "button",
+          "text": "◐",
+          "width": 39.2,
+          "height": 44
+        },
+        {
+          "tag": "button",
+          "text": "RU",
+          "width": 34.6,
+          "height": 44
+        }
+      ],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "game theme-dark screen-today",
+      "case": "today-mobile"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "scrollWidth": 1425,
+        "scrollHeight": 1143
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "button",
+          "cls": "railBrand",
+          "left": -2.5,
+          "right": 85.5,
+          "width": 88
+        }
+      ],
+      "interactiveCount": 13,
+      "smallInteractiveTargets": [
+        {
+          "tag": "button",
+          "text": "RU",
+          "width": 39.4,
+          "height": 44
+        }
+      ],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "game theme-dark screen-story",
+      "case": "story-desktop"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document": {
+        "scrollWidth": 390,
+        "scrollHeight": 1650
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 371.09,
+          "right": 440.69,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 398.38,
+          "right": 413.39,
+          "width": 15.02
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 443.88,
+          "right": 513.47,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 466.16,
+          "right": 491.19,
+          "width": 25.03
+        },
+        {
+          "tag": "button",
+          "cls": "",
+          "left": 516.66,
+          "right": 586.25,
+          "width": 69.59
+        },
+        {
+          "tag": "small",
+          "cls": "",
+          "left": 538.94,
+          "right": 563.97,
+          "width": 25.03
+        },
+        {
+          "tag": "img",
+          "cls": "storyBackdrop",
+          "left": -1.94,
+          "right": 390.95,
+          "width": 392.89
+        }
+      ],
+      "interactiveCount": 11,
+      "smallInteractiveTargets": [],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "game theme-dark screen-story",
+      "case": "story-mobile"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "document": {
+        "scrollWidth": 1280,
+        "scrollHeight": 900
+      },
+      "horizontalOverflow": false,
+      "overflowElements": [],
+      "interactiveCount": 3,
+      "smallInteractiveTargets": [],
+      "unnamedInteractive": [],
+      "lang": "ru",
+      "theme": "theme-dark",
+      "case": "components-desktop"
+    }
+  ],
+  "result": "PASS"
+}

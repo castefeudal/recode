@@ -1,0 +1,78 @@
+[
+  {
+    "id": "lost_form",
+    "name": {
+      "ru": "Потерянная форма",
+      "en": "Lost Form"
+    },
+    "initial_stats": {
+      "body": 34,
+      "energy": 43,
+      "balance": 28,
+      "mind": 50,
+      "discipline": 38,
+      "connections": 44
+    },
+    "triggers": [
+      "lost_form_trigger"
+    ],
+    "first_scene_id": "prologue_s01"
+  },
+  {
+    "id": "burned_achiever",
+    "name": {
+      "ru": "Выгоревший достигатор",
+      "en": "Burned-Out Achiever"
+    },
+    "initial_stats": {
+      "body": 52,
+      "energy": 22,
+      "balance": 37,
+      "mind": 61,
+      "discipline": 70,
+      "connections": 31
+    },
+    "triggers": [
+      "burned_achiever_trigger"
+    ],
+    "first_scene_id": "prologue_s01"
+  },
+  {
+    "id": "scattered_potential",
+    "name": {
+      "ru": "Несобранный потенциал",
+      "en": "Scattered Potential"
+    },
+    "initial_stats": {
+      "body": 44,
+      "energy": 48,
+      "balance": 35,
+      "mind": 62,
+      "discipline": 24,
+      "connections": 51
+    },
+    "triggers": [
+      "scattered_potential_trigger"
+    ],
+    "first_scene_id": "prologue_s01"
+  },
+  {
+    "id": "returning_champion",
+    "name": {
+      "ru": "Возвращение чемпиона",
+      "en": "Champion's Return"
+    },
+    "initial_stats": {
+      "body": 58,
+      "energy": 39,
+      "balance": 48,
+      "mind": 42,
+      "discipline": 63,
+      "connections": 36
+    },
+    "triggers": [
+      "returning_champion_trigger"
+    ],
+    "first_scene_id": "prologue_s01"
+  }
+]

@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "source_sha256": "e51c40747b574b4ad6c44b4e12d8dce3285e23acaf2643bd180910953b21e7d6",
+  "start_scene": "prologue_s01",
+  "scenes_total": 140,
+  "scenes_reachable": 140,
+  "terminal_choice_paths": "3695220735358648082902080255159582440025",
+  "critical_branches": 30,
+  "critical_branch_destination_counts": {
+    "prologue_s01": 3,
+    "prologue_s06": 3,
+    "prologue_s10": 3,
+    "ch01_s01": 3,
+    "ch01_s06": 3,
+    "ch02_s01": 3,
+    "ch02_s06": 3,
+    "ch03_s01": 3,
+    "ch03_s06": 3,
+    "ch04_s01": 3,
+    "ch04_s06": 3,
+    "ch04_s10": 3,
+    "ch05_s01": 3,
+    "ch05_s06": 3,
+    "ch06_s01": 3,
+    "ch06_s06": 3,
+    "ch07_s01": 3,
+    "ch07_s06": 3,
+    "ch08_s01": 3,
+    "ch08_s06": 3,
+    "ch09_s01": 3,
+    "ch09_s06": 3,
+    "ch10_s01": 3,
+    "ch10_s06": 3,
+    "ch11_s01": 3,
+    "ch11_s06": 3,
+    "ch12_s01": 3,
+    "ch12_s06": 3,
+    "epilogue_s01": 3,
+    "epilogue_s06": 3
+  },
+  "route_closures": 20,
+  "delayed_consequences": 70,
+  "conditional_variants": 89,
+  "conditional_requirement_coverage": {
+    "dominant_stat": 6,
+    "flag": 1,
+    "origin": 40,
+    "real_action": 12,
+    "relationship": 14,
+    "skip_count": 9,
+    "stat": 1,
+    "weak_stat": 6
+  },
+  "ending_fixtures": {
+    "architect": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 0,
+        "mind": 62,
+        "discipline": 72,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "architect"
+    },
+    "restorer": {
+      "fixture": {
+        "body": 0,
+        "energy": 72,
+        "balance": 62,
+        "mind": 0,
+        "discipline": 0,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "restorer"
+    },
+    "athlete": {
+      "fixture": {
+        "body": 74,
+        "energy": 0,
+        "balance": 0,
+        "mind": 0,
+        "discipline": 58,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "athlete"
+    },
+    "strategist": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 56,
+        "mind": 74,
+        "discipline": 0,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "strategist"
+    },
+    "connector": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 0,
+        "mind": 54,
+        "discipline": 0,
+        "connections": 74,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "connector"
+    },
+    "steady": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 0,
+        "mind": 0,
+        "discipline": 0,
+        "connections": 0,
+        "momentum": 24,
+        "return_count": 0
+      },
+      "resolved": "steady"
+    },
+    "returner": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 0,
+        "mind": 0,
+        "discipline": 0,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 2
+      },
+      "resolved": "returner"
+    },
+    "open": {
+      "fixture": {
+        "body": 0,
+        "energy": 0,
+        "balance": 0,
+        "mind": 0,
+        "discipline": 0,
+        "connections": 0,
+        "momentum": 0,
+        "return_count": 0
+      },
+      "resolved": "open"
+    }
+  },
+  "errors": []
+}

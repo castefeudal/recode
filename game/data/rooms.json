@@ -1,0 +1,172 @@
+[
+  {
+    "id": "bedroom",
+    "max_level": 10,
+    "linked_stat": "energy",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "kitchen",
+    "max_level": 10,
+    "linked_stat": "balance",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "training_zone",
+    "max_level": 10,
+    "linked_stat": "body",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "workspace",
+    "max_level": 10,
+    "linked_stat": "discipline",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "recovery",
+    "max_level": 10,
+    "linked_stat": "energy",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "library",
+    "max_level": 10,
+    "linked_stat": "mind",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "wardrobe",
+    "max_level": 10,
+    "linked_stat": "body",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "achievements",
+    "max_level": 10,
+    "linked_stat": "discipline",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "social_room",
+    "max_level": 10,
+    "linked_stat": "connections",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  },
+  {
+    "id": "terrace",
+    "max_level": 10,
+    "linked_stat": "mind",
+    "upgrade_cost": [
+      20,
+      28,
+      52,
+      92,
+      148,
+      220,
+      308,
+      412,
+      532,
+      668
+    ]
+  }
+]

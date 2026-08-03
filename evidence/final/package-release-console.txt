@@ -1,0 +1,135 @@
+{
+  "version": "7.0.0",
+  "status": "passed",
+  "checks": {
+    "web package": true,
+    "godot runtime": true,
+    "backend runtime": true,
+    "sbom": true,
+    "provenance": true,
+    "readme": true,
+    "runbook": true,
+    "release notes": true,
+    "delivery manifest": true
+  },
+  "errors": []
+}
+{
+  "status": "passed",
+  "checks": 71,
+  "errors": []
+}
+{
+  "status": "passed",
+  "checks": {
+    "cloud adapter extracted": true,
+    "storage adapter extracted": true,
+    "cloud component extracted": true,
+    "page does not parse API error envelopes": true,
+    "page does not own storage keys": true,
+    "privacy allowlist documented": true
+  },
+  "errors": []
+}
+{
+  "status": "passed",
+  "checks": {
+    "iOS capability check": true,
+    "Android capability check": true,
+    "desktop health cloud adapter disabled": true,
+    "mock restricted to debug/editor": true,
+    "manual provider remains available": true,
+    "no unconditional native availability": true
+  },
+  "errors": []
+}
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 2.609s
+
+OK
+TAP version 13
+# Subtest: client and backend share structured save-conflict envelope
+ok 1 - client and backend share structured save-conflict envelope
+  ---
+  duration_ms: 0.600972
+  type: 'test'
+  ...
+# Subtest: cloud sync uses an explicit privacy allowlist
+ok 2 - cloud sync uses an explicit privacy allowlist
+  ---
+  duration_ms: 0.712186
+  type: 'test'
+  ...
+# Subtest: season 01 passes the v7 anti-boilerplate editorial contract
+ok 3 - season 01 passes the v7 anti-boilerplate editorial contract
+  ---
+  duration_ms: 6.174703
+  type: 'test'
+  ...
+# Subtest: service worker has explicit install, update and offline navigation contracts
+ok 4 - service worker has explicit install, update and offline navigation contracts
+  ---
+  duration_ms: 0.561123
+  type: 'test'
+  ...
+# Subtest: manifest remains installable and scoped
+ok 5 - manifest remains installable and scoped
+  ---
+  duration_ms: 0.271032
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 58.182649
+TAP version 13
+# (node:4544) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: survives 1000 save serialization and migration cycles
+ok 1 - survives 1000 save serialization and migration cycles
+  ---
+  duration_ms: 44.603698
+  type: 'test'
+  ...
+# Subtest: migrates schema 3, 4 and 5 to schema 6 and preserves conditional narrative rules
+ok 2 - migrates schema 3, 4 and 5 to schema 6 and preserves conditional narrative rules
+  ---
+  duration_ms: 1.070589
+  type: 'test'
+  ...
+# Subtest: save migration rejects 1000 malformed fuzz inputs without throwing
+ok 3 - save migration rejects 1000 malformed fuzz inputs without throwing
+  ---
+  duration_ms: 12.324849
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 152.291448
+{"source_verification":"PASS"}
+Using preinstalled backend runtime; clean locked install evidence is still required.
+..
+----------------------------------------------------------------------
+Ran 2 tests in 1.274s
+
+OK
+web_app/node_modules is missing; run bash scripts/bootstrap.sh
+
+exit_code=69

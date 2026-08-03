@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": {
+    "cloud adapter extracted": true,
+    "storage adapter extracted": true,
+    "cloud component extracted": true,
+    "page does not parse API error envelopes": true,
+    "page does not own storage keys": true,
+    "privacy allowlist documented": true
+  },
+  "errors": []
+}

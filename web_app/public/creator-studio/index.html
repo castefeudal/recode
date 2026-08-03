@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MARKOVMADE Creator Studio</title>
+  <style>
+    :root{--bg:#050505;--panel:#0e1013;--panel2:#15171b;--text:#f2f0ec;--muted:#96999f;--gold:#d4af37;--line:#2a2c31;--bad:#e06c65;--ok:#72c28f}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px Manrope,Segoe UI,system-ui,sans-serif}
+    button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:260px minmax(520px,1fr) 360px;min-height:100vh}
+    aside,.preview{position:sticky;top:0;height:100vh;overflow:auto;background:#090a0c}.sidebar{border-right:1px solid var(--line);padding:24px}.preview{border-left:1px solid var(--line);padding:24px}
+    .logo{font-size:11px;letter-spacing:.16em}.logo b,.eyebrow{color:var(--gold)}h1{font-size:25px;margin:12px 0 32px}h2{font-size:18px}p{color:var(--muted);line-height:1.6}
+    label{display:grid;gap:7px;color:var(--muted);font-size:10px;letter-spacing:.08em;margin:14px 0}input,textarea,select{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:11px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--gold)}textarea{min-height:105px;resize:vertical}
+    button{border:1px solid var(--line);background:transparent;color:var(--text);padding:11px 14px}.primary{background:var(--gold);border-color:var(--gold);color:#110e05;font-weight:800}.wide{width:100%;margin-top:10px}.danger{color:var(--bad)}.small{font-size:10px;padding:8px}
+    .editor{padding:32px;max-width:1100px}.topbar{display:flex;justify-content:space-between;align-items:start;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:25px}.topbar h1{margin:4px 0}
+    .meta{display:grid;grid-template-columns:1fr 1fr;gap:14px}.scene{border:1px solid var(--line);background:var(--panel);margin:16px 0}.sceneHead{display:flex;align-items:center;gap:12px;padding:14px;border-bottom:1px solid var(--line)}.sceneHead strong{flex:1}.sceneBody{padding:18px}.copyGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.choice{display:grid;grid-template-columns:1fr 1fr 130px 150px 42px;gap:8px;margin:8px 0}.choice input,.choice select{margin:0}.addRow{width:100%;border-style:dashed;margin-top:8px}.toolrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.search{margin:18px 0}.muted{opacity:.55}
+    .status{border:1px solid var(--line);padding:13px;margin:16px 0;font-size:11px}.status.ok{border-color:var(--ok);color:var(--ok)}.status.bad{border-color:var(--bad);color:var(--bad)}
+    .previewCard{border:1px solid var(--line);padding:22px;background:linear-gradient(145deg,#15171b,#090a0c);min-height:360px}.previewCard small{color:var(--gold);letter-spacing:.12em}.previewCard blockquote{font:20px/1.55 Georgia,serif;margin:45px 0}.previewChoice{display:block;width:100%;text-align:left;margin:8px 0}.checks{padding:0;list-style:none}.checks li{border-bottom:1px solid var(--line);padding:10px 0;color:var(--muted)}.checks .pass{color:var(--ok)}.checks .fail{color:var(--bad)}
+    @media(max-width:1100px){.app{grid-template-columns:220px 1fr}.preview{display:none}}@media(max-width:720px){.app{display:block}.sidebar{position:static;height:auto}.meta,.copyGrid{grid-template-columns:1fr}.choice{grid-template-columns:1fr}.editor{padding:20px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">MARKOVMADE <b>RECODE</b></div>
+    <h1>Creator Studio</h1>
+    <p>Offline-редактор кампаний `.mmc`. Код не выполняется; экспорт — чистый JSON.</p>
+    <label>ИМПОРТ<input type="file" id="file" accept=".mmc,.json"></label>
+    <button class="primary wide" id="export">Экспорт .mmc</button>
+    <button class="wide" id="copy">Копировать JSON</button>
+    <div class="toolrow"><button id="undo">↶ Undo</button><button id="redo">↷ Redo</button></div>
+    <button class="wide" id="duplicate">Дублировать сцену</button>
+    <label class="search">ПОИСК<input id="search" placeholder="ID, speaker, location, text"></label>
+    <button class="wide danger" id="reset">Новая кампания</button>
+    <div class="status" id="status">Добавьте сцену или импортируйте кампанию.</div>
+    <p>Перед включением в игру выполните:<br><code>python3 ../validators/validate_campaign.py file.mmc</code></p>
+  </aside>
+  <main class="editor">
+    <div class="topbar"><div><span class="eyebrow">CAMPAIGN / SCHEMA 2 · AUTOSAVE ON</span><h1 id="heading">Новая история</h1></div><button id="addTop">＋ Сцена</button></div>
+    <section class="meta">
+      <label>ID КАМПАНИИ<input id="campaignId" value="my_campaign" pattern="[a-z0-9_-]+"></label>
+      <label>ВЕРСИЯ<input id="version" type="number" min="1" value="1"></label>
+      <label>НАЗВАНИЕ RU<input id="titleRu" value="Новая история"></label>
+      <label>TITLE EN<input id="titleEn" value="New Story"></label>
+    </section>
+    <section><h2>Сцены</h2><div id="scenes"></div><button class="addRow" id="add">＋ Добавить сцену</button></section>
+  </main>
+  <aside class="preview">
+    <span class="eyebrow">LIVE PREVIEW</span>
+    <h2>Сцена игрока</h2>
+    <div class="previewCard" id="previewCard"></div>
+    <h2>Проверки</h2>
+    <ul class="checks" id="checks"></ul>
+  </aside>
+</div>
+<script>
+  const $ = id => document.getElementById(id);
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+  let selected = 0;
+  let scenes = [];
+  let undoStack = [], redoStack = [], drawing = false;
+
+  function blankScene(index){
+    return {id:`scene_${String(index+1).padStart(2,"0")}`,chapter_id:"chapter_01",speaker:"",location:"",text:{ru:"",en:""},dialogue:{ru:"",en:""},requirements:[],variants:[],content_warnings:[],choices:[
+      {id:"choice_01",text:{ru:"",en:""},intent:"mind",next_scene_id:null,effects:[],requirements:[]},
+      {id:"choice_02",text:{ru:"",en:""},intent:"discipline",next_scene_id:null,effects:[],requirements:[]}
+    ]};
+  }
+  function normalize(raw){
+    return {
+      id:String(raw.id||"scene"),
+      chapter_id:String(raw.chapter_id||"chapter_01"),
+      speaker:String(raw.speaker||""),
+      location:String(raw.location||""),
+      text:{ru:String(raw.text?.ru||""),en:String(raw.text?.en||"")},
+      dialogue:{ru:String(raw.dialogue?.ru||""),en:String(raw.dialogue?.en||"")},
+      requirements:Array.isArray(raw.requirements)?raw.requirements:[],
+      variants:Array.isArray(raw.variants)?raw.variants:[],
+      content_warnings:Array.isArray(raw.content_warnings)?raw.content_warnings:[],
+      choices:(Array.isArray(raw.choices)?raw.choices:[]).slice(0,6).map((c,i)=>({
+        id:String(c.id||`choice_${i+1}`), text:{ru:String(c.text?.ru||""),en:String(c.text?.en||"")},
+        intent:String(c.intent||"mind"), next_scene_id:c.next_scene_id||null,
+        effects:Array.isArray(c.effects)?c.effects:[],requirements:Array.isArray(c.requirements)?c.requirements:[]
+      }))
+    };
+  }
+  const snapshot=()=>JSON.stringify({scenes,selected,meta:[$("campaignId").value,$("version").value,$("titleRu").value,$("titleEn").value]});
+  function checkpoint(){if(drawing)return;undoStack.push(snapshot());if(undoStack.length>80)undoStack.shift();redoStack=[]}
+  function restore(raw){const data=JSON.parse(raw);scenes=data.scenes;selected=data.selected;[$("campaignId").value,$("version").value,$("titleRu").value,$("titleEn").value]=data.meta;draw()}
+  function autosave(){localStorage.setItem("markovmade-creator-autosave-v2",JSON.stringify(payload()))}
+  function draw(){
+    drawing=true;
+    $("heading").textContent=$("titleRu").value||"Без названия";
+    const needle=$("search").value.toLowerCase();
+    $("scenes").innerHTML=scenes.map((scene,i)=>({scene,i})).filter(({scene})=>!needle||JSON.stringify(scene).toLowerCase().includes(needle)).map(({scene,i})=>`
+      <article class="scene ${i===selected?"":"muted"}" data-scene="${i}">
+        <div class="sceneHead"><button class="small" data-select="${i}">${i===selected?"●":"○"}</button><strong>${esc(scene.id)}</strong><button class="small" data-up="${i}">↑</button><button class="small" data-down="${i}">↓</button><button class="small danger" data-delete="${i}">Удалить</button></div>
+        <div class="sceneBody">
+          <div class="meta">
+            <label>SCENE ID<input data-i="${i}" data-field="id" value="${esc(scene.id)}"></label>
+            <label>CHAPTER ID<input data-i="${i}" data-field="chapter_id" value="${esc(scene.chapter_id)}"></label>
+            <label>SPEAKER<input data-i="${i}" data-field="speaker" value="${esc(scene.speaker)}"></label>
+            <label>LOCATION<input data-i="${i}" data-field="location" value="${esc(scene.location)}"></label>
+          </div>
+          <div class="copyGrid"><label>ТЕКСТ RU<textarea data-i="${i}" data-field="ru">${esc(scene.text.ru)}</textarea></label><label>TEXT EN<textarea data-i="${i}" data-field="en">${esc(scene.text.en)}</textarea></label></div>
+          <div class="copyGrid"><label>ДИАЛОГ RU<textarea data-i="${i}" data-dialogue="ru">${esc(scene.dialogue.ru)}</textarea></label><label>DIALOGUE EN<textarea data-i="${i}" data-dialogue="en">${esc(scene.dialogue.en)}</textarea></label></div>
+          <h3>Выборы</h3>
+          ${scene.choices.map((choice,j)=>`<div class="choice">
+            <input aria-label="Выбор RU" data-i="${i}" data-j="${j}" data-choice="ru" value="${esc(choice.text.ru)}" placeholder="Текст RU">
+            <input aria-label="Choice EN" data-i="${i}" data-j="${j}" data-choice="en" value="${esc(choice.text.en)}" placeholder="Text EN">
+            <select aria-label="Intent" data-i="${i}" data-j="${j}" data-choice="intent">${["body","energy","balance","mind","discipline","connections"].map(v=>`<option ${v===choice.intent?"selected":""}>${v}</option>`).join("")}</select>
+            <input aria-label="Next scene" data-i="${i}" data-j="${j}" data-choice="next" value="${esc(choice.next_scene_id||"")}" placeholder="next scene / END">
+            <button class="danger" data-choice-delete="${i}:${j}">×</button>
+          </div>`).join("")}
+          <button class="addRow" data-choice-add="${i}" ${scene.choices.length>=6?"disabled":""}>＋ Выбор</button>
+        </div>
+      </article>`).join("");
+    renderPreview(); validate();autosave();drawing=false;
+  }
+  function renderPreview(){
+    const scene=scenes[selected];
+    $("previewCard").innerHTML=scene?`<small>${esc(scene.location||"LOCATION")} · ${esc(scene.speaker||"NARRATOR")}</small><blockquote>${esc(scene.text.ru||"Текст сцены появится здесь.")}</blockquote>${scene.choices.map(c=>`<button class="previewChoice">${esc(c.text.ru||"Незаполненный выбор")} <span>→</span></button>`).join("")}`:"<p>Нет сцен.</p>";
+  }
+  function validate(){
+    const ids=scenes.map(s=>s.id), duplicate=ids.some((id,i)=>ids.indexOf(id)!==i);
+    const nextIds=scenes.flatMap(s=>s.choices.map(c=>c.next_scene_id).filter(Boolean));
+    const graph=new Map(scenes.map(s=>[s.id,s.choices.map(c=>c.next_scene_id).filter(Boolean)])),reachable=new Set(),queue=scenes[0]?[scenes[0].id]:[];
+    while(queue.length){const id=queue.shift();if(reachable.has(id))continue;reachable.add(id);(graph.get(id)||[]).forEach(next=>{if(!reachable.has(next))queue.push(next)})}
+    const tests=[
+      ["ID кампании",/^[a-z0-9_-]+$/.test($("campaignId").value)],
+      ["Есть хотя бы одна сцена",scenes.length>0],
+      ["Scene ID уникальны",!duplicate&&ids.every(Boolean)],
+      ["RU и EN заполнены",scenes.every(s=>s.text.ru.trim()&&s.text.en.trim())],
+      ["В каждой сцене 1–6 выборов",scenes.every(s=>s.choices.length>=1&&s.choices.length<=6)],
+      ["Тексты выборов заполнены",scenes.every(s=>s.choices.every(c=>c.text.ru.trim()&&c.text.en.trim()))],
+      ["Все next_scene_id существуют",nextIds.every(id=>ids.includes(id))],
+      ["Нет orphan-сцен",scenes.length===0||reachable.size===scenes.length],
+      ["Asset paths безопасны",(payload().assets||[]).every(a=>!a.path?.startsWith("/")&&!a.path?.split("/").includes(".."))]
+    ];
+    $("checks").innerHTML=tests.map(([name,ok])=>`<li class="${ok?"pass":"fail"}">${ok?"✓":"×"} ${name}</li>`).join("");
+    const ok=tests.every(([,result])=>result);
+    $("status").className=`status ${ok?"ok":"bad"}`;$("status").textContent=ok?`Готово к экспорту: ${scenes.length} сцен.`:"Есть незаполненные или конфликтующие поля.";
+    return ok;
+  }
+  function payload(){return {format:"mmc",schema_version:2,version:+$("version").value,id:$("campaignId").value,title:{ru:$("titleRu").value,en:$("titleEn").value},scenes,relationships:[],quests:[],events:[],localization:{ru:{},en:{}},assets:[]}}
+  function addScene(){checkpoint();scenes.push(blankScene(scenes.length));selected=scenes.length-1;draw()}
+  $("add").onclick=$("addTop").onclick=addScene;
+  $("scenes").oninput=e=>{
+    const i=+e.target.dataset.i,j=e.target.dataset.j,field=e.target.dataset.field,dialogue=e.target.dataset.dialogue,choice=e.target.dataset.choice;
+    if(choice){if(choice==="intent")scenes[i].choices[+j].intent=e.target.value;else if(choice==="next")scenes[i].choices[+j].next_scene_id=e.target.value.trim()||null;else scenes[i].choices[+j].text[choice]=e.target.value}
+    else if(dialogue)scenes[i].dialogue[dialogue]=e.target.value;
+    else if(field==="ru"||field==="en")scenes[i].text[field]=e.target.value;
+    else scenes[i][field]=e.target.value;renderPreview();validate();autosave();
+  };
+  $("scenes").onfocusin=checkpoint;
+  $("scenes").onclick=e=>{
+    checkpoint();
+    if(e.target.dataset.select!==undefined)selected=+e.target.dataset.select;
+    if(e.target.dataset.delete!==undefined){const i=+e.target.dataset.delete;scenes.splice(i,1);selected=Math.max(0,Math.min(selected,scenes.length-1))}
+    if(e.target.dataset.up!==undefined){const i=+e.target.dataset.up;if(i>0)[scenes[i-1],scenes[i]]=[scenes[i],scenes[i-1]]}
+    if(e.target.dataset.down!==undefined){const i=+e.target.dataset.down;if(i<scenes.length-1)[scenes[i+1],scenes[i]]=[scenes[i],scenes[i+1]]}
+    if(e.target.dataset.choiceAdd!==undefined){const i=+e.target.dataset.choiceAdd;scenes[i].choices.push({id:`choice_${scenes[i].choices.length+1}`,text:{ru:"",en:""},intent:"mind",next_scene_id:null,effects:[],requirements:[]})}
+    if(e.target.dataset.choiceDelete){const [i,j]=e.target.dataset.choiceDelete.split(":").map(Number);scenes[i].choices.splice(j,1)}
+    draw();
+  };
+  ["campaignId","version","titleRu","titleEn"].forEach(id=>{
+    $(id).onfocus=checkpoint;
+    $(id).oninput=()=>{renderPreview();validate();autosave();$("heading").textContent=$("titleRu").value||"Без названия"};
+  });
+  $("search").oninput=draw;
+  $("undo").onclick=()=>{if(!undoStack.length)return;redoStack.push(snapshot());restore(undoStack.pop())};
+  $("redo").onclick=()=>{if(!redoStack.length)return;undoStack.push(snapshot());restore(redoStack.pop())};
+  $("duplicate").onclick=()=>{if(!scenes[selected])return;checkpoint();const copy=structuredClone(scenes[selected]);copy.id=`${copy.id}_copy`;copy.choices.forEach((c,i)=>c.id=`${copy.id}_choice_${i+1}`);scenes.splice(selected+1,0,copy);selected++;draw()};
+  $("file").onchange=async e=>{try{checkpoint();const raw=JSON.parse(await e.target.files[0].text());if(raw.format!=="mmc"||!Array.isArray(raw.scenes))throw Error();$("campaignId").value=raw.id||"";$("version").value=raw.version||1;$("titleRu").value=raw.title?.ru||"";$("titleEn").value=raw.title?.en||"";scenes=raw.scenes.map(normalize);selected=0;draw()}catch{$("status").className="status bad";$("status").textContent="Импорт отклонён: неверный JSON или формат."}};
+  $("export").onclick=()=>{if(!validate())return;const blob=new Blob([JSON.stringify(payload(),null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`${$("campaignId").value}.mmc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),0)};
+  $("copy").onclick=async()=>{await navigator.clipboard.writeText(JSON.stringify(payload(),null,2));$("status").textContent="JSON скопирован."};
+  $("reset").onclick=()=>{if(confirm("Очистить текущую кампанию?")){checkpoint();scenes=[blankScene(0)];selected=0;draw()}};
+  try{const saved=JSON.parse(localStorage.getItem("markovmade-creator-autosave-v2"));scenes=Array.isArray(saved?.scenes)?saved.scenes.map(normalize):[blankScene(0)];$("campaignId").value=saved?.id||"my_campaign";$("version").value=saved?.version||1;$("titleRu").value=saved?.title?.ru||"Новая история";$("titleEn").value=saved?.title?.en||"New Story"}catch{scenes=[blankScene(0)]}draw();
+</script>
+</body>
+</html>

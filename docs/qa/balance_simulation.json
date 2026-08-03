@@ -1,0 +1,1881 @@
+{
+  "status": "passed",
+  "model": "deterministic archetype simulation v1",
+  "run_count": 56,
+  "profiles": [
+    "cautious",
+    "ambitious",
+    "balanced",
+    "chaotic",
+    "high_skip",
+    "perfect",
+    "overload"
+  ],
+  "origins": [
+    "lost",
+    "burnout",
+    "potential",
+    "return"
+  ],
+  "durations_days": [
+    30,
+    90
+  ],
+  "assertions": {
+    "stat_and_burnout_bounds_0_100": true,
+    "focus_nonnegative": true,
+    "momentum_cap_40": true,
+    "max_action_concentration_0_36": true
+  },
+  "runs": [
+    {
+      "profile": "cautious",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 17,
+      "skipped_days": 13,
+      "recovery_days": 2,
+      "stats": {
+        "body": 41.19,
+        "energy": 54.09,
+        "balance": 41.78,
+        "mind": 41.78,
+        "discipline": 41.78,
+        "connections": 41.78
+      },
+      "resources": {
+        "xp": 158.1,
+        "focus": 19.58,
+        "momentum": 5.95,
+        "coins": 17.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.176,
+      "action_mix": {
+        "balance": 3,
+        "body": 2,
+        "connections": 3,
+        "discipline": 3,
+        "energy": 3,
+        "mind": 3,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 28,
+      "skipped_days": 2,
+      "recovery_days": 4,
+      "stats": {
+        "body": 53.64,
+        "energy": 64.25,
+        "balance": 53.64,
+        "mind": 53.64,
+        "discipline": 52.75,
+        "connections": 53.64
+      },
+      "resources": {
+        "xp": 865.2,
+        "focus": 0,
+        "momentum": 29.4,
+        "coins": 84.0
+      },
+      "burnout": 6.97,
+      "action_concentration": 0.179,
+      "action_mix": {
+        "balance": 14,
+        "body": 14,
+        "connections": 14,
+        "discipline": 13,
+        "energy": 15,
+        "mind": 14,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 23,
+      "skipped_days": 7,
+      "recovery_days": 3,
+      "stats": {
+        "body": 45.62,
+        "energy": 56.41,
+        "balance": 46.39,
+        "mind": 46.39,
+        "discipline": 46.39,
+        "connections": 46.39
+      },
+      "resources": {
+        "xp": 450.8,
+        "focus": 4.89,
+        "momentum": 16.1,
+        "coins": 46.0
+      },
+      "burnout": 0.52,
+      "action_concentration": 0.174,
+      "action_mix": {
+        "balance": 8,
+        "body": 7,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 7,
+        "mind": 8,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 15,
+      "skipped_days": 15,
+      "recovery_days": 2,
+      "stats": {
+        "body": 48.42,
+        "energy": 62.42,
+        "balance": 48.42,
+        "mind": 47.42,
+        "discipline": 46.4,
+        "connections": 47.42
+      },
+      "resources": {
+        "xp": 468.0,
+        "focus": 3.9,
+        "momentum": 15.75,
+        "coins": 45.0
+      },
+      "burnout": 2.09,
+      "action_concentration": 0.2,
+      "action_mix": {
+        "balance": 8,
+        "body": 8,
+        "connections": 7,
+        "discipline": 6,
+        "energy": 9,
+        "mind": 7,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 9,
+      "skipped_days": 21,
+      "recovery_days": 1,
+      "stats": {
+        "body": 41.28,
+        "energy": 56.01,
+        "balance": 40.64,
+        "mind": 41.28,
+        "discipline": 40.64,
+        "connections": 40.64
+      },
+      "resources": {
+        "xp": 84.6,
+        "focus": 20,
+        "momentum": 3.15,
+        "coins": 9.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.222,
+      "action_mix": {
+        "balance": 1,
+        "body": 2,
+        "connections": 1,
+        "discipline": 1,
+        "energy": 2,
+        "mind": 2,
+        "recovery": 1
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 30,
+      "skipped_days": 0,
+      "recovery_days": 4,
+      "stats": {
+        "body": 48.75,
+        "energy": 57.58,
+        "balance": 48.75,
+        "mind": 48.75,
+        "discipline": 48.75,
+        "connections": 48.75
+      },
+      "resources": {
+        "xp": 600.0,
+        "focus": 1.4,
+        "momentum": 21.0,
+        "coins": 60.0
+      },
+      "burnout": 1.62,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 10,
+        "body": 10,
+        "connections": 10,
+        "discipline": 10,
+        "energy": 10,
+        "mind": 10,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "lost",
+      "days": 30,
+      "completed_days": 26,
+      "skipped_days": 4,
+      "recovery_days": 3,
+      "stats": {
+        "body": 60.0,
+        "energy": 68.26,
+        "balance": 60.0,
+        "mind": 60.0,
+        "discipline": 60.0,
+        "connections": 60.0
+      },
+      "resources": {
+        "xp": 1111.8,
+        "focus": 1.63,
+        "momentum": 35.7,
+        "coins": 102.0
+      },
+      "burnout": 69.17,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 17,
+        "body": 17,
+        "connections": 17,
+        "discipline": 17,
+        "energy": 17,
+        "mind": 17,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 16,
+      "skipped_days": 14,
+      "recovery_days": 1,
+      "stats": {
+        "body": 35.9,
+        "energy": 46.43,
+        "balance": 35.27,
+        "mind": 35.27,
+        "discipline": 35.9,
+        "connections": 35.9
+      },
+      "resources": {
+        "xp": 148.8,
+        "focus": 19.16,
+        "momentum": 5.6,
+        "coins": 16.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.188,
+      "action_mix": {
+        "balance": 2,
+        "body": 3,
+        "connections": 3,
+        "discipline": 3,
+        "energy": 3,
+        "mind": 2,
+        "recovery": 1
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 28,
+      "skipped_days": 2,
+      "recovery_days": 4,
+      "stats": {
+        "body": 47.65,
+        "energy": 57.22,
+        "balance": 48.61,
+        "mind": 49.56,
+        "discipline": 49.56,
+        "connections": 48.61
+      },
+      "resources": {
+        "xp": 865.2,
+        "focus": 0,
+        "momentum": 29.4,
+        "coins": 84.0
+      },
+      "burnout": 13.97,
+      "action_concentration": 0.179,
+      "action_mix": {
+        "balance": 14,
+        "body": 13,
+        "connections": 14,
+        "discipline": 15,
+        "energy": 13,
+        "mind": 15,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 24,
+      "skipped_days": 6,
+      "recovery_days": 3,
+      "stats": {
+        "body": 40.84,
+        "energy": 50.95,
+        "balance": 40.84,
+        "mind": 40.84,
+        "discipline": 40.84,
+        "connections": 40.84
+      },
+      "resources": {
+        "xp": 470.4,
+        "focus": 2.61,
+        "momentum": 16.8,
+        "coins": 48.0
+      },
+      "burnout": 1.04,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 8,
+        "body": 8,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 8,
+        "mind": 8,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 14,
+      "skipped_days": 16,
+      "recovery_days": 2,
+      "stats": {
+        "body": 41.94,
+        "energy": 54.43,
+        "balance": 40.85,
+        "mind": 41.94,
+        "discipline": 43.02,
+        "connections": 43.02
+      },
+      "resources": {
+        "xp": 436.8,
+        "focus": 7.64,
+        "momentum": 14.7,
+        "coins": 42.0
+      },
+      "burnout": 2.09,
+      "action_concentration": 0.19,
+      "action_mix": {
+        "balance": 6,
+        "body": 7,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 6,
+        "mind": 7,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 8,
+      "skipped_days": 22,
+      "recovery_days": 2,
+      "stats": {
+        "body": 34.69,
+        "energy": 52.41,
+        "balance": 34.69,
+        "mind": 35.37,
+        "discipline": 35.37,
+        "connections": 34.69
+      },
+      "resources": {
+        "xp": 75.2,
+        "focus": 20,
+        "momentum": 2.8,
+        "coins": 8.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.25,
+      "action_mix": {
+        "balance": 1,
+        "body": 1,
+        "connections": 1,
+        "discipline": 2,
+        "energy": 1,
+        "mind": 2,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 30,
+      "skipped_days": 0,
+      "recovery_days": 4,
+      "stats": {
+        "body": 43.36,
+        "energy": 52.08,
+        "balance": 43.36,
+        "mind": 43.36,
+        "discipline": 43.36,
+        "connections": 43.36
+      },
+      "resources": {
+        "xp": 600.0,
+        "focus": 1.4,
+        "momentum": 21.0,
+        "coins": 60.0
+      },
+      "burnout": 1.62,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 10,
+        "body": 10,
+        "connections": 10,
+        "discipline": 10,
+        "energy": 10,
+        "mind": 10,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "burnout",
+      "days": 30,
+      "completed_days": 26,
+      "skipped_days": 4,
+      "recovery_days": 3,
+      "stats": {
+        "body": 55.42,
+        "energy": 62.85,
+        "balance": 55.42,
+        "mind": 55.42,
+        "discipline": 54.31,
+        "connections": 55.42
+      },
+      "resources": {
+        "xp": 1090.0,
+        "focus": 0,
+        "momentum": 35.0,
+        "coins": 100.0
+      },
+      "burnout": 74.05,
+      "action_concentration": 0.17,
+      "action_mix": {
+        "balance": 17,
+        "body": 17,
+        "connections": 17,
+        "discipline": 16,
+        "energy": 16,
+        "mind": 17,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 16,
+      "skipped_days": 14,
+      "recovery_days": 2,
+      "stats": {
+        "body": 45.69,
+        "energy": 58.05,
+        "balance": 45.69,
+        "mind": 45.13,
+        "discipline": 45.69,
+        "connections": 45.69
+      },
+      "resources": {
+        "xp": 148.8,
+        "focus": 20,
+        "momentum": 5.6,
+        "coins": 16.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.188,
+      "action_mix": {
+        "balance": 3,
+        "body": 3,
+        "connections": 3,
+        "discipline": 3,
+        "energy": 2,
+        "mind": 2,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 27,
+      "skipped_days": 3,
+      "recovery_days": 3,
+      "stats": {
+        "body": 56.15,
+        "energy": 64.15,
+        "balance": 56.15,
+        "mind": 57.0,
+        "discipline": 57.0,
+        "connections": 57.0
+      },
+      "resources": {
+        "xp": 834.3,
+        "focus": 0,
+        "momentum": 28.35,
+        "coins": 81.0
+      },
+      "burnout": 14.86,
+      "action_concentration": 0.173,
+      "action_mix": {
+        "balance": 13,
+        "body": 13,
+        "connections": 14,
+        "discipline": 14,
+        "energy": 13,
+        "mind": 14,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 23,
+      "skipped_days": 7,
+      "recovery_days": 3,
+      "stats": {
+        "body": 50.09,
+        "energy": 60.0,
+        "balance": 49.35,
+        "mind": 50.09,
+        "discipline": 50.09,
+        "connections": 50.09
+      },
+      "resources": {
+        "xp": 450.8,
+        "focus": 4.89,
+        "momentum": 16.1,
+        "coins": 46.0
+      },
+      "burnout": 1.98,
+      "action_concentration": 0.174,
+      "action_mix": {
+        "balance": 7,
+        "body": 8,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 7,
+        "mind": 8,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 14,
+      "skipped_days": 16,
+      "recovery_days": 1,
+      "stats": {
+        "body": 51.07,
+        "energy": 62.45,
+        "balance": 51.07,
+        "mind": 51.07,
+        "discipline": 51.07,
+        "connections": 51.07
+      },
+      "resources": {
+        "xp": 436.8,
+        "focus": 3.64,
+        "momentum": 14.7,
+        "coins": 42.0
+      },
+      "burnout": 1.86,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 7,
+        "body": 7,
+        "connections": 7,
+        "discipline": 7,
+        "energy": 7,
+        "mind": 7,
+        "recovery": 1
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 7,
+      "skipped_days": 23,
+      "recovery_days": 1,
+      "stats": {
+        "body": 44.61,
+        "energy": 60.7,
+        "balance": 44.61,
+        "mind": 44.61,
+        "discipline": 44.61,
+        "connections": 45.22
+      },
+      "resources": {
+        "xp": 65.8,
+        "focus": 20,
+        "momentum": 2.45,
+        "coins": 7.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.286,
+      "action_mix": {
+        "balance": 1,
+        "body": 1,
+        "connections": 2,
+        "discipline": 1,
+        "energy": 1,
+        "mind": 1,
+        "recovery": 1
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 30,
+      "skipped_days": 0,
+      "recovery_days": 4,
+      "stats": {
+        "body": 52.33,
+        "energy": 61.12,
+        "balance": 52.33,
+        "mind": 52.33,
+        "discipline": 52.33,
+        "connections": 52.33
+      },
+      "resources": {
+        "xp": 600.0,
+        "focus": 1.4,
+        "momentum": 21.0,
+        "coins": 60.0
+      },
+      "burnout": 1.62,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 10,
+        "body": 10,
+        "connections": 10,
+        "discipline": 10,
+        "energy": 10,
+        "mind": 10,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "potential",
+      "days": 30,
+      "completed_days": 26,
+      "skipped_days": 4,
+      "recovery_days": 4,
+      "stats": {
+        "body": 63.06,
+        "energy": 73.31,
+        "balance": 64.03,
+        "mind": 64.03,
+        "discipline": 63.06,
+        "connections": 63.06
+      },
+      "resources": {
+        "xp": 1133.6,
+        "focus": 0,
+        "momentum": 36.4,
+        "coins": 104.0
+      },
+      "burnout": 60.28,
+      "action_concentration": 0.173,
+      "action_mix": {
+        "balance": 18,
+        "body": 17,
+        "connections": 17,
+        "discipline": 17,
+        "energy": 17,
+        "mind": 18,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 17,
+      "skipped_days": 13,
+      "recovery_days": 2,
+      "stats": {
+        "body": 42.76,
+        "energy": 54.5,
+        "balance": 42.76,
+        "mind": 42.76,
+        "discipline": 42.76,
+        "connections": 42.76
+      },
+      "resources": {
+        "xp": 158.1,
+        "focus": 19.16,
+        "momentum": 5.95,
+        "coins": 17.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.176,
+      "action_mix": {
+        "balance": 3,
+        "body": 3,
+        "connections": 3,
+        "discipline": 3,
+        "energy": 2,
+        "mind": 3,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 29,
+      "skipped_days": 1,
+      "recovery_days": 4,
+      "stats": {
+        "body": 55.36,
+        "energy": 64.39,
+        "balance": 55.36,
+        "mind": 54.48,
+        "discipline": 54.48,
+        "connections": 54.48
+      },
+      "resources": {
+        "xp": 896.1,
+        "focus": 0,
+        "momentum": 30.45,
+        "coins": 87.0
+      },
+      "burnout": 11.04,
+      "action_concentration": 0.172,
+      "action_mix": {
+        "balance": 15,
+        "body": 15,
+        "connections": 14,
+        "discipline": 14,
+        "energy": 15,
+        "mind": 14,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 24,
+      "skipped_days": 6,
+      "recovery_days": 3,
+      "stats": {
+        "body": 47.31,
+        "energy": 57.49,
+        "balance": 47.31,
+        "mind": 47.31,
+        "discipline": 47.31,
+        "connections": 47.31
+      },
+      "resources": {
+        "xp": 470.4,
+        "focus": 3.56,
+        "momentum": 16.8,
+        "coins": 48.0
+      },
+      "burnout": 1.04,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 8,
+        "body": 8,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 8,
+        "mind": 8,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 14,
+      "skipped_days": 16,
+      "recovery_days": 1,
+      "stats": {
+        "body": 48.33,
+        "energy": 60.57,
+        "balance": 49.32,
+        "mind": 48.33,
+        "discipline": 47.32,
+        "connections": 47.32
+      },
+      "resources": {
+        "xp": 436.8,
+        "focus": 3.64,
+        "momentum": 14.7,
+        "coins": 42.0
+      },
+      "burnout": 2.09,
+      "action_concentration": 0.19,
+      "action_mix": {
+        "balance": 8,
+        "body": 7,
+        "connections": 6,
+        "discipline": 6,
+        "energy": 8,
+        "mind": 7,
+        "recovery": 1
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 9,
+      "skipped_days": 21,
+      "recovery_days": 2,
+      "stats": {
+        "body": 41.64,
+        "energy": 59.39,
+        "balance": 42.27,
+        "mind": 41.64,
+        "discipline": 41.64,
+        "connections": 42.27
+      },
+      "resources": {
+        "xp": 84.6,
+        "focus": 20,
+        "momentum": 3.15,
+        "coins": 9.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.222,
+      "action_mix": {
+        "balance": 2,
+        "body": 1,
+        "connections": 2,
+        "discipline": 1,
+        "energy": 2,
+        "mind": 1,
+        "recovery": 2
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 30,
+      "skipped_days": 0,
+      "recovery_days": 4,
+      "stats": {
+        "body": 49.64,
+        "energy": 58.46,
+        "balance": 49.64,
+        "mind": 49.64,
+        "discipline": 49.64,
+        "connections": 49.64
+      },
+      "resources": {
+        "xp": 600.0,
+        "focus": 1.4,
+        "momentum": 21.0,
+        "coins": 60.0
+      },
+      "burnout": 1.62,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 10,
+        "body": 10,
+        "connections": 10,
+        "discipline": 10,
+        "energy": 10,
+        "mind": 10,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "return",
+      "days": 30,
+      "completed_days": 27,
+      "skipped_days": 3,
+      "recovery_days": 3,
+      "stats": {
+        "body": 61.77,
+        "energy": 68.69,
+        "balance": 60.77,
+        "mind": 59.75,
+        "discipline": 61.77,
+        "connections": 62.76
+      },
+      "resources": {
+        "xp": 1144.5,
+        "focus": 0,
+        "momentum": 36.75,
+        "coins": 105.0
+      },
+      "burnout": 74.54,
+      "action_concentration": 0.181,
+      "action_mix": {
+        "balance": 17,
+        "body": 18,
+        "connections": 19,
+        "discipline": 18,
+        "energy": 17,
+        "mind": 16,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 50,
+      "skipped_days": 40,
+      "recovery_days": 7,
+      "stats": {
+        "body": 44.66,
+        "energy": 84.13,
+        "balance": 44.66,
+        "mind": 44.66,
+        "discipline": 45.22,
+        "connections": 44.66
+      },
+      "resources": {
+        "xp": 465.0,
+        "focus": 19.16,
+        "momentum": 17.5,
+        "coins": 50.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.18,
+      "action_mix": {
+        "balance": 8,
+        "body": 8,
+        "connections": 8,
+        "discipline": 9,
+        "energy": 9,
+        "mind": 8,
+        "recovery": 7
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 84,
+      "skipped_days": 6,
+      "recovery_days": 11,
+      "stats": {
+        "body": 74.71,
+        "energy": 97.82,
+        "balance": 74.71,
+        "mind": 74.71,
+        "discipline": 74.08,
+        "connections": 74.71
+      },
+      "resources": {
+        "xp": 2595.6,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 252.0
+      },
+      "burnout": 25.92,
+      "action_concentration": 0.171,
+      "action_mix": {
+        "balance": 42,
+        "body": 42,
+        "connections": 42,
+        "discipline": 41,
+        "energy": 43,
+        "mind": 42,
+        "recovery": 11
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 71,
+      "skipped_days": 19,
+      "recovery_days": 10,
+      "stats": {
+        "body": 57.1,
+        "energy": 88.06,
+        "balance": 57.76,
+        "mind": 57.76,
+        "discipline": 57.76,
+        "connections": 57.76
+      },
+      "resources": {
+        "xp": 1391.6,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 142.0
+      },
+      "burnout": 2.09,
+      "action_concentration": 0.169,
+      "action_mix": {
+        "balance": 24,
+        "body": 23,
+        "connections": 24,
+        "discipline": 24,
+        "energy": 23,
+        "mind": 24,
+        "recovery": 10
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 43,
+      "skipped_days": 47,
+      "recovery_days": 6,
+      "stats": {
+        "body": 61.21,
+        "energy": 98.18,
+        "balance": 60.37,
+        "mind": 60.37,
+        "discipline": 60.37,
+        "connections": 61.21
+      },
+      "resources": {
+        "xp": 1341.6,
+        "focus": 4.92,
+        "momentum": 40,
+        "coins": 129.0
+      },
+      "burnout": 2.09,
+      "action_concentration": 0.171,
+      "action_mix": {
+        "balance": 21,
+        "body": 22,
+        "connections": 22,
+        "discipline": 21,
+        "energy": 22,
+        "mind": 21,
+        "recovery": 6
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 25,
+      "skipped_days": 65,
+      "recovery_days": 3,
+      "stats": {
+        "body": 43.16,
+        "energy": 88.09,
+        "balance": 41.91,
+        "mind": 43.16,
+        "discipline": 42.54,
+        "connections": 41.91
+      },
+      "resources": {
+        "xp": 235.0,
+        "focus": 20,
+        "momentum": 8.75,
+        "coins": 25.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.2,
+      "action_mix": {
+        "balance": 3,
+        "body": 5,
+        "connections": 3,
+        "discipline": 4,
+        "energy": 5,
+        "mind": 5,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 90,
+      "skipped_days": 0,
+      "recovery_days": 12,
+      "stats": {
+        "body": 63.63,
+        "energy": 87.3,
+        "balance": 63.63,
+        "mind": 63.63,
+        "discipline": 63.63,
+        "connections": 63.63
+      },
+      "resources": {
+        "xp": 1800.0,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 180.0
+      },
+      "burnout": 4.87,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 30,
+        "body": 30,
+        "connections": 30,
+        "discipline": 30,
+        "energy": 30,
+        "mind": 30,
+        "recovery": 12
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "lost",
+      "days": 90,
+      "completed_days": 79,
+      "skipped_days": 11,
+      "recovery_days": 19,
+      "stats": {
+        "body": 84.52,
+        "energy": 100,
+        "balance": 87.0,
+        "mind": 83.88,
+        "discipline": 84.52,
+        "connections": 84.52
+      },
+      "resources": {
+        "xp": 3106.5,
+        "focus": 0.23,
+        "momentum": 40,
+        "coins": 285.0
+      },
+      "burnout": 71.47,
+      "action_concentration": 0.179,
+      "action_mix": {
+        "balance": 51,
+        "body": 47,
+        "connections": 47,
+        "discipline": 47,
+        "energy": 47,
+        "mind": 46,
+        "recovery": 19
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 48,
+      "skipped_days": 42,
+      "recovery_days": 6,
+      "stats": {
+        "body": 39.59,
+        "energy": 76.86,
+        "balance": 38.38,
+        "mind": 38.99,
+        "discipline": 38.99,
+        "connections": 38.99
+      },
+      "resources": {
+        "xp": 446.4,
+        "focus": 20,
+        "momentum": 16.8,
+        "coins": 48.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.188,
+      "action_mix": {
+        "balance": 7,
+        "body": 9,
+        "connections": 8,
+        "discipline": 8,
+        "energy": 8,
+        "mind": 8,
+        "recovery": 6
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 83,
+      "skipped_days": 7,
+      "recovery_days": 11,
+      "stats": {
+        "body": 70.49,
+        "energy": 93.03,
+        "balance": 70.49,
+        "mind": 71.16,
+        "discipline": 71.16,
+        "connections": 71.16
+      },
+      "resources": {
+        "xp": 2564.7,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 249.0
+      },
+      "burnout": 28.85,
+      "action_concentration": 0.169,
+      "action_mix": {
+        "balance": 41,
+        "body": 41,
+        "connections": 42,
+        "discipline": 42,
+        "energy": 41,
+        "mind": 42,
+        "recovery": 11
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 70,
+      "skipped_days": 20,
+      "recovery_days": 9,
+      "stats": {
+        "body": 52.31,
+        "energy": 82.04,
+        "balance": 52.31,
+        "mind": 52.31,
+        "discipline": 53.02,
+        "connections": 52.31
+      },
+      "resources": {
+        "xp": 1372.0,
+        "focus": 2.12,
+        "momentum": 40,
+        "coins": 140.0
+      },
+      "burnout": 1.04,
+      "action_concentration": 0.171,
+      "action_mix": {
+        "balance": 23,
+        "body": 23,
+        "connections": 23,
+        "discipline": 24,
+        "energy": 24,
+        "mind": 23,
+        "recovery": 9
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 43,
+      "skipped_days": 47,
+      "recovery_days": 6,
+      "stats": {
+        "body": 56.7,
+        "energy": 91.67,
+        "balance": 54.9,
+        "mind": 55.81,
+        "discipline": 57.59,
+        "connections": 57.59
+      },
+      "resources": {
+        "xp": 1341.6,
+        "focus": 2.34,
+        "momentum": 40,
+        "coins": 129.0
+      },
+      "burnout": 1.86,
+      "action_concentration": 0.178,
+      "action_mix": {
+        "balance": 20,
+        "body": 22,
+        "connections": 23,
+        "discipline": 23,
+        "energy": 20,
+        "mind": 21,
+        "recovery": 6
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 24,
+      "skipped_days": 66,
+      "recovery_days": 4,
+      "stats": {
+        "body": 36.05,
+        "energy": 84.76,
+        "balance": 36.72,
+        "mind": 36.72,
+        "discipline": 37.39,
+        "connections": 36.72
+      },
+      "resources": {
+        "xp": 225.6,
+        "focus": 20,
+        "momentum": 8.4,
+        "coins": 24.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.208,
+      "action_mix": {
+        "balance": 4,
+        "body": 3,
+        "connections": 4,
+        "discipline": 5,
+        "energy": 4,
+        "mind": 4,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 90,
+      "skipped_days": 0,
+      "recovery_days": 12,
+      "stats": {
+        "body": 59.3,
+        "energy": 82.72,
+        "balance": 59.3,
+        "mind": 59.3,
+        "discipline": 59.3,
+        "connections": 59.3
+      },
+      "resources": {
+        "xp": 1800.0,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 180.0
+      },
+      "burnout": 4.87,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 30,
+        "body": 30,
+        "connections": 30,
+        "discipline": 30,
+        "energy": 30,
+        "mind": 30,
+        "recovery": 12
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "burnout",
+      "days": 90,
+      "completed_days": 79,
+      "skipped_days": 11,
+      "recovery_days": 19,
+      "stats": {
+        "body": 80.27,
+        "energy": 100,
+        "balance": 81.66,
+        "mind": 80.97,
+        "discipline": 80.97,
+        "connections": 80.97
+      },
+      "resources": {
+        "xp": 3019.3,
+        "focus": 4,
+        "momentum": 40,
+        "coins": 277.0
+      },
+      "burnout": 70.0,
+      "action_concentration": 0.17,
+      "action_mix": {
+        "balance": 47,
+        "body": 45,
+        "connections": 46,
+        "discipline": 46,
+        "energy": 47,
+        "mind": 46,
+        "recovery": 19
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 49,
+      "skipped_days": 41,
+      "recovery_days": 7,
+      "stats": {
+        "body": 48.44,
+        "energy": 87.99,
+        "balance": 48.98,
+        "mind": 47.9,
+        "discipline": 48.44,
+        "connections": 48.98
+      },
+      "resources": {
+        "xp": 455.7,
+        "focus": 20,
+        "momentum": 17.15,
+        "coins": 49.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.184,
+      "action_mix": {
+        "balance": 9,
+        "body": 8,
+        "connections": 9,
+        "discipline": 8,
+        "energy": 8,
+        "mind": 7,
+        "recovery": 7
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 83,
+      "skipped_days": 7,
+      "recovery_days": 10,
+      "stats": {
+        "body": 76.48,
+        "energy": 97.75,
+        "balance": 76.48,
+        "mind": 77.08,
+        "discipline": 77.08,
+        "connections": 77.08
+      },
+      "resources": {
+        "xp": 2564.7,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 249.0
+      },
+      "burnout": 33.81,
+      "action_concentration": 0.169,
+      "action_mix": {
+        "balance": 41,
+        "body": 41,
+        "connections": 42,
+        "discipline": 42,
+        "energy": 41,
+        "mind": 42,
+        "recovery": 10
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 69,
+      "skipped_days": 21,
+      "recovery_days": 10,
+      "stats": {
+        "body": 60.93,
+        "energy": 92.05,
+        "balance": 60.3,
+        "mind": 60.3,
+        "discipline": 59.66,
+        "connections": 60.3
+      },
+      "resources": {
+        "xp": 1352.4,
+        "focus": 2.12,
+        "momentum": 40,
+        "coins": 138.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.174,
+      "action_mix": {
+        "balance": 23,
+        "body": 24,
+        "connections": 23,
+        "discipline": 22,
+        "energy": 23,
+        "mind": 23,
+        "recovery": 10
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 42,
+      "skipped_days": 48,
+      "recovery_days": 4,
+      "stats": {
+        "body": 63.41,
+        "energy": 96.77,
+        "balance": 63.41,
+        "mind": 63.41,
+        "discipline": 63.41,
+        "connections": 63.41
+      },
+      "resources": {
+        "xp": 1310.4,
+        "focus": 2.32,
+        "momentum": 40,
+        "coins": 126.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 21,
+        "body": 21,
+        "connections": 21,
+        "discipline": 21,
+        "energy": 21,
+        "mind": 21,
+        "recovery": 4
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 25,
+      "skipped_days": 65,
+      "recovery_days": 3,
+      "stats": {
+        "body": 46.42,
+        "energy": 91.62,
+        "balance": 46.42,
+        "mind": 46.42,
+        "discipline": 46.42,
+        "connections": 47.02
+      },
+      "resources": {
+        "xp": 235.0,
+        "focus": 20,
+        "momentum": 8.75,
+        "coins": 25.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.2,
+      "action_mix": {
+        "balance": 4,
+        "body": 4,
+        "connections": 5,
+        "discipline": 4,
+        "energy": 4,
+        "mind": 4,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 90,
+      "skipped_days": 0,
+      "recovery_days": 12,
+      "stats": {
+        "body": 66.52,
+        "energy": 90.11,
+        "balance": 66.52,
+        "mind": 66.52,
+        "discipline": 66.52,
+        "connections": 66.52
+      },
+      "resources": {
+        "xp": 1800.0,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 180.0
+      },
+      "burnout": 4.87,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 30,
+        "body": 30,
+        "connections": 30,
+        "discipline": 30,
+        "energy": 30,
+        "mind": 30,
+        "recovery": 12
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "potential",
+      "days": 90,
+      "completed_days": 79,
+      "skipped_days": 11,
+      "recovery_days": 19,
+      "stats": {
+        "body": 87.03,
+        "energy": 100,
+        "balance": 87.62,
+        "mind": 88.21,
+        "discipline": 85.81,
+        "connections": 86.42
+      },
+      "resources": {
+        "xp": 3128.3,
+        "focus": 0.23,
+        "momentum": 40,
+        "coins": 287.0
+      },
+      "burnout": 73.59,
+      "action_concentration": 0.174,
+      "action_mix": {
+        "balance": 49,
+        "body": 48,
+        "connections": 47,
+        "discipline": 46,
+        "energy": 47,
+        "mind": 50,
+        "recovery": 19
+      }
+    },
+    {
+      "profile": "cautious",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 50,
+      "skipped_days": 40,
+      "recovery_days": 7,
+      "stats": {
+        "body": 45.6,
+        "energy": 84.13,
+        "balance": 46.16,
+        "mind": 46.16,
+        "discipline": 45.6,
+        "connections": 46.16
+      },
+      "resources": {
+        "xp": 465.0,
+        "focus": 20,
+        "momentum": 17.5,
+        "coins": 50.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.18,
+      "action_mix": {
+        "balance": 9,
+        "body": 8,
+        "connections": 9,
+        "discipline": 8,
+        "energy": 7,
+        "mind": 9,
+        "recovery": 7
+      }
+    },
+    {
+      "profile": "ambitious",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 84,
+      "skipped_days": 6,
+      "recovery_days": 11,
+      "stats": {
+        "body": 75.3,
+        "energy": 98.39,
+        "balance": 75.92,
+        "mind": 75.3,
+        "discipline": 74.68,
+        "connections": 74.68
+      },
+      "resources": {
+        "xp": 2595.6,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 252.0
+      },
+      "burnout": 25.92,
+      "action_concentration": 0.171,
+      "action_mix": {
+        "balance": 43,
+        "body": 42,
+        "connections": 41,
+        "discipline": 41,
+        "energy": 43,
+        "mind": 42,
+        "recovery": 11
+      }
+    },
+    {
+      "profile": "balanced",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 71,
+      "skipped_days": 19,
+      "recovery_days": 9,
+      "stats": {
+        "body": 58.55,
+        "energy": 87.13,
+        "balance": 58.55,
+        "mind": 58.55,
+        "discipline": 57.9,
+        "connections": 57.9
+      },
+      "resources": {
+        "xp": 1391.6,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 142.0
+      },
+      "burnout": 1.04,
+      "action_concentration": 0.169,
+      "action_mix": {
+        "balance": 24,
+        "body": 24,
+        "connections": 23,
+        "discipline": 23,
+        "energy": 24,
+        "mind": 24,
+        "recovery": 9
+      }
+    },
+    {
+      "profile": "chaotic",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 43,
+      "skipped_days": 47,
+      "recovery_days": 5,
+      "stats": {
+        "body": 61.13,
+        "energy": 96.55,
+        "balance": 61.96,
+        "mind": 61.96,
+        "discipline": 61.13,
+        "connections": 61.13
+      },
+      "resources": {
+        "xp": 1341.6,
+        "focus": 1.64,
+        "momentum": 40,
+        "coins": 129.0
+      },
+      "burnout": 1.86,
+      "action_concentration": 0.171,
+      "action_mix": {
+        "balance": 22,
+        "body": 21,
+        "connections": 21,
+        "discipline": 21,
+        "energy": 22,
+        "mind": 22,
+        "recovery": 5
+      }
+    },
+    {
+      "profile": "high_skip",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 25,
+      "skipped_days": 65,
+      "recovery_days": 3,
+      "stats": {
+        "body": 43.51,
+        "energy": 88.92,
+        "balance": 44.74,
+        "mind": 42.89,
+        "discipline": 42.89,
+        "connections": 44.13
+      },
+      "resources": {
+        "xp": 235.0,
+        "focus": 20,
+        "momentum": 8.75,
+        "coins": 25.0
+      },
+      "burnout": 0,
+      "action_concentration": 0.24,
+      "action_mix": {
+        "balance": 6,
+        "body": 4,
+        "connections": 5,
+        "discipline": 3,
+        "energy": 4,
+        "mind": 3,
+        "recovery": 3
+      }
+    },
+    {
+      "profile": "perfect",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 90,
+      "skipped_days": 0,
+      "recovery_days": 12,
+      "stats": {
+        "body": 64.35,
+        "energy": 87.93,
+        "balance": 64.35,
+        "mind": 64.35,
+        "discipline": 64.35,
+        "connections": 64.35
+      },
+      "resources": {
+        "xp": 1800.0,
+        "focus": 0,
+        "momentum": 40,
+        "coins": 180.0
+      },
+      "burnout": 4.87,
+      "action_concentration": 0.167,
+      "action_mix": {
+        "balance": 30,
+        "body": 30,
+        "connections": 30,
+        "discipline": 30,
+        "energy": 30,
+        "mind": 30,
+        "recovery": 12
+      }
+    },
+    {
+      "profile": "overload",
+      "origin": "return",
+      "days": 90,
+      "completed_days": 80,
+      "skipped_days": 10,
+      "recovery_days": 20,
+      "stats": {
+        "body": 86.24,
+        "energy": 100,
+        "balance": 85.62,
+        "mind": 86.24,
+        "discipline": 86.24,
+        "connections": 88.03
+      },
+      "resources": {
+        "xp": 3215.5,
+        "focus": 0.23,
+        "momentum": 40,
+        "coins": 295.0
+      },
+      "burnout": 73.26,
+      "action_concentration": 0.176,
+      "action_mix": {
+        "balance": 48,
+        "body": 49,
+        "connections": 52,
+        "discipline": 49,
+        "energy": 48,
+        "mind": 49,
+        "recovery": 20
+      }
+    }
+  ],
+  "errors": []
+}

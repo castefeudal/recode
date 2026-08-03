@@ -1,0 +1,5 @@
+validate_project=1
+test_sh=126
+package_release=126
+test_sh_bash=1
+package_release_bash=1

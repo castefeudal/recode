@@ -1,0 +1,52 @@
+[
+  {
+    "id": "athlete",
+    "name": {
+      "ru": "Атлет",
+      "en": "Athlete"
+    },
+    "bonus_stat": "body",
+    "risk": "overload",
+    "hybrid_allowed": true
+  },
+  {
+    "id": "strategist",
+    "name": {
+      "ru": "Стратег",
+      "en": "Strategist"
+    },
+    "bonus_stat": "discipline",
+    "risk": "overanalysis",
+    "hybrid_allowed": true
+  },
+  {
+    "id": "explorer",
+    "name": {
+      "ru": "Исследователь",
+      "en": "Explorer"
+    },
+    "bonus_stat": "mind",
+    "risk": "method_hopping",
+    "hybrid_allowed": true
+  },
+  {
+    "id": "mentor",
+    "name": {
+      "ru": "Наставник",
+      "en": "Mentor"
+    },
+    "bonus_stat": "connections",
+    "risk": "self_neglect",
+    "hybrid_allowed": true
+  },
+  {
+    "id": "restorer",
+    "name": {
+      "ru": "Восстановитель",
+      "en": "Restorer"
+    },
+    "bonus_stat": "energy",
+    "risk": "avoidance",
+    "hybrid_allowed": true
+  }
+]
