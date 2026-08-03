@@ -1,0 +1,47 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# JavaScript / Web
+node_modules/
+web_app/node_modules/
+web_app/.next/
+web_app/.vinext/
+web_app/dist/
+web_app/out/
+web_app/.vite/
+web_app/.wrangler/
+web_app/.sites-runtime/
+web_app/coverage/
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+backend/.venv/
+backend/*.db
+backend/*.db-*
+
+# Build artifacts
+/dist/
+/build/
+/outputs/
+/work/
+*.zip
+*.tar.gz
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
