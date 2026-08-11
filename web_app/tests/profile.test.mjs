@@ -42,6 +42,18 @@ test("disabled modules are not repeatedly pushed as a priority", () => {
   assert.match(result.reason, /training module is disabled/i);
 });
 
+test("fallback uses a module that is actually enabled", () => {
+  const result = applyProfileToRecommendation(base, {
+    schemaVersion: 1,
+    primaryGoal: "fitness",
+    availableMinutes: 10,
+    enabledModules: ["mind"],
+  }, "en");
+  assert.equal(result.priority, "mind");
+  assert.equal(result.actionId, "truth");
+  assert.ok(result.signals.includes("fallback_module:mind"));
+});
+
 test("selected goal becomes a transparent tie breaker while history is sparse", () => {
   const result = applyProfileToRecommendation({ ...base, confidence: "baseline" }, {
     schemaVersion: 1,
@@ -72,4 +84,11 @@ test("profile normalization rejects unsupported values", () => {
   assert.equal(result.primaryGoal, "system");
   assert.equal(result.availableMinutes, 10);
   assert.deepEqual(result.enabledModules, ["training"]);
+});
+
+test("empty or corrupt module selection restores a safe usable profile", () => {
+  const empty = normalizeProfile({ enabledModules: [] });
+  assert.ok(empty.enabledModules.length > 0);
+  const corrupt = normalizeProfile({ enabledModules: ["unknown", "broken"] });
+  assert.ok(corrupt.enabledModules.length > 0);
 });
