@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { addExerciseToDraft, completeWorkout, formatPreviousResult, moveDraftExercise, previousExerciseResult, recordSet, startWorkout, templateMeta, type ExerciseSummary, type TrainingState, type TrainingTemplate } from "../domain/training";
+import { recordCompletedWorkoutInGame } from "../infrastructure/training-game-bridge";
 import { loadTrainingState, persistTrainingState } from "../infrastructure/training-storage";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -55,6 +56,7 @@ export default function TrainingPage() {
   function finish() {
     if (!active) return;
     const completed = completeWorkout(active);
+    recordCompletedWorkoutInGame(localStorage, completed);
     setState({ ...state, activeSession: null, history: [completed, ...state.history].slice(0, 100) });
     setActiveIndex(0);
   }
@@ -76,7 +78,7 @@ export default function TrainingPage() {
 
   return <main className="trainingApp">
     <header className="trainingTop"><a href={`${BASE_PATH}/command/`}>← COMMAND</a><b>TRAINING</b><button onClick={() => setLang(lang === "ru" ? "en" : "ru")}>{lang.toUpperCase()}</button></header>
-    <section className="trainingHero"><p>BUILD → TRAIN → RECORD → PROGRESS</p><h1>{lang === "ru" ? "Тренировка без лишнего интерфейса." : "Training without interface overhead."}</h1><span>{lang === "ru" ? "Собери план, проведи сессию одной рукой и всегда вижу прошлый результат." : "Build a plan, run the session one-handed, and always see the previous result."}</span></section>
+    <section className="trainingHero"><p>BUILD → TRAIN → RECORD → PROGRESS</p><h1>{lang === "ru" ? "Тренировка без лишнего интерфейса." : "Training without interface overhead."}</h1><span>{lang === "ru" ? "Собери план, проведи сессию одной рукой и всегда видь прошлый результат." : "Build a plan, run the session one-handed, and always see the previous result."}</span></section>
     <section className="templateStrip">{(Object.keys(templateMeta) as TrainingTemplate[]).map((id) => <button className={template === id ? "active" : ""} key={id} onClick={() => setTemplate(id)}>{templateMeta[id][lang]}</button>)}</section>
     <section className="trainingLayout">
       <div className="workoutBuilder"><header><div><small>WORKOUT BUILDER</small><h2>{templateMeta[template][lang]}</h2></div><button className="trainingPrimary" disabled={!state.draft.length} onClick={begin}>{lang === "ru" ? "Начать" : "Start"}</button></header>{state.draft.length === 0 ? <div className="trainingEmpty"><b>{lang === "ru" ? "План пуст" : "Empty plan"}</b><p>{lang === "ru" ? "Найди упражнение справа и добавь его. Ничего не назначается автоматически." : "Find an exercise on the right and add it. Nothing is prescribed automatically."}</p></div> : <div className="draftList">{state.draft.map((item, index) => <article key={item.exerciseId}><div><small>{String(index + 1).padStart(2, "0")}</small><h3>{item.name}</h3></div><label>SETS<input type="number" min="1" max="10" value={item.sets} onChange={(e) => updateDraft(index, { sets: Number(e.target.value) })} /></label><label>REPS<input type="number" min="1" max="50" value={item.reps} onChange={(e) => updateDraft(index, { reps: Number(e.target.value) })} /></label><label>REST<input type="number" min="15" step="15" value={item.restSeconds} onChange={(e) => updateDraft(index, { restSeconds: Number(e.target.value) })} /></label><div className="draftMove"><button disabled={index === 0} onClick={() => setState({ ...state, draft: moveDraftExercise(state.draft, index, -1) })}>↑</button><button disabled={index === state.draft.length - 1} onClick={() => setState({ ...state, draft: moveDraftExercise(state.draft, index, 1) })}>↓</button><button onClick={() => setState({ ...state, draft: state.draft.filter((_, i) => i !== index) })}>×</button></div></article>)}</div>}</div>
