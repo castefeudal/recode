@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { assessRecovery, sleepDurationMinutes } from "../domain/recovery";
 import type { GameState, Lang } from "../game";
 import { clamp } from "../game";
-import { loadStoredSave, persistStoredSave } from "../infrastructure/save-storage";
+import { loadStoredSaveReady, persistStoredSave } from "../infrastructure/save-storage";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -22,19 +22,27 @@ export default function RecoveryPage() {
   const [wake, setWake] = useState("07:30");
   const [quality, setQuality] = useState(6);
   const [message, setMessage] = useState("");
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const loaded = loadStoredSave(localStorage);
-    if (loaded.state) {
-      setState(loaded.state);
-      setLang(loaded.state.lang);
-      const latest = loaded.state.sleepEntries[0];
-      if (latest) {
-        setBedtime(latest.bedtime);
-        setWake(latest.wake);
-        setQuality(latest.quality);
+    let active = true;
+    loadStoredSaveReady(localStorage).then((loaded) => {
+      if (!active) return;
+      if (loaded.state) {
+        setState(loaded.state);
+        setLang(loaded.state.lang);
+        const latest = loaded.state.sleepEntries[0];
+        if (latest) {
+          setBedtime(latest.bedtime);
+          setWake(latest.wake);
+          setQuality(latest.quality);
+        }
       }
-    }
+      setHydrated(true);
+    }).catch(() => {
+      if (active) setHydrated(true);
+    });
+    return () => { active = false; };
   }, []);
 
   const assessment = useMemo(() => state ? assessRecovery(state, lang) : null, [state, lang]);
@@ -69,6 +77,8 @@ export default function RecoveryPage() {
     setState(next);
     setMessage(lang === "ru" ? "Записано. Daily Command теперь учитывает эту ночь." : "Saved. Daily Command now uses this night.");
   }
+
+  if (!hydrated) return <main className="recoveryApp recoveryEmpty"><p>RECOVERY / LOADING STATE</p></main>;
 
   if (!state || !assessment) {
     return <main className="recoveryApp recoveryEmpty"><a href={`${BASE_PATH}/`}>← RECODE</a><section><p>RECOVERY / LOCAL DATA</p><h1>NO ACTIVE SAVE</h1><p>Start RECODE first so recovery can adapt the same local game state.</p></section></main>;
