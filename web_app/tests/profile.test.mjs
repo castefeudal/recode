@@ -42,6 +42,30 @@ test("disabled modules are not repeatedly pushed as a priority", () => {
   assert.match(result.reason, /training module is disabled/i);
 });
 
+test("selected goal becomes a transparent tie breaker while history is sparse", () => {
+  const result = applyProfileToRecommendation({ ...base, confidence: "baseline" }, {
+    schemaVersion: 1,
+    primaryGoal: "stress",
+    availableMinutes: 10,
+    enabledModules: ["training", "recovery", "mind", "focus"],
+  }, "en");
+  assert.equal(result.priority, "mind");
+  assert.equal(result.actionId, "truth");
+  assert.ok(result.signals.includes("goal:stress"));
+  assert.match(result.reason, /selected goal/i);
+});
+
+test("low readiness is not overridden by a different selected goal", () => {
+  const result = applyProfileToRecommendation({ ...base, priority: "recovery", readinessState: "low", actionId: "sleep", confidence: "baseline" }, {
+    schemaVersion: 1,
+    primaryGoal: "fitness",
+    availableMinutes: 10,
+    enabledModules: ["training", "recovery", "mind", "focus"],
+  }, "en");
+  assert.equal(result.priority, "recovery");
+  assert.equal(result.actionId, "sleep");
+});
+
 test("profile normalization rejects unsupported values", () => {
   const result = normalizeProfile({ schemaVersion: 99, primaryGoal: "magic", availableMinutes: 999, enabledModules: ["training", "unknown"] });
   assert.equal(result.schemaVersion, 1);
