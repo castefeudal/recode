@@ -52,6 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <nav className="premiumLaunchers" aria-label="RECODE premium workspaces">
           <a className="premiumLauncher" href={`${BASE_PATH}/command/`} aria-label="Open RECODE Daily Command Center"><span>DAILY</span><b>COMMAND</b></a>
           <a className="premiumLauncher" href={`${BASE_PATH}/training/`} aria-label="Open RECODE Training"><span>BODY</span><b>TRAINING</b></a>
+          <a className="premiumLauncher" href={`${BASE_PATH}/recovery/`} aria-label="Open RECODE Recovery"><span>STATE</span><b>RECOVERY</b></a>
         </nav>
       </body>
     </html>
