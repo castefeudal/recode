@@ -24,16 +24,19 @@ export default function CommandCenterPage() {
 
   useEffect(() => {
     let active = true;
-    setProfile(loadUserProfile(localStorage));
+    const loadedProfile = loadUserProfile(localStorage);
     loadStoredSaveReady(localStorage).then((loaded) => {
       if (!active) return;
+      setProfile(loadedProfile);
       if (loaded.state) {
         setState(loaded.state);
         setLang(loaded.state.lang);
       }
       setHydrated(true);
     }).catch(() => {
-      if (active) setHydrated(true);
+      if (!active) return;
+      setProfile(loadedProfile);
+      setHydrated(true);
     });
     return () => { active = false; };
   }, []);
