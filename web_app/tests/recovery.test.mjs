@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { assessRecovery, sleepDurationMinutes } from "../app/domain/recovery.ts";
+import { assessRecovery, sleepDurationMinutes, upsertSleepEntry } from "../app/domain/recovery.ts";
 
 function state(overrides = {}) {
   return {
@@ -24,9 +24,19 @@ function state(overrides = {}) {
   };
 }
 
-test("sleep duration handles overnight intervals", () => {
+test("sleep duration handles overnight intervals and rejects impossible times", () => {
   assert.equal(sleepDurationMinutes("23:30", "07:00"), 450);
   assert.equal(sleepDurationMinutes("01:00", "06:30"), 330);
+  assert.equal(sleepDurationMinutes("25:00", "07:00"), null);
+  assert.equal(sleepDurationMinutes("23:75", "07:00"), null);
+});
+
+test("sleep check-in is an upsert per day instead of duplicated history", () => {
+  const existing = [{ id: "old", bedtime: "23:00", wake: "07:00", quality: 6, day: 7 }, { id: "d6", bedtime: "23:30", wake: "07:00", quality: 7, day: 6 }];
+  const next = upsertSleepEntry(existing, { id: "old", bedtime: "00:00", wake: "07:30", quality: 8, day: 7 });
+  assert.equal(next.length, 2);
+  assert.equal(next.filter((entry) => entry.day === 7).length, 1);
+  assert.equal(next[0].quality, 8);
 });
 
 test("recovery reports insufficient data instead of inventing a score", () => {
@@ -46,4 +56,12 @@ test("short low-quality sleep produces an explainable below-baseline assessment"
   assert.ok(assessment.factors.some((factor) => /shorter than 6 hours/i.test(factor)));
   assert.ok(assessment.factors.some((factor) => /4\/10/.test(factor)));
   assert.match(assessment.adjustment, /reduce volume or difficulty/i);
+});
+
+test("previous-day workout is shown as context without becoming a magic score", () => {
+  const assessment = assessRecovery(state({
+    sleepEntries: [{ id: "s1", bedtime: "23:30", wake: "07:00", quality: 6, day: 7 }],
+    workoutHistory: ["D6 · Full Body · 5 exercises · 15 sets · structured:abc"],
+  }), "en");
+  assert.ok(assessment.factors.some((factor) => /workout was recorded yesterday/i.test(factor)));
 });
