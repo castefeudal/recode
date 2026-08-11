@@ -47,7 +47,7 @@ export default function CommandCenterPage() {
     if (!state || !profile) return null;
     return applyProfileToRecommendation(getDailyRecommendation(state, lang), profile, lang);
   }, [state, profile, lang]);
-  const review = useMemo(() => state ? buildWeeklyReview(state, lang) : null, [state, lang]);
+  const review = useMemo(() => state ? buildWeeklyReview(state, lang, recommendation?.title) : null, [state, lang, recommendation?.title]);
   const returnProtocol = useMemo(() => state ? getReturnProtocol(state, lang, dayGap(state.saveMeta.updatedAt)) : null, [state, lang]);
 
   if (!hydrated) {
@@ -99,8 +99,7 @@ export default function CommandCenterPage() {
   }
 
   function completeReturn(scale: ReturnScale) {
-    if (!state) return;
-    setState(applyReturn(state, scale));
+    setState((current) => current ? applyReturn(current, scale) : current);
     setStatus(lang === "ru" ? "Возвращение записано. Прогресс не обнулён." : "Return recorded. Your progress was not reset.");
   }
 
@@ -168,6 +167,6 @@ export default function CommandCenterPage() {
       {review.observation && <aside><b>{lang === "ru" ? "НАБЛЮДЕНИЕ" : "OBSERVATION"}</b><p>{review.observation}</p><small>{review.disclaimer}</small></aside>}
     </section>
 
-    {status && <div className="commandToast" role="status">{status}</div>}
+    {status && <div className="commandToast" role="status" aria-live="polite">{status}</div>}
   </main>;
 }
