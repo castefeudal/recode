@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ActionStatus, GameState, Lang } from "../game";
 import { loadStoredSave, persistStoredSave } from "../infrastructure/save-storage";
+import { loadUserProfile } from "../infrastructure/profile-storage";
 import { getDailyRecommendation } from "../domain/recommendation";
+import { applyProfileToRecommendation, goalMeta, type UserProfile } from "../domain/profile";
 import { buildWeeklyReview } from "../domain/weekly-review";
 import { applyReturn, getReturnProtocol, type ReturnScale } from "../domain/return-protocol";
 
@@ -15,12 +17,14 @@ function dayGap(updatedAt: string): number {
 
 export default function CommandCenterPage() {
   const [state, setState] = useState<GameState | null>(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [lang, setLang] = useState<Lang>("ru");
   const [hydrated, setHydrated] = useState(false);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
     const loaded = loadStoredSave(localStorage);
+    setProfile(loadUserProfile(localStorage));
     if (loaded.state) {
       setState(loaded.state);
       setLang(loaded.state.lang);
@@ -33,7 +37,10 @@ export default function CommandCenterPage() {
     persistStoredSave(localStorage, state, lang);
   }, [hydrated, state, lang]);
 
-  const recommendation = useMemo(() => state ? getDailyRecommendation(state, lang) : null, [state, lang]);
+  const recommendation = useMemo(() => {
+    if (!state || !profile) return null;
+    return applyProfileToRecommendation(getDailyRecommendation(state, lang), profile, lang);
+  }, [state, profile, lang]);
   const review = useMemo(() => state ? buildWeeklyReview(state, lang) : null, [state, lang]);
   const returnProtocol = useMemo(() => state ? getReturnProtocol(state, lang, dayGap(state.saveMeta.updatedAt)) : null, [state, lang]);
 
@@ -41,7 +48,7 @@ export default function CommandCenterPage() {
     return <main className="commandCenter commandLoading"><p>RECODE / LOADING STATE</p></main>;
   }
 
-  if (!state || !recommendation || !review || !returnProtocol) {
+  if (!state || !recommendation || !review || !returnProtocol || !profile) {
     return <main className="commandCenter commandEmpty">
       <a className="commandBack" href="../">← MARKOVMADE: RECODE</a>
       <section>
@@ -102,13 +109,13 @@ export default function CommandCenterPage() {
   return <main className="commandCenter">
     <header className="commandTop">
       <a className="commandBrand" href="../"><small>MARKOVMADE</small><b>RECODE</b></a>
-      <div><span>DAY {String(state.day).padStart(2, "0")}</span><span>{state.name}</span><button onClick={() => setLang(lang === "ru" ? "en" : "ru")}>{lang.toUpperCase()}</button></div>
+      <div><span>DAY {String(state.day).padStart(2, "0")}</span><span>{state.name}</span><a className="commandProfileLink" href="../setup/">{goalMeta[profile.primaryGoal][lang]} · {profile.availableMinutes} MIN</a><button onClick={() => setLang(lang === "ru" ? "en" : "ru")}>{lang.toUpperCase()}</button></div>
     </header>
 
     <section className="commandIntro">
       <p className="commandEyebrow">STATE → PRIORITY → ACTION → WORLD</p>
       <h1>{lang === "ru" ? "Сегодня не нужен максимум." : "Today does not require your maximum."}</h1>
-      <p>{lang === "ru" ? "Нужен один законченный цикл, который соответствует твоему текущему состоянию." : "You need one completed loop that matches your current state."}</p>
+      <p>{lang === "ru" ? "Нужен один законченный цикл, который соответствует твоему состоянию, доступному времени и выбранным модулям." : "You need one completed loop that matches your state, available time and enabled modules."}</p>
     </section>
 
     {returnProtocol.active && <section className="returnProtocol" aria-labelledby="return-title">
@@ -135,7 +142,7 @@ export default function CommandCenterPage() {
         <p className="whyLabel">WHY THIS</p>
         <p>{recommendation.reason}</p>
         <button className="commandPrimary" onClick={() => record("completed")}>{lang === "ru" ? "Выполнено" : "Complete"}</button>
-        <div className="actionAlternatives">{recommendation.alternatives.map((item) => <button key={item.status} onClick={() => record(item.status)}><span>{item.label}</span>{item.minutes > 0 && <small>{item.minutes} MIN</small>}</button>)}</div>
+        <div className="actionAlternatives">{recommendation.alternatives.map((item) => <button key={item.status} onClick={() => record(item.status)}><span>{item.label}</span>{item.minutes > 0 && <small>{Math.min(item.minutes, profile.availableMinutes)} MIN</small>}</button>)}</div>
       </article>
     </section>
 
