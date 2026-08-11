@@ -4,13 +4,22 @@ import test from "node:test";
 const productionPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']production["'])[^>]*>/i;
 
-test("renders production metadata and PWA contract", async () => {
+function productionPath() {
+  if (process.env.GITHUB_ACTIONS === "true") {
+    const repository = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "recode";
+    return `/${repository}/`;
+  }
+  return "/";
+}
+
+test("renders production metadata and PWA contract at the configured base path", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
+  const path = productionPath();
   const response = await worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -25,10 +34,7 @@ test("renders production metadata and PWA contract", async () => {
   );
 
   assert.equal(response.status, 200);
-  assert.match(
-    response.headers.get("content-type") ?? "",
-    /^text\/html\b/i,
-  );
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, productionPreviewMeta);
   assert.match(html, /rel=["']manifest["'][^>]*manifest\.webmanifest/i);
@@ -37,4 +43,7 @@ test("renders production metadata and PWA contract", async () => {
   assert.match(html, /LIVE CORE LOOP/);
   assert.match(html, /NOT A TRACKER|НЕ ТРЕКЕР/);
   assert.match(html, /og-recode-v7\.jpg/);
+  if (process.env.GITHUB_ACTIONS === "true") {
+    assert.match(html, /\/recode\/manifest\.webmanifest/);
+  }
 });
