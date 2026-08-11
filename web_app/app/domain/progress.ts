@@ -33,7 +33,8 @@ export function weeklyProgress(state: GameState, weeks = 4): WeeklyProgress[] {
   const safeWeeks = Math.max(1, Math.min(12, Math.floor(weeks)));
   const result: WeeklyProgress[] = [];
   for (let offset = safeWeeks - 1; offset >= 0; offset -= 1) {
-    const endDay = Math.max(1, state.day - offset * 7);
+    const endDay = state.day - offset * 7;
+    if (endDay < 1) continue;
     const startDay = Math.max(1, endDay - 6);
     const records = state.dailyRecords.filter((record) => record.day >= startDay && record.day <= endDay);
     const actions = records.filter((record) => record.actionId !== "return");
