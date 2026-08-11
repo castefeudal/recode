@@ -22,16 +22,20 @@ export type WeeklyReview = {
 function trend(values: number[]): TrendDirection {
   if (values.length < 4) return "insufficient";
   const midpoint = Math.floor(values.length / 2);
-  const first = values.slice(midpoint).reduce((sum, value) => sum + value, 0) / values.slice(midpoint).length;
-  const second = values.slice(0, midpoint).reduce((sum, value) => sum + value, 0) / values.slice(0, midpoint).length;
-  if (second - first >= 0.75) return "up";
-  if (first - second >= 0.75) return "down";
+  const older = values.slice(midpoint);
+  const recent = values.slice(0, midpoint);
+  const olderAverage = older.reduce((sum, value) => sum + value, 0) / older.length;
+  const recentAverage = recent.reduce((sum, value) => sum + value, 0) / recent.length;
+  if (recentAverage - olderAverage >= 0.75) return "up";
+  if (olderAverage - recentAverage >= 0.75) return "down";
   return "flat";
 }
 
-export function buildWeeklyReview(state: GameState, lang: Lang): WeeklyReview {
+export function buildWeeklyReview(state: GameState, lang: Lang, nextFocusOverride?: string): WeeklyReview {
   const startDay = Math.max(1, state.day - 6);
-  const records = state.dailyRecords.filter((record) => record.day >= startDay && record.day <= state.day);
+  const weeklyRecords = state.dailyRecords.filter((record) => record.day >= startDay && record.day <= state.day);
+  const returnRecords = weeklyRecords.filter((record) => record.actionId === "return" && record.status === "completed");
+  const records = weeklyRecords.filter((record) => record.actionId !== "return");
   const completedActions = records.filter((record) => record.status === "completed").length;
   const reducedActions = records.filter((record) => record.status === "reduced" || record.status === "replaced").length;
   const skippedActions = records.filter((record) => record.status === "skipped").length;
@@ -42,8 +46,11 @@ export function buildWeeklyReview(state: GameState, lang: Lang): WeeklyReview {
     : null;
   const workouts = state.workoutHistory.filter((entry) => {
     const match = /^D(\d+)/.exec(entry);
-    return match ? Number(match[1]) >= startDay : false;
+    if (!match) return false;
+    const day = Number(match[1]);
+    return day >= startDay && day <= state.day;
   }).length;
+  const weeklyReturns = returnRecords.length;
 
   const copy = lang === "ru" ? {
     completed: (count: number) => `${count} действий завершено полностью.`,
@@ -68,7 +75,7 @@ export function buildWeeklyReview(state: GameState, lang: Lang): WeeklyReview {
   const wins: string[] = [];
   if (completedActions) wins.push(copy.completed(completedActions));
   if (reducedActions) wins.push(copy.adapted(reducedActions));
-  if (state.returns) wins.push(copy.returnWin(state.returns));
+  if (weeklyReturns) wins.push(copy.returnWin(weeklyReturns));
 
   const friction: string[] = [];
   if (skippedActions) friction.push(copy.skipped(skippedActions));
@@ -77,21 +84,21 @@ export function buildWeeklyReview(state: GameState, lang: Lang): WeeklyReview {
   const lowSleepDays = new Set(sleeps.filter((entry) => entry.quality <= 5).map((entry) => entry.day));
   const adaptedOnLowSleep = records.filter((record) => lowSleepDays.has(record.day) && ["reduced", "replaced", "skipped"].includes(record.status)).length;
   const observation = lowSleepDays.size >= 2 && adaptedOnLowSleep >= 2 ? copy.association : null;
-  const recommendation = getDailyRecommendation(state, lang);
+  const fallbackFocus = getDailyRecommendation(state, lang).title;
 
   return {
     week: Math.max(1, Math.ceil(state.day / 7)),
     completedActions,
     reducedActions,
     skippedActions,
-    returns: state.returns,
+    returns: weeklyReturns,
     workouts,
     sleepTrend: trend(sleepQualities),
     averageSleepQuality,
     wins: wins.length ? wins : [copy.noData],
     friction,
     observation,
-    nextFocus: recommendation.title,
+    nextFocus: nextFocusOverride?.trim() || fallbackFocus,
     disclaimer: copy.disclaimer,
   };
 }
