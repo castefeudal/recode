@@ -93,11 +93,12 @@ test("return protocol activates after two days away without deleting progress an
 
 test("weekly review counts returns only inside the current week and excludes them from normal completions", () => {
   const review = buildWeeklyReview(state({
+    day: 14,
     returns: 12,
     dailyRecords: [
       { actionId: "return", status: "completed", day: 2 },
-      { actionId: "return", status: "completed", day: 7 },
-      { actionId: "move", status: "completed", day: 7 },
+      { actionId: "return", status: "completed", day: 14 },
+      { actionId: "move", status: "completed", day: 14 },
     ],
   }), "en", "Personalized focus");
   assert.equal(review.returns, 1);
