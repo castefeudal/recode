@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { assessRecovery, sleepDurationMinutes } from "../domain/recovery";
+import { assessRecovery, sleepDurationMinutes, upsertSleepEntry } from "../domain/recovery";
 import type { GameState, Lang } from "../game";
 import { clamp } from "../game";
 import { loadStoredSaveReady, persistStoredSave } from "../infrastructure/save-storage";
@@ -21,6 +21,7 @@ export default function RecoveryPage() {
   const [bedtime, setBedtime] = useState("23:30");
   const [wake, setWake] = useState("07:30");
   const [quality, setQuality] = useState(6);
+  const [subjectiveEnergy, setSubjectiveEnergy] = useState(6);
   const [message, setMessage] = useState("");
   const [hydrated, setHydrated] = useState(false);
 
@@ -31,6 +32,7 @@ export default function RecoveryPage() {
       if (loaded.state) {
         setState(loaded.state);
         setLang(loaded.state.lang);
+        setSubjectiveEnergy(Math.max(1, Math.min(10, Math.round(loaded.state.stats.energy / 10))));
         const latest = loaded.state.sleepEntries[0];
         if (latest) {
           setBedtime(latest.bedtime);
@@ -53,29 +55,36 @@ export default function RecoveryPage() {
       setMessage(lang === "ru" ? "Проверь время сна и подъёма." : "Check bedtime and wake time.");
       return;
     }
+    const existing = state.sleepEntries.find((entry) => entry.day === state.day);
+    const entry = {
+      id: existing?.id ?? crypto.randomUUID(),
+      bedtime,
+      wake,
+      quality: Math.max(1, Math.min(10, Math.round(quality))),
+      day: state.day,
+    };
+    const energy = clamp(Math.round(subjectiveEnergy) * 10);
     const next: GameState = {
       ...state,
-      sleepEntries: [{ id: crypto.randomUUID(), bedtime, wake, quality, day: state.day }, ...state.sleepEntries].slice(0, 60),
-      stats: {
-        ...state.stats,
-        energy: clamp(state.stats.energy + (quality >= 7 ? 2 : quality <= 4 ? -1 : 0)),
-        balance: clamp(state.stats.balance + 1),
-      },
+      sleepEntries: upsertSleepEntry(state.sleepEntries, entry),
+      stats: { ...state.stats, energy },
       flags: {
         ...state.flags,
         "recovery.logged": true,
-        "recovery.low": quality <= 4 || previewDuration < 6 * 60,
+        "recovery.low": entry.quality <= 4 || previewDuration < 6 * 60 || subjectiveEnergy <= 3,
       },
       consequenceLog: [
         lang === "ru"
-          ? `Восстановление записано: ${durationLabel(previewDuration, lang)}, качество ${quality}/10. Daily Protocol пересчитан.`
-          : `Recovery logged: ${durationLabel(previewDuration, lang)}, quality ${quality}/10. Daily Protocol recalculated.`,
+          ? `Восстановление записано: ${durationLabel(previewDuration, lang)}, сон ${entry.quality}/10, энергия ${subjectiveEnergy}/10. Daily Protocol пересчитан.`
+          : `Recovery logged: ${durationLabel(previewDuration, lang)}, sleep ${entry.quality}/10, energy ${subjectiveEnergy}/10. Daily Protocol recalculated.`,
         ...state.consequenceLog,
       ].slice(0, 40),
     };
     persistStoredSave(localStorage, next, lang);
     setState(next);
-    setMessage(lang === "ru" ? "Записано. Daily Command теперь учитывает эту ночь." : "Saved. Daily Command now uses this night.");
+    setMessage(existing
+      ? (lang === "ru" ? "Запись этого дня обновлена без дублирования истории." : "Today's entry was updated without duplicating history.")
+      : (lang === "ru" ? "Записано. Daily Command теперь учитывает эту ночь." : "Saved. Daily Command now uses this night."));
   }
 
   if (!hydrated) return <main className="recoveryApp recoveryEmpty"><p>RECOVERY / LOADING STATE</p></main>;
@@ -111,13 +120,14 @@ export default function RecoveryPage() {
         <small>{lang === "ru" ? "ЗАПИСАТЬ НОЧЬ" : "LOG THE NIGHT"}</small>
         <h2>{durationLabel(previewDuration, lang)}</h2>
         <div className="sleepTimes"><label>{lang === "ru" ? "ЛЁГ" : "BEDTIME"}<input type="time" value={bedtime} onChange={(event) => setBedtime(event.target.value)} /></label><label>{lang === "ru" ? "ВСТАЛ" : "WAKE"}<input type="time" value={wake} onChange={(event) => setWake(event.target.value)} /></label></div>
-        <label className="qualityField"><span>{lang === "ru" ? "СУБЪЕКТИВНОЕ КАЧЕСТВО" : "SUBJECTIVE QUALITY"}<b>{quality}/10</b></span><input type="range" min="1" max="10" value={quality} onChange={(event) => setQuality(Number(event.target.value))} /></label>
+        <label className="qualityField"><span>{lang === "ru" ? "СУБЪЕКТИВНОЕ КАЧЕСТВО СНА" : "SUBJECTIVE SLEEP QUALITY"}<b>{quality}/10</b></span><input type="range" min="1" max="10" value={quality} onChange={(event) => setQuality(Number(event.target.value))} /></label>
+        <label className="qualityField"><span>{lang === "ru" ? "ЭНЕРГИЯ СЕЙЧАС" : "ENERGY RIGHT NOW"}<b>{subjectiveEnergy}/10</b></span><input type="range" min="1" max="10" value={subjectiveEnergy} onChange={(event) => setSubjectiveEnergy(Number(event.target.value))} /></label>
         <button className="recoveryPrimary" onClick={saveSleep}>{lang === "ru" ? "Сохранить и адаптировать" : "Save and adapt"}</button>
-        <p className="recoveryPrivacy">{lang === "ru" ? "Хранится локально. Это субъективная запись, не медицинское измерение." : "Stored locally. This is a subjective record, not a medical measurement."}</p>
+        <p className="recoveryPrivacy">{lang === "ru" ? "Хранится локально. Сон и энергия — субъективные записи, а не медицинские измерения." : "Stored locally. Sleep and energy are subjective records, not medical measurements."}</p>
       </article>
     </section>
 
     <section className="recoveryLink"><div><small>DAILY COMMAND</small><h2>{lang === "ru" ? "Новая запись сразу меняет следующий протокол." : "A new entry immediately changes the next protocol."}</h2></div><a href={`${BASE_PATH}/command/`}>{lang === "ru" ? "Посмотреть адаптацию" : "See adaptation"} →</a></section>
-    {message && <div className="recoveryToast" role="status">{message}</div>}
+    {message && <div className="recoveryToast" role="status" aria-live="polite">{message}</div>}
   </main>;
 }
