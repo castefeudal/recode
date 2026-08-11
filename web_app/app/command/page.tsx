@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { ActionStatus, GameState, Lang } from "../game";
-import { loadStoredSave, persistStoredSave } from "../infrastructure/save-storage";
+import { loadStoredSaveReady, persistStoredSave } from "../infrastructure/save-storage";
 import { loadUserProfile } from "../infrastructure/profile-storage";
 import { getDailyRecommendation } from "../domain/recommendation";
 import { applyProfileToRecommendation, goalMeta, type UserProfile } from "../domain/profile";
@@ -23,13 +23,19 @@ export default function CommandCenterPage() {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    const loaded = loadStoredSave(localStorage);
+    let active = true;
     setProfile(loadUserProfile(localStorage));
-    if (loaded.state) {
-      setState(loaded.state);
-      setLang(loaded.state.lang);
-    }
-    setHydrated(true);
+    loadStoredSaveReady(localStorage).then((loaded) => {
+      if (!active) return;
+      if (loaded.state) {
+        setState(loaded.state);
+        setLang(loaded.state.lang);
+      }
+      setHydrated(true);
+    }).catch(() => {
+      if (active) setHydrated(true);
+    });
+    return () => { active = false; };
   }, []);
 
   useEffect(() => {
