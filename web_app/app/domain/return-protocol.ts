@@ -17,9 +17,13 @@ export type ReturnProtocol = {
   options: ReturnOption[];
 };
 
+function returnDayFlag(day: number): string {
+  return `return.day.${day}`;
+}
+
 export function getReturnProtocol(state: GameState, lang: Lang, daysSinceLastUse = 0): ReturnProtocol {
   const daysAway = Math.max(0, Math.floor(daysSinceLastUse));
-  const active = daysAway >= 2;
+  const active = daysAway >= 2 && !state.flags[returnDayFlag(state.day)];
   const ru = lang === "ru";
   return {
     active,
@@ -36,19 +40,26 @@ export function getReturnProtocol(state: GameState, lang: Lang, daysSinceLastUse
   };
 }
 
-export function applyReturn(state: GameState, scale: ReturnScale): GameState {
+export function applyReturn(state: GameState, scale: ReturnScale, now = new Date()): GameState {
+  if (state.flags[returnDayFlag(state.day)]) return state;
   const option = getReturnProtocol(state, state.lang, 2).options.find((item) => item.scale === scale);
   if (!option) return state;
+  const returnAlreadyRecorded = state.dailyRecords.some((record) => record.day === state.day && record.actionId === "return");
   return {
     ...state,
     returns: state.returns + 1,
     stability: Math.min(100, state.stability + option.effect.stability),
     focus: Math.min(6, state.focus + option.effect.focus),
     xp: state.xp + option.effect.xp,
+    dailyRecords: returnAlreadyRecorded
+      ? state.dailyRecords
+      : [...state.dailyRecords, { actionId: "return", status: "completed", day: state.day }],
+    saveMeta: { ...state.saveMeta, updatedAt: now.toISOString() },
     flags: {
       ...state.flags,
       "return.completed": true,
       [`return.${scale}`]: true,
+      [returnDayFlag(state.day)]: true,
     },
     consequenceLog: [
       state.lang === "ru"
