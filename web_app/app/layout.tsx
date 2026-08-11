@@ -44,14 +44,18 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        {children}
+        <nav className="premiumLaunchers" aria-label="RECODE core navigation">
+          <a className="premiumLauncher" href={`${BASE_PATH}/command/`} aria-label="Open Today Daily Command"><span>CORE</span><b>TODAY</b></a>
+          <a className="premiumLauncher" href={`${BASE_PATH}/progress/`} aria-label="Open RECODE Progress"><span>CORE</span><b>PROGRESS</b></a>
+          <a className="premiumLauncher" href={`${BASE_PATH}/training/`} aria-label="Open RECODE Training"><span>LIFE</span><b>TRAINING</b></a>
+          <a className="premiumLauncher" href={`${BASE_PATH}/recovery/`} aria-label="Open RECODE Recovery"><span>LIFE</span><b>RECOVERY</b></a>
+        </nav>
+      </body>
     </html>
   );
 }

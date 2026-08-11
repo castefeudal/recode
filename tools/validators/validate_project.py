@@ -82,15 +82,18 @@ web_source = (ROOT / "web_app/app/page.tsx").read_text(encoding="utf-8")
 for filename in ["quests.json", "events.json", "exercises.json", "characters.json"]:
     check(f'/content/{filename}' in web_source, f"web runtime loads {filename}")
     check((ROOT / "web_app/public/content" / filename).is_file(), f"web content chunk {filename}")
-check('fetch("/content/season_01.json' in (ROOT / "web_app/app/game.ts").read_text(encoding="utf-8"), "web runtime loads season_01.json")
+game_source = (ROOT / "web_app/app/game.ts").read_text(encoding="utf-8")
+# The runtime is base-path aware for GitHub Pages, so validate the fetch target rather
+# than requiring the obsolete literal fetch("/content/... form.
+check("fetch(" in game_source and "/content/season_01.json" in game_source, "web runtime loads season_01.json")
 check((ROOT / "web_app/public/content/season_01.json").is_file(), "web content chunk season_01.json")
-check('import campaignJson from "@/content/season_01.json"' not in (ROOT / "web_app/app/game.ts").read_text(encoding="utf-8"), "campaign excluded from initial module graph")
+check('import campaignJson from "@/content/season_01.json"' not in game_source, "campaign excluded from initial module graph")
 check((ROOT / "web_app/public/manifest.webmanifest").is_file(), "PWA manifest")
 check((ROOT / "web_app/public/sw.js").is_file(), "service worker")
-check("migrateSave" in (ROOT / "web_app/app/game.ts").read_text(encoding="utf-8"), "save migration")
+check("migrateSave" in game_source, "save migration")
 check((ROOT / "VERSION").read_text(encoding="utf-8").strip() == "7.0.0", "release version")
 check("SCHEMA_VERSION := 6" in (ROOT / "game/services/SaveService.gd").read_text(encoding="utf-8"), "Godot save schema 6")
-check("schemaVersion: 6" in (ROOT / "web_app/app/game.ts").read_text(encoding="utf-8"), "Web save schema 6")
+check("schemaVersion: 6" in game_source, "Web save schema 6")
 for art_name in ["hero-desktop-v6.avif", "hero-mobile-v6.avif", "cast-v6.avif"]:
     check((ROOT / "web_app/public/art/key" / art_name).is_file(), f"production art {art_name}")
 check(len(list((ROOT / "game/assets/portraits").glob("*.svg"))) >= 84, "portrait assets")

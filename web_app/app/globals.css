@@ -2,3 +2,10 @@
 @import "./design-system/base.css";
 @import "./design-system/legacy.css";
 @import "./design-system/visual-upgrade.css";
+@import "./design-system/command-center.css";
+@import "./design-system/command-launcher.css";
+@import "./design-system/training.css";
+@import "./design-system/rest-timer.css";
+@import "./design-system/recovery.css";
+@import "./design-system/setup.css";
+@import "./design-system/progress.css";

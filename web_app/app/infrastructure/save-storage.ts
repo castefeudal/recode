@@ -1,5 +1,5 @@
 import type { GameState, Lang } from "../game";
-import { migrateSave } from "../game";
+import { loadCampaign, migrateSave } from "../game";
 
 export const SAVE_KEY = "markovmade-recode-v6";
 export const BACKUP_KEY = "markovmade-recode-v6-backup";
@@ -23,6 +23,11 @@ export function loadStoredSave(storage: Storage): LoadResult {
     }
   }
   return { state: null, recovered: false };
+}
+
+export async function loadStoredSaveReady(storage: Storage): Promise<LoadResult> {
+  await loadCampaign();
+  return loadStoredSave(storage);
 }
 
 export function persistStoredSave(storage: Storage, state: GameState, lang: Lang): void {
