@@ -1,17 +1,44 @@
 # Changelog
 
-## Unreleased — premium product rebuild
+## Unreleased — Premium product rebuild — 2026-08-11
 
-- Added a Daily Command Center built around `STATE → PRIORITY → ACTION → WORLD`, with transparent readiness, `WHY THIS`, honest alternatives and a visible world-response loop.
-- Added a rule-based recommendation engine that lowers confidence when history is sparse instead of fabricating personal insight.
-- Added a non-punitive Return Protocol with 3 / 10 / 25 minute return scales, preserved progress and story-readable return flags.
-- Added Weekly Review with wins, friction, returns, sleep trend, next focus and explicit non-causal labeling for observed associations.
-- Added structured Training: workout builder, templates, reordering, sets/reps/rest, session mode, real load/reps/RIR set records, previous performance and local session history.
-- Connected completed structured workouts back to the existing Life RPG state so Today/Weekly Review/story flags can react to real training.
-- Added isolated local training storage with a backup copy instead of destructively changing the existing v6 save schema.
-- Added automated tests for recommendations, no-fake-insight review behavior, Return Protocol and structured training state transitions.
-- Reworked the GitHub Pages workflow to operate from `web_app`, use the required Node 22 runtime and gate deployment on typecheck, lint, tests/build and source validation.
-- Updated the project validator so the campaign-runtime check understands the existing GitHub Pages `BASE_PATH` fetch while still requiring a real runtime fetch of `season_01.json`.
+### Product
+
+- Added Daily Command around `STATE → PRIORITY → ACTION → WORLD` with transparent readiness, `WHY THIS`, one Next Best Action and honest reduce/replace/defer/skip alternatives.
+- Added local personalization for primary goal, realistic available time and enabled modules; strong low-recovery signals remain higher priority than declared intent.
+- Made Return Protocol a dated, idempotent daily event with 3 / 10 / 25 minute scales; weekly returns are separated from lifetime returns and ordinary completions.
+- Added decision-oriented Progress with real elapsed weekly windows, completed/adapted/return/workout/sleep history, confidence boundaries and real world traces.
+- Weekly Review now excludes return events from normal completions, counts only current-week returns and receives the personalized next focus.
+
+### Training
+
+- Converted Training from a catalogue-like surface into an editable workout product with functional Full Body / Upper / Lower / Push / Pull / Legs / Mobility / Recovery / Custom starting structures.
+- Added sets/reps/rest/notes, reordering, one-handed session mode, load/reps/RIR logging, previous performance, rest timer and session notes.
+- Added favourites and exercise detail surfaces with technique, safety, alternatives and recent performance.
+- Added corruption-safe normalization for the separate local Training store and tests for template/session/storage behaviour.
+- Completed structured workouts bridge back into canonical GameState so progression, Weekly Review and narrative-readable flags react to real training.
+
+### Recovery and personalization
+
+- Replaced cumulative recovery bonuses with idempotent one-record-per-day sleep upserts and direct subjective energy check-ins.
+- Recovery now explains sleep duration/quality, current energy and prior-day workload context without exposing a fabricated validated score.
+- Prevented empty module profiles; corrupted or empty selections normalize back to a safe usable profile.
+- Disabled recommendation modules now fall back only to modules the user actually enabled.
+
+### UX and architecture
+
+- Established four primary destinations: Today, Progress, Training and Recovery; mobile uses a safe-area-aware four-item bottom navigation.
+- Added domain modules for recommendation, profile constraints, recovery, return, weekly review, progress and training rather than placing new business rules in JSX.
+- Preserved canonical GameState schema 6 and existing v3/v4/v5 migrations; personalization and structured Training remain separate local schema-v1 stores in this slice.
+- Added campaign-safe standalone save loading so premium routes do not race season content initialization.
+
+### PWA, build and CI
+
+- Made the Web manifest deployment-neutral with relative `id`, `start_url`, `scope` and asset URLs rather than hardcoding `/recode/`.
+- Corrected GitHub Pages build working directory/Node version and made source validation aware of base-path runtime content loading.
+- Made Sites build and artifact validation wrappers independent of executable file-mode preservation by invoking nested shell scripts through `bash`.
+- Added/expanded domain tests for recommendations, profile fallback, Return, Weekly Review, Recovery, Training and Progress.
+- Production rendered-HTML smoke now tests the configured GitHub Pages base path instead of assuming root hosting.
 
 ## 7.0.0 visual system upgrade — 2026-08-03
 
@@ -77,7 +104,7 @@
 ### Save/PWA
 
 - Introduced save schema v5 and v3/v4→v5 migration.
-- Increased soak to 500 cycles and added 500 malformed/future/Unicode fuzz cases.
+- Increased save soak to 500 cycles and added 500 malformed/future/Unicode fuzz cases.
 - Moved service-worker activation to an explicit message instead of automatic
   `skipWaiting` during install.
 - Godot source now writes pending→flush→backup→rename and falls back from
