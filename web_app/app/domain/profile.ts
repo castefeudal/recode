@@ -34,21 +34,13 @@ const goalAction: Record<GoalKey, { actionId: string; ru: string; en: string; mi
   discipline: { actionId: "plan", ru: "Уменьшить, не отменяя", en: "Reduce, do not cancel", minutes: 6 },
 };
 
-export function normalizeProfile(value: unknown): UserProfile {
-  if (!value || typeof value !== "object") return { ...DEFAULT_PROFILE, enabledModules: [...DEFAULT_PROFILE.enabledModules] };
-  const input = value as Partial<UserProfile>;
-  const goals = Object.keys(goalMeta) as GoalKey[];
-  const allowedMinutes = [5, 10, 20, 30, 45, 60] as const;
-  const allowedModules: ModuleKey[] = ["training", "recovery", "nutrition", "mind", "focus"];
-  return {
-    schemaVersion: 1,
-    primaryGoal: goals.includes(input.primaryGoal as GoalKey) ? input.primaryGoal as GoalKey : DEFAULT_PROFILE.primaryGoal,
-    availableMinutes: allowedMinutes.includes(input.availableMinutes as typeof allowedMinutes[number]) ? input.availableMinutes as UserProfile["availableMinutes"] : DEFAULT_PROFILE.availableMinutes,
-    enabledModules: Array.isArray(input.enabledModules)
-      ? input.enabledModules.filter((module): module is ModuleKey => allowedModules.includes(module as ModuleKey))
-      : [...DEFAULT_PROFILE.enabledModules],
-  };
-}
+const moduleAction: Record<ModuleKey, { priority: Priority; actionId: string; ru: string; en: string; minutes: number }> = {
+  training: { priority: "body", actionId: "move", ru: "Короткое движение", en: "Short movement", minutes: 6 },
+  recovery: { priority: "recovery", actionId: "sleep", ru: "Снизить нагрузку", en: "Reduce the load", minutes: 4 },
+  nutrition: { priority: "balance", actionId: "meal", ru: "Собрать простой приём пищи", en: "Build a simple meal", minutes: 6 },
+  mind: { priority: "mind", actionId: "truth", ru: "Назвать препятствие", en: "Name the obstacle", minutes: 3 },
+  focus: { priority: "focus", actionId: "plan", ru: "Уменьшить, не отменяя", en: "Reduce, do not cancel", minutes: 6 },
+};
 
 const priorityModule: Partial<Record<Priority, ModuleKey>> = {
   recovery: "recovery",
@@ -58,17 +50,43 @@ const priorityModule: Partial<Record<Priority, ModuleKey>> = {
   focus: "focus",
 };
 
+function preferredFallback(enabledModules: ModuleKey[], lowReadiness: boolean): ModuleKey {
+  const preference: ModuleKey[] = lowReadiness
+    ? ["recovery", "focus", "mind", "nutrition", "training"]
+    : ["focus", "recovery", "mind", "training", "nutrition"];
+  return preference.find((module) => enabledModules.includes(module)) ?? enabledModules[0] ?? "focus";
+}
+
+export function normalizeProfile(value: unknown): UserProfile {
+  if (!value || typeof value !== "object") return { ...DEFAULT_PROFILE, enabledModules: [...DEFAULT_PROFILE.enabledModules] };
+  const input = value as Partial<UserProfile>;
+  const goals = Object.keys(goalMeta) as GoalKey[];
+  const allowedMinutes = [5, 10, 20, 30, 45, 60] as const;
+  const allowedModules: ModuleKey[] = ["training", "recovery", "nutrition", "mind", "focus"];
+  const filteredModules = Array.isArray(input.enabledModules)
+    ? [...new Set(input.enabledModules.filter((module): module is ModuleKey => allowedModules.includes(module as ModuleKey)))]
+    : [...DEFAULT_PROFILE.enabledModules];
+
+  return {
+    schemaVersion: 1,
+    primaryGoal: goals.includes(input.primaryGoal as GoalKey) ? input.primaryGoal as GoalKey : DEFAULT_PROFILE.primaryGoal,
+    availableMinutes: allowedMinutes.includes(input.availableMinutes as typeof allowedMinutes[number]) ? input.availableMinutes as UserProfile["availableMinutes"] : DEFAULT_PROFILE.availableMinutes,
+    enabledModules: filteredModules.length ? filteredModules : [...DEFAULT_PROFILE.enabledModules],
+  };
+}
+
 export function applyProfileToRecommendation(recommendation: DailyRecommendation, profile: UserProfile, lang: Lang): DailyRecommendation {
+  const safeProfile = normalizeProfile(profile);
   const ru = lang === "ru";
   let adjusted = recommendation;
 
-  // Goal is a tie-breaker only when history is sparse and there is no low-readiness
-  // recovery override. Strong current-state signals remain more important than intent.
+  // Goal is a tie-breaker only while history is sparse. Strong current-state
+  // recovery signals remain more important than declared intent.
   if (recommendation.confidence === "baseline" && recommendation.readinessState !== "low" && recommendation.priority !== "recovery") {
-    const goal = goalMeta[profile.primaryGoal];
+    const goal = goalMeta[safeProfile.primaryGoal];
     const goalModule = priorityModule[goal.priority];
-    if (!goalModule || profile.enabledModules.includes(goalModule)) {
-      const action = goalAction[profile.primaryGoal];
+    if (!goalModule || safeProfile.enabledModules.includes(goalModule)) {
+      const action = goalAction[safeProfile.primaryGoal];
       adjusted = {
         ...recommendation,
         priority: goal.priority,
@@ -78,32 +96,33 @@ export function applyProfileToRecommendation(recommendation: DailyRecommendation
         reason: ru
           ? `Истории пока мало, поэтому выбранная цель «${goal.ru}» используется как прозрачный приоритет по умолчанию.`
           : `History is still limited, so your selected goal “${goal.en}” is used as a transparent default priority.`,
-        signals: [...recommendation.signals, `goal:${profile.primaryGoal}`],
+        signals: [...recommendation.signals, `goal:${safeProfile.primaryGoal}`],
       };
     }
   }
 
-  const module = priorityModule[adjusted.priority];
-  const moduleDisabled = module ? !profile.enabledModules.includes(module) : false;
-  if (moduleDisabled) {
+  const requestedModule = priorityModule[adjusted.priority];
+  if (requestedModule && !safeProfile.enabledModules.includes(requestedModule)) {
+    const fallbackModule = preferredFallback(safeProfile.enabledModules, adjusted.readinessState === "low");
+    const fallback = moduleAction[fallbackModule];
     adjusted = {
       ...adjusted,
-      priority: "focus",
-      actionId: "plan",
-      title: ru ? "Уменьшить, не отменяя" : "Reduce, do not cancel",
-      minutes: Math.min(6, profile.availableMinutes),
+      priority: fallback.priority,
+      actionId: fallback.actionId,
+      title: fallback[lang],
+      minutes: Math.min(fallback.minutes, safeProfile.availableMinutes),
       reason: ru
-        ? `Модуль ${module} отключён в твоём профиле. RECODE не будет навязывать его и предлагает нейтральное действие по системе.`
-        : `The ${module} module is disabled in your profile. RECODE will not keep pushing it and uses a neutral system action instead.`,
-      signals: [...adjusted.signals, `module_disabled:${module}`],
+        ? `Модуль ${requestedModule} отключён. Вместо него используется включённый модуль ${fallbackModule}; масштаб остаётся консервативным.`
+        : `The ${requestedModule} module is disabled. RECODE uses the enabled ${fallbackModule} module instead and keeps the scale conservative.`,
+      signals: [...adjusted.signals, `module_disabled:${requestedModule}`, `fallback_module:${fallbackModule}`],
     };
   }
 
-  const minutes = Math.max(3, Math.min(adjusted.minutes, profile.availableMinutes));
+  const minutes = Math.max(3, Math.min(adjusted.minutes, safeProfile.availableMinutes));
   const timeAdjusted = minutes < adjusted.minutes;
   const alternatives = adjusted.alternatives.map((alternative) => ({
     ...alternative,
-    minutes: alternative.minutes > 0 ? Math.min(alternative.minutes, profile.availableMinutes) : 0,
+    minutes: alternative.minutes > 0 ? Math.min(alternative.minutes, safeProfile.availableMinutes) : 0,
   }));
 
   if (!timeAdjusted) return { ...adjusted, alternatives };
@@ -111,7 +130,7 @@ export function applyProfileToRecommendation(recommendation: DailyRecommendation
     ...adjusted,
     minutes,
     alternatives,
-    reason: `${adjusted.reason} ${ru ? `Сегодня доступно около ${profile.availableMinutes} минут, поэтому масштаб уменьшен.` : `You have about ${profile.availableMinutes} minutes available today, so the action was resized.`}`,
-    signals: [...adjusted.signals, `available_minutes:${profile.availableMinutes}`],
+    reason: `${adjusted.reason} ${ru ? `Сегодня доступно около ${safeProfile.availableMinutes} минут, поэтому масштаб уменьшен.` : `You have about ${safeProfile.availableMinutes} minutes available today, so the action was resized.`}`,
+    signals: [...adjusted.signals, `available_minutes:${safeProfile.availableMinutes}`],
   };
 }
