@@ -1,4 +1,5 @@
 import { dailyActions, type ActionStatus, type GameState, type Lang, type StatKey } from "../game";
+import { assessRecovery } from "./recovery";
 
 export type Priority = "recovery" | "body" | "focus" | "balance" | "mind" | "connections";
 export type ReadinessState = "low" | "moderate" | "ready";
@@ -19,7 +20,7 @@ export type DailyRecommendation = {
 const localized = {
   ru: {
     baseline: "Пока данных мало: используется базовая рекомендация на основе текущего состояния.",
-    lowSleep: "Последняя запись сна указывает на слабое восстановление.",
+    lowSleep: "Восстановление сейчас ограничивает допустимый масштаб нагрузки.",
     lowEnergy: "Энергия сейчас является одним из самых слабых ограничений.",
     lowBalance: "Баланс нагрузки и восстановления сейчас просел сильнее других направлений.",
     lowBody: "Физическая активность сейчас является наиболее слабым направлением.",
@@ -33,7 +34,7 @@ const localized = {
   },
   en: {
     baseline: "There is not enough history yet, so this is a baseline recommendation based on your current state.",
-    lowSleep: "Your latest sleep entry points to weaker recovery.",
+    lowSleep: "Recovery is currently limiting the reasonable scale of today's load.",
     lowEnergy: "Energy is currently one of your strongest constraints.",
     lowBalance: "Load and recovery balance is currently lagging behind your other domains.",
     lowBody: "Physical activity is currently your weakest domain.",
@@ -52,12 +53,6 @@ function weakestStat(state: GameState): StatKey {
   return keys.reduce((weakest, key) => state.stats[key] < state.stats[weakest] ? key : weakest);
 }
 
-function latestSleepSignal(state: GameState): { low: boolean; reason?: string } {
-  const latest = state.sleepEntries[0];
-  if (!latest) return { low: false };
-  return { low: latest.quality <= 5, reason: latest.quality <= 5 ? `sleep:${latest.quality}/10` : undefined };
-}
-
 function actionFor(priority: Priority) {
   const id = priority === "recovery" ? "sleep"
     : priority === "body" ? "move"
@@ -71,17 +66,18 @@ function actionFor(priority: Priority) {
 export function getDailyRecommendation(state: GameState, lang: Lang): DailyRecommendation {
   const copy = localized[lang];
   const weak = weakestStat(state);
-  const sleep = latestSleepSignal(state);
+  const recovery = assessRecovery(state, lang);
   const historyCount = state.dailyRecords.length + state.sleepEntries.length + state.workoutHistory.length;
   const signals: string[] = [];
 
   let priority: Priority;
   let reason: string;
 
-  if (sleep.low || state.stats.energy < 32) {
+  if (recovery.band === "below" || state.stats.energy < 32) {
     priority = "recovery";
-    reason = sleep.low ? copy.lowSleep : copy.lowEnergy;
-    if (sleep.reason) signals.push(sleep.reason);
+    reason = recovery.band === "below" ? `${copy.lowSleep} ${recovery.factors[0] ?? ""}`.trim() : copy.lowEnergy;
+    if (recovery.sleepMinutes !== null) signals.push(`sleep_minutes:${recovery.sleepMinutes}`);
+    if (recovery.quality !== null) signals.push(`sleep_quality:${recovery.quality}/10`);
     signals.push(`energy:${state.stats.energy}`);
   } else if (weak === "body") {
     priority = "body";
@@ -105,9 +101,9 @@ export function getDailyRecommendation(state: GameState, lang: Lang): DailyRecom
     signals.push(`discipline:${state.stats.discipline}`);
   }
 
-  const readinessState: ReadinessState = sleep.low || state.stats.energy < 30
+  const readinessState: ReadinessState = recovery.band === "below" || state.stats.energy < 30
     ? "low"
-    : state.stats.energy < 50 || state.stats.balance < 40
+    : recovery.band === "normal" || state.stats.energy < 50 || state.stats.balance < 40
       ? "moderate"
       : "ready";
 
