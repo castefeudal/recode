@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const sw = readFileSync(new URL("../public/sw.js", import.meta.url), "utf8");
-const manifest = JSON.parse(readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"));
+const manifestText = readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8");
+const manifest = JSON.parse(manifestText);
 
 test("service worker has explicit install, update and offline navigation contracts", () => {
   assert.match(sw, /RECODE_ACTIVATE_UPDATE/);
@@ -12,10 +13,13 @@ test("service worker has explicit install, update and offline navigation contrac
   assert.match(sw, /Offline shell unavailable/);
 });
 
-test("manifest remains installable and scoped", () => {
+test("manifest remains installable and portable across base paths", () => {
   assert.equal(manifest.display, "standalone");
-  assert.equal(manifest.start_url, "/");
-  assert.equal(manifest.scope, "/");
+  assert.equal(manifest.id, "./");
+  assert.equal(manifest.start_url, "./");
+  assert.equal(manifest.scope, "./");
   assert.ok(manifest.icons.some((icon) => icon.sizes === "192x192"));
   assert.ok(manifest.icons.some((icon) => icon.sizes === "512x512"));
+  assert.ok(manifest.icons.every((icon) => icon.src.startsWith("./")));
+  assert.doesNotMatch(manifestText, /\/recode\//);
 });
