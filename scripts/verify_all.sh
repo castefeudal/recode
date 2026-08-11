@@ -23,7 +23,7 @@ fi
   npm run lint
   npm test
   npm run validate:artifact
-) |& tee ../evidence/final/web.txt
+) |& tee evidence/final/web.txt
 if command -v godot >/dev/null 2>&1; then
   godot --headless --path game --quit |& tee evidence/final/godot-smoke.txt
 else
