@@ -1,5 +1,5 @@
-import type { Lang } from "../game";
-import type { DailyRecommendation, Priority } from "./recommendation";
+import type { Lang } from "../game.ts";
+import type { DailyRecommendation, Priority } from "./recommendation.ts";
 
 export type GoalKey = "fitness" | "energy" | "system" | "stress" | "discipline";
 export type ModuleKey = "training" | "recovery" | "nutrition" | "mind" | "focus";
