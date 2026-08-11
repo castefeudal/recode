@@ -43,9 +43,14 @@ export default function TrainingPage() {
   }, []);
 
   useEffect(() => {
-    const loaded = loadTrainingState(localStorage);
-    setState(loaded);
-    if (!loaded.activeSession) requestLibrary();
+    let active = true;
+    Promise.resolve().then(() => {
+      if (!active) return;
+      const loaded = loadTrainingState(localStorage);
+      setState(loaded);
+      if (!loaded.activeSession) requestLibrary();
+    });
+    return () => { active = false; };
   }, [requestLibrary]);
 
   useEffect(() => {
