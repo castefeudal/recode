@@ -80,6 +80,16 @@ test("theme and icon controls are integrated into all principal shells", () => {
   assert.match(page, /activeScreenLabel/);
 });
 
+test("art references remain portable when the app is served below a base path", () => {
+  assert.match(page, /srcSet=\{publicUrl\("\/art\/key\/hero-mobile-v6\.avif"\)\}/);
+  assert.match(page, /srcSet=\{publicUrl\("\/art\/key\/hero-desktop-v6\.webp"\)\}/);
+  assert.match(page, /src=\{publicUrl\(`\/art\/characters\/\$\{character\.id\}/);
+  assert.match(page, /--today-art/);
+  assert.match(page, /--city-art/);
+  assert.doesNotMatch(read("app/design-system/legacy.css"), /url\("\/art\//);
+  assert.match(page, /confirmingReset/);
+});
+
 test("visual evidence covers desktop and mobile critical surfaces", () => {
   const evidenceRoot = resolve(root, "..", "evidence", "visual-upgrade", "screenshots");
   const expected = new Map([

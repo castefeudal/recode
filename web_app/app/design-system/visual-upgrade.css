@@ -407,7 +407,7 @@
   .landingNav { height: 4.25rem; padding: 0 var(--gutter); }
   .landingNav .solidButton { padding-inline: .85rem; }
   .landingTools { gap: .25rem; }
-  .landingTools .textButton { display: none; }
+  .landingTools .textButton { display: inline-flex; min-width: 2.5rem; padding-inline: .25rem; justify-content: center; }
   .hero { min-height: 60rem; padding: 6.4rem var(--gutter) 8.5rem; align-items: flex-end; }
   .hero::after { display: none; }
   .heroMedia .heroImage { object-position: 57% top; }
@@ -518,6 +518,11 @@
 .onboardTools .themeButton { color: var(--color-text-secondary); border-color: var(--color-border-subtle); background: var(--color-surface-1); }
 
 /* System accessibility preferences */
+.dangerDialog { padding: 1.25rem; }
+.dangerDialog p { margin: 0; color: var(--color-text-secondary); line-height: 1.6; }
+.dangerDialog > div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .6rem; margin-top: 1.25rem; }
+.dangerButton { min-height: 44px; padding: 0 1rem; border: 1px solid color-mix(in srgb, var(--color-danger) 65%, transparent); border-radius: var(--radius-1); background: color-mix(in srgb, var(--color-danger) 16%, var(--color-surface-2)); color: var(--color-danger); font: 750 .65rem/1 var(--font-mono); letter-spacing: .06em; }
+
 @media (prefers-contrast: more) {
   :root {
     --color-border-subtle: var(--color-border-default);

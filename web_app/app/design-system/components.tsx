@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- static local assets keep the component portable across exported deployments. */
 
 import { useEffect, useRef, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type DetailsHTMLAttributes, type HTMLAttributes, type ImgHTMLAttributes, type InputHTMLAttributes, type KeyboardEvent, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
 import { Icon, type IconName } from "./Icon";
