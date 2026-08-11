@@ -51,7 +51,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        {children}
+        <a className="commandLauncher" href={`${BASE_PATH}/command/`} aria-label="Open RECODE Daily Command Center">
+          <span>DAILY</span><b>COMMAND</b>
+        </a>
+      </body>
     </html>
   );
 }
