@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { getDailyRecommendation } from "../app/domain/recommendation.ts";
 import { buildWeeklyReview } from "../app/domain/weekly-review.ts";
+import { applyReturn, getReturnProtocol } from "../app/domain/return-protocol.ts";
 
 function state(overrides = {}) {
   return {
@@ -68,4 +69,17 @@ test("weekly review labels low-sleep association as observation, not causation",
   }), "en");
   assert.ok(review.observation);
   assert.match(review.disclaimer, /not evidence of causation/i);
+});
+
+test("return protocol activates after two days away without deleting progress", () => {
+  const base = state({ returns: 2, xp: 100, stability: 45, focus: 2 });
+  const protocol = getReturnProtocol(base, "en", 4);
+  assert.equal(protocol.active, true);
+  assert.deepEqual(protocol.options.map((option) => option.minutes), [3, 10, 25]);
+  const returned = applyReturn(base, "minimum");
+  assert.equal(returned.returns, 3);
+  assert.ok(returned.xp > base.xp);
+  assert.ok(returned.stability >= base.stability);
+  assert.equal(returned.flags["return.completed"], true);
+  assert.equal(returned.day, base.day);
 });
