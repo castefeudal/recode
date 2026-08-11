@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — premium product rebuild
+
+- Added a Daily Command Center built around `STATE → PRIORITY → ACTION → WORLD`, with transparent readiness, `WHY THIS`, honest alternatives and a visible world-response loop.
+- Added a rule-based recommendation engine that lowers confidence when history is sparse instead of fabricating personal insight.
+- Added a non-punitive Return Protocol with 3 / 10 / 25 minute return scales, preserved progress and story-readable return flags.
+- Added Weekly Review with wins, friction, returns, sleep trend, next focus and explicit non-causal labeling for observed associations.
+- Added structured Training: workout builder, templates, reordering, sets/reps/rest, session mode, real load/reps/RIR set records, previous performance and local session history.
+- Connected completed structured workouts back to the existing Life RPG state so Today/Weekly Review/story flags can react to real training.
+- Added isolated local training storage with a backup copy instead of destructively changing the existing v6 save schema.
+- Added automated tests for recommendations, no-fake-insight review behavior, Return Protocol and structured training state transitions.
+- Reworked the GitHub Pages workflow to operate from `web_app`, use the required Node 22 runtime and gate deployment on typecheck, lint, tests/build and source validation.
+- Updated the project validator so the campaign-runtime check understands the existing GitHub Pages `BASE_PATH` fetch while still requiring a real runtime fetch of `season_01.json`.
+
 ## 7.0.0 visual system upgrade — 2026-08-03
 
 - Introduced a cinematic industrial editorial design system with semantic dark, light and high-contrast themes.
