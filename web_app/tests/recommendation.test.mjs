@@ -71,15 +71,36 @@ test("weekly review labels low-sleep association as observation, not causation",
   assert.match(review.disclaimer, /not evidence of causation/i);
 });
 
-test("return protocol activates after two days away without deleting progress", () => {
+test("return protocol activates after two days away without deleting progress and is idempotent for the day", () => {
   const base = state({ returns: 2, xp: 100, stability: 45, focus: 2 });
   const protocol = getReturnProtocol(base, "en", 4);
   assert.equal(protocol.active, true);
   assert.deepEqual(protocol.options.map((option) => option.minutes), [3, 10, 25]);
-  const returned = applyReturn(base, "minimum");
+  const returned = applyReturn(base, "minimum", new Date("2026-08-11T10:00:00Z"));
   assert.equal(returned.returns, 3);
   assert.ok(returned.xp > base.xp);
   assert.ok(returned.stability >= base.stability);
   assert.equal(returned.flags["return.completed"], true);
+  assert.equal(returned.flags["return.day.7"], true);
+  assert.equal(returned.dailyRecords.filter((record) => record.actionId === "return" && record.day === 7).length, 1);
   assert.equal(returned.day, base.day);
+  assert.equal(getReturnProtocol(returned, "en", 4).active, false);
+  const duplicate = applyReturn(returned, "full", new Date("2026-08-11T11:00:00Z"));
+  assert.equal(duplicate.returns, returned.returns);
+  assert.equal(duplicate.xp, returned.xp);
+  assert.equal(duplicate.dailyRecords.length, returned.dailyRecords.length);
+});
+
+test("weekly review counts returns only inside the current week and excludes them from normal completions", () => {
+  const review = buildWeeklyReview(state({
+    returns: 12,
+    dailyRecords: [
+      { actionId: "return", status: "completed", day: 2 },
+      { actionId: "return", status: "completed", day: 7 },
+      { actionId: "move", status: "completed", day: 7 },
+    ],
+  }), "en", "Personalized focus");
+  assert.equal(review.returns, 1);
+  assert.equal(review.completedActions, 1);
+  assert.equal(review.nextFocus, "Personalized focus");
 });
