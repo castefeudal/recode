@@ -1,9 +1,9 @@
 import { clamp, type GameState } from "../game";
 import type { WorkoutSession } from "../domain/training";
-import { loadStoredSave, persistStoredSave } from "./save-storage";
+import { loadStoredSaveReady, persistStoredSave } from "./save-storage";
 
-export function recordCompletedWorkoutInGame(storage: Storage, session: WorkoutSession): GameState | null {
-  const loaded = loadStoredSave(storage);
+export async function recordCompletedWorkoutInGame(storage: Storage, session: WorkoutSession): Promise<GameState | null> {
+  const loaded = await loadStoredSaveReady(storage);
   const state = loaded.state;
   if (!state || !session.completedAt) return state;
   const marker = `structured:${session.id}`;
