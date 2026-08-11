@@ -17,9 +17,13 @@ export function sleepDurationMinutes(bedtime: string, wake: string): number | nu
   const bed = pattern.exec(bedtime);
   const waking = pattern.exec(wake);
   if (!bed || !waking) return null;
-  const bedMinutes = Number(bed[1]) * 60 + Number(bed[2]);
-  const wakeMinutes = Number(waking[1]) * 60 + Number(waking[2]);
-  if (bedMinutes < 0 || bedMinutes >= 1440 || wakeMinutes < 0 || wakeMinutes >= 1440) return null;
+  const bedHour = Number(bed[1]);
+  const bedMinute = Number(bed[2]);
+  const wakeHour = Number(waking[1]);
+  const wakeMinute = Number(waking[2]);
+  if (bedHour > 23 || wakeHour > 23 || bedMinute > 59 || wakeMinute > 59) return null;
+  const bedMinutes = bedHour * 60 + bedMinute;
+  const wakeMinutes = wakeHour * 60 + wakeMinute;
   const duration = wakeMinutes >= bedMinutes ? wakeMinutes - bedMinutes : 1440 - bedMinutes + wakeMinutes;
   return duration > 0 && duration <= 16 * 60 ? duration : null;
 }
