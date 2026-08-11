@@ -1,5 +1,5 @@
-import { dailyActions, type ActionStatus, type GameState, type Lang, type StatKey } from "../game";
-import { assessRecovery } from "./recovery";
+import { dailyActions, type ActionStatus, type GameState, type Lang, type StatKey } from "../game.ts";
+import { assessRecovery } from "./recovery.ts";
 
 export type Priority = "recovery" | "body" | "focus" | "balance" | "mind" | "connections";
 export type ReadinessState = "low" | "moderate" | "ready";
