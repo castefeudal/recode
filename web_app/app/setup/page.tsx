@@ -19,7 +19,14 @@ export default function SetupPage() {
   const [saved, setSaved] = useState(false);
   const [notice, setNotice] = useState("");
 
-  useEffect(() => setProfile(loadUserProfile(localStorage)), []);
+  useEffect(() => {
+    let active = true;
+    Promise.resolve().then(() => {
+      if (active) setProfile(loadUserProfile(localStorage));
+    });
+    return () => { active = false; };
+  }, []);
+
   if (!profile) return <main className="setupApp"><p>SETUP / LOADING</p></main>;
 
   function toggleModule(module: ModuleKey) {
