@@ -44,18 +44,15 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body>
         {children}
-        <a className="commandLauncher" href={`${BASE_PATH}/command/`} aria-label="Open RECODE Daily Command Center">
-          <span>DAILY</span><b>COMMAND</b>
-        </a>
+        <nav className="premiumLaunchers" aria-label="RECODE premium workspaces">
+          <a className="premiumLauncher" href={`${BASE_PATH}/command/`} aria-label="Open RECODE Daily Command Center"><span>DAILY</span><b>COMMAND</b></a>
+          <a className="premiumLauncher" href={`${BASE_PATH}/training/`} aria-label="Open RECODE Training"><span>BODY</span><b>TRAINING</b></a>
+        </nav>
       </body>
     </html>
   );
