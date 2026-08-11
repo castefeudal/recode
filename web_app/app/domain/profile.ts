@@ -15,7 +15,7 @@ export const DEFAULT_PROFILE: UserProfile = {
   schemaVersion: 1,
   primaryGoal: "system",
   availableMinutes: 10,
-  enabledModules: ["training", "recovery", "mind", "focus"],
+  enabledModules: ["training", "recovery", "nutrition", "mind", "focus"],
 };
 
 export const goalMeta: Record<GoalKey, { ru: string; en: string; priority: Priority }> = {
