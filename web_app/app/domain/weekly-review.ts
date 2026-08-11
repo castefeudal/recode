@@ -1,5 +1,5 @@
-import type { GameState, Lang } from "../game";
-import { getDailyRecommendation } from "./recommendation";
+import type { GameState, Lang } from "../game.ts";
+import { getDailyRecommendation } from "./recommendation.ts";
 
 export type TrendDirection = "up" | "down" | "flat" | "insufficient";
 
