@@ -1,4 +1,4 @@
-import type { GameState, Lang } from "../game";
+import type { GameState, Lang } from "../game.ts";
 
 export type ReturnScale = "minimum" | "standard" | "full";
 
