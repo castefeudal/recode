@@ -1,4 +1,4 @@
-import type { GameState, Lang, SleepEntry } from "../game";
+import type { GameState, Lang, SleepEntry } from "../game.ts";
 
 export type RecoveryBand = "below" | "normal" | "strong" | "insufficient";
 
