@@ -186,7 +186,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes toastIn { from { opacity: 0; transform: translateY(8px); } }
 
 /* Today */
-.todayHero { position: relative; isolation: isolate; overflow: hidden; min-height: 430px; display: grid; grid-template-columns: 1fr 260px; align-items: center; padding: 50px 54px; background: url("/art/key/today-before-dawn-v7.webp") 58% center/cover no-repeat, #0d1115; border: 1px solid rgba(255,255,255,.16); box-shadow: var(--shadow-deep); }
+.todayHero { position: relative; isolation: isolate; overflow: hidden; min-height: 430px; display: grid; grid-template-columns: 1fr 260px; align-items: center; padding: 50px 54px; background: var(--today-art) 58% center/cover no-repeat, #0d1115; border: 1px solid rgba(255,255,255,.16); box-shadow: var(--shadow-deep); }
 .todayHero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(5,8,10,.94) 0%, rgba(5,8,10,.83) 40%, rgba(5,8,10,.2) 72%, rgba(5,8,10,.3) 100%), linear-gradient(0deg, rgba(5,8,10,.82), transparent 48%); }
 .todayHero::after { content: "MERIDIAN / 05:42"; position: absolute; right: 20px; top: 18px; color: rgba(234,236,233,.44); font: 8px "DM Mono", monospace; letter-spacing: .16em; }
 .todayHeroCopy { position: relative; z-index: 2; max-width: 620px; }
@@ -417,7 +417,7 @@ a { color: inherit; text-decoration: none; }
 .financeCard > small, .financeCard > strong { grid-column: 1/-1; }
 .financeCard strong { padding-top: 18px; border-top: 1px solid var(--line); }
 .signal { color: var(--red); }
-.cityMap { position: relative; isolation: isolate; overflow: hidden; min-height: 620px; display: grid; grid-template-columns: 1fr 380px; border: 1px solid rgba(255,255,255,.16); background: url("/art/locations/meridian-world-state-v7.webp") center/cover no-repeat, #0c1013; box-shadow: var(--shadow-deep); }
+.cityMap { position: relative; isolation: isolate; overflow: hidden; min-height: 620px; display: grid; grid-template-columns: 1fr 380px; border: 1px solid rgba(255,255,255,.16); background: var(--city-art) center/cover no-repeat, #0c1013; box-shadow: var(--shadow-deep); }
 .cityMap::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(5,8,10,.14), rgba(5,8,10,.45) 58%, rgba(5,8,10,.88)); }
 .mapCore { position: relative; width: 310px; height: 310px; place-self: center; display: grid; place-content: center; text-align: center; border: 1px solid rgba(216,182,90,.5); border-radius: 50%; background: rgba(5,8,10,.25); box-shadow: 0 0 0 52px rgba(216,182,90,.035), 0 0 0 104px rgba(115,183,173,.025); backdrop-filter: blur(5px); }
 .mapCore > b { font-size: 24px; letter-spacing: .12em; }
