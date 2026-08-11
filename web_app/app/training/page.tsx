@@ -71,7 +71,7 @@ export default function TrainingPage() {
         <div className="previousResult"><small>LAST TIME</small><b>{formatPreviousResult(previous)}</b></div>
         <div className="setInputs"><label>LOAD<input inputMode="decimal" type="number" min="0" value={load} onChange={(e) => setLoad(Number(e.target.value))} /></label><label>REPS<input inputMode="numeric" type="number" min="1" value={reps} onChange={(e) => setReps(Number(e.target.value))} /></label><label>RIR<input inputMode="numeric" type="number" min="0" max="10" value={rir} onChange={(e) => setRir(Number(e.target.value))} /></label></div>
         <button className="trainingPrimary" onClick={saveSet}>＋ {lang === "ru" ? "Записать подход" : "Record set"}</button>
-        <RestTimer seconds={activeExercise.restSeconds} lang={lang} />
+        <RestTimer key={activeExercise.exerciseId} seconds={activeExercise.restSeconds} lang={lang} />
         <div className="setHistory">{activeExercise.setsDone.map((set, index) => <span key={set.completedAt}><small>SET {index + 1}</small><b>{set.load ?? "BW"} × {set.reps}</b><em>RIR {set.rir ?? "—"}</em></span>)}</div>
         <footer className="sessionNav"><button disabled={activeIndex === 0} onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}>← {lang === "ru" ? "Назад" : "Previous"}</button>{activeIndex < active.exercises.length - 1 ? <button onClick={() => setActiveIndex(activeIndex + 1)}>{lang === "ru" ? "Следующее" : "Next"} →</button> : <button className="trainingPrimary" onClick={finish}>{lang === "ru" ? "Завершить тренировку" : "Finish workout"}</button>}</footer>
       </section>
