@@ -134,3 +134,10 @@
 
 Runtime content split, deterministic graph/balance/editorial validators,
 50-cycle save test, real backend lifecycle test and six verified archives.
+# 2026-08-12 — Canonical premium rebuild
+
+- Merged the current full-product source with Source A/B audit and provenance records.
+- Added Source B Meridian Noir 2.0 V10 hero, origin and city visuals without removing V6/V7 responsive/supporting art.
+- Updated the `/recode` service-worker shell cache for V10 assets and canonical update versioning.
+- Added a five-destination mobile navigation with a More menu instead of an 11-item bottom bar.
+- Added content integrity tests covering the complete narrative, quest, event, exercise and character counts.

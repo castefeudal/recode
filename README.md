@@ -1,5 +1,11 @@
 # MARKOVMADE: RECODE — Personal Progress OS inside a Life RPG
 
+## Canonical premium rebuild
+
+The canonical rebuild preserves the complete 7.0 content foundation and current-main product improvements, then applies the newer Meridian Noir 2.0 web direction from Source B. The web runtime keeps the full narrative/content contract, uses lazy static content for the 1,324-exercise library, ships V10 hero/origin/city art, and remains compatible with GitHub Pages under `/recode/`.
+
+Audit and evidence are maintained in [`docs/rebuild/`](docs/rebuild/), including source inventory, decision matrix, gap analysis, content integrity, UX, visual QA, performance, tests and deployment status.
+
 **Понять состояние → выбрать следующий полезный шаг → сделать его в реальности → увидеть, как мир отвечает.**
 
 Original concept, system and authorship: **Павел Марков / Pavel Markov / MARKOVMADE**.
