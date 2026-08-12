@@ -4,6 +4,7 @@ import "./globals.css";
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://castefeudal.github.io/recode/"),
   title: "MARKOVMADE: RECODE — Life RPG",
   description: "Перепиши тело. Перепиши решения. Перепиши жизнь. Life RPG, где реальные действия меняют героя, отношения, Meridian и финал.",
   applicationName: "MARKOVMADE: RECODE",
