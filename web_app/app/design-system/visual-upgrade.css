@@ -202,6 +202,7 @@
 .originStage { min-height: calc(100svh - 5rem); padding: clamp(3rem,6vw,6rem) var(--gutter) 6rem; }
 .originGrid { gap: .75rem; border: 0; }
 .originGrid button { min-height: 27rem; overflow: hidden; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-2); background: linear-gradient(160deg, color-mix(in srgb, var(--color-surface-2) 82%, transparent), var(--color-surface-1)); box-shadow: var(--shadow-xs); }
+.originGrid button strong { display: block; max-width: 24rem; margin-top: 1rem; color: var(--color-text-primary); font-family: var(--font-editorial); font-size: 1rem; font-weight: 400; line-height: 1.35; }
 .originGrid button::after { content: ""; position: absolute; inset: auto -20% -42% 35%; aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent); border-radius: 50%; transition: transform var(--duration-slow) var(--ease-emphasized), opacity var(--duration-slow); opacity: .5; }
 .originGrid button:hover { border-color: var(--color-border-default); background: var(--color-surface-2); transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .originGrid button:hover::after { transform: scale(1.2); opacity: 1; }
@@ -376,6 +377,9 @@
 .reduceMotion .heroContent, .reduceMotion .onboardStage > div, .reduceMotion .identityStage > div, .reduceMotion .toast { animation: none; }
 .reduceMotion .solidButton::before, .reduceMotion .goldButton::before { display: none; }
 
+/* Mobile navigation intentionally exposes five primary destinations; the rest live in More. */
+.mobilePrimaryNav, .mobileMoreMenu { display: none; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 74rem) {
   :root { --rail-width: 4.75rem; }
@@ -446,6 +450,7 @@
   .game::before { inset: 0 0 4.6rem; }
   .rail { z-index: var(--z-sticky); inset: auto 0 0; width: 100%; height: 4.6rem; border: 0; border-top: 1px solid var(--color-border-default); background: color-mix(in srgb, var(--color-canvas) 92%, transparent); }
   .rail nav { display: flex; gap: .2rem; padding: .35rem .45rem; overflow-x: auto; scroll-snap-type: x proximity; }
+  .rail nav { display: none; }
   .rail nav button { flex: 0 0 4.35rem; height: 3.85rem; display: grid; place-items: center; align-content: center; gap: .22rem; border-radius: var(--radius-1); scroll-snap-align: center; }
   .rail nav button small { display: block; position: static; opacity: 1; visibility: visible; transform: none; padding: 0; border: 0; background: none; box-shadow: none; color: inherit; font-size: .52rem; }
   .rail nav button.active::before { inset: auto 25% 0; width: 50%; height: 2px; }
@@ -456,6 +461,13 @@
   .activeScreenLabel { display: block; font-family: var(--font-display); font-size: 1rem; }
   .topButton { padding-inline: .55rem; }
   .gamePage { min-height: calc(100svh - var(--header-height) - 4.6rem); }
+  .mobilePrimaryNav { position: fixed; z-index: var(--z-sticky); inset: auto 0 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: .15rem; min-height: 4.6rem; padding: .35rem .45rem env(safe-area-inset-bottom, 0px); border-top: 1px solid var(--color-border-default); background: color-mix(in srgb, var(--color-canvas) 94%, transparent); backdrop-filter: blur(18px); }
+  .mobilePrimaryNav button { min-width: 0; min-height: 3.8rem; display: grid; place-items: center; align-content: center; gap: .22rem; border: 0; border-radius: var(--radius-1); background: transparent; color: var(--color-text-tertiary); }
+  .mobilePrimaryNav button.active { color: var(--color-accent-strong); background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+  .mobilePrimaryNav button small { overflow: hidden; max-width: 100%; font-size: .56rem; text-overflow: ellipsis; white-space: nowrap; }
+  .mobileMoreMenu { position: fixed; z-index: calc(var(--z-sticky) - 1); inset: auto .75rem 5.1rem; display: grid; gap: .25rem; padding: .5rem; border: 1px solid var(--color-border-default); border-radius: var(--radius-2); background: var(--color-surface-raised); box-shadow: var(--shadow-lg); }
+  .mobileMoreMenu button { min-height: 3rem; display: grid; grid-template-columns: 1.5rem 1fr auto; align-items: center; gap: .75rem; padding: .65rem .8rem; border: 1px solid transparent; border-radius: var(--radius-1); background: transparent; color: var(--color-text-primary); text-align: left; }
+  .mobileMoreMenu button.active { border-color: color-mix(in srgb, var(--color-accent) 40%, transparent); background: color-mix(in srgb, var(--color-accent) 10%, transparent); color: var(--color-accent-strong); }
   .module { width: calc(100% - 2 * var(--gutter)); padding: 3.4rem 0 5.5rem; }
   .pageTitle { margin-bottom: 2.5rem; padding-left: 1rem; }
   .pageTitle h1 { font-size: clamp(2.65rem,12vw,4.2rem); }
@@ -534,8 +546,15 @@
 @supports (padding: max(0px)) {
   @media (max-width: 47.5rem) {
     .game { padding-bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px)); }
-    .rail { height: calc(4.6rem + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
-  }
+  .rail { height: calc(4.6rem + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+@media (max-width: 22.5rem) {
+  .mobilePrimaryNav { padding-inline: .2rem; }
+  .mobilePrimaryNav button small { font-size: .5rem; }
+  .topButton { padding-inline: .35rem; }
+  .module { width: calc(100% - 1.5rem); }
+}
 }
 
 /* Extended component library */

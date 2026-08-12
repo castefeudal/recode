@@ -1,4 +1,4 @@
-const VERSION = "recode-7.0.0-pages";
+const VERSION = "recode-canonical-10.0.0-pages";
 const BASE_PATH = new URL(self.registration.scope).pathname.replace(/\/$/, "");
 const withBase = (path) => `${BASE_PATH}${path}`;
 const SHELL = `${VERSION}-shell`;
@@ -8,8 +8,9 @@ const CORE = [
   withBase("/art/key/hero-desktop-v6.avif"), withBase("/art/key/hero-desktop-v6.webp"),
   withBase("/art/key/hero-mobile-v6.avif"), withBase("/art/key/hero-mobile-v6.webp"),
   withBase("/art/key/cast-v6.avif"), withBase("/art/key/cast-v6.webp"),
+  withBase("/art/key/recode-hero-v10.webp"), withBase("/art/key/recode-origins-v10.webp"),
   withBase("/art/key/today-before-dawn-v7.webp"), withBase("/art/key/story-meridian-archive-v7.webp"),
-  withBase("/art/locations/meridian-world-state-v7.webp"),
+  withBase("/art/locations/recode-meridian-city-v10.webp"),
 ];
 const CONTENT_PATHS = new Set([
   withBase("/content/quests.json"), withBase("/content/events.json"), withBase("/content/exercises.json"),
