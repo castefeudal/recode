@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "mira",
+    "name": {
+      "ru": "Мира Воронова",
+      "en": "Mira Voronova"
+    },
+    "role": {
+      "ru": "куратор точки А",
+      "en": "Point A curator"
+    },
+    "biography": {
+      "ru": "Мира проектировала кризисные маршруты Meridian, пока однажды не поняла, что умеет возвращать других, но сама живёт в режиме вечного дежурства.",
+      "en": "Mira designed crisis routes across Meridian until she realised she could guide everyone back except herself."
+    },
+    "motivation": {
+      "ru": "передать ночную смену и впервые закончить личный маршрут",
+      "en": "hand over the night shift and finish her own route"
+    },
+    "external_goal": {
+      "ru": "передать ночную смену и впервые закончить личный маршрут",
+      "en": "hand over the night shift and finish her own route"
+    },
+    "fear": {
+      "ru": "что без роли спасателя она станет ненужной",
+      "en": "that without being the rescuer she will become unnecessary"
+    },
+    "contradiction": {
+      "ru": "просит честности, но скрывает собственное истощение",
+      "en": "asks for honesty while hiding her own exhaustion"
+    },
+    "boundaries": {
+      "ru": "не принимает исповедь вместо конкретного следующего действия",
+      "en": "will not accept confession in place of a concrete next action"
+    },
+    "false_belief": {
+      "ru": "контроль чужого кризиса защищает от собственного",
+      "en": "controlling another person's crisis protects her from her own"
+    },
+    "strength": {
+      "ru": "видит момент, когда человек готов исчезнуть",
+      "en": "notices the moment someone is about to disappear"
+    },
+    "weakness": {
+      "ru": "слишком поздно просит помощь",
+      "en": "asks for help too late"
+    },
+    "voice": {
+      "ru": "короткие фразы; пауза важнее утешения; сухой юмор появляется только при доверии",
+      "en": "short phrases; pauses matter more than reassurance; dry humour appears only with trust"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "оставляет игроку ключ от ночной комнаты LAB",
+        "en": "leaves the player a key to the LAB night room"
+      },
+      {
+        "ru": "игрок использует её поддержку как способ не выбирать",
+        "en": "the player uses her support to avoid choosing"
+      },
+      {
+        "ru": "трижды обещать контакт и исчезнуть без сообщения",
+        "en": "promise contact three times and disappear without a message"
+      },
+      {
+        "ru": "учится быть рядом, не управляя",
+        "en": "learns to stay close without managing"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "оставляет игроку ключ от ночной комнаты LAB",
+      "en": "leaves the player a key to the LAB night room"
+    },
+    "central_conflict": {
+      "ru": "игрок использует её поддержку как способ не выбирать",
+      "en": "the player uses her support to avoid choosing"
+    },
+    "rupture_condition": {
+      "ru": "трижды обещать контакт и исчезнуть без сообщения",
+      "en": "promise contact three times and disappear without a message"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "учится быть рядом, не управляя",
+        "en": "learns to stay close without managing"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/mira.webp"
+  },
+  {
+    "id": "pavel",
+    "name": {
+      "ru": "Павел Марков",
+      "en": "Pavel Markov"
+    },
+    "role": {
+      "ru": "архитектор системы",
+      "en": "system architect"
+    },
+    "biography": {
+      "ru": "Павел построил первую версию LAB после собственного цикла рывков и травм. Он хранит все провальные протоколы, потому что считает их ценнее победных презентаций.",
+      "en": "Pavel built the first LAB after his own cycle of sprints and injuries. He keeps every failed protocol because it is more useful than a victory deck."
+    },
+    "motivation": {
+      "ru": "открыть метод без превращения себя в культ",
+      "en": "open the method without turning himself into a cult"
+    },
+    "external_goal": {
+      "ru": "открыть метод без превращения себя в культ",
+      "en": "open the method without turning himself into a cult"
+    },
+    "fear": {
+      "ru": "что система станет ещё одним способом давления",
+      "en": "that the system will become another instrument of pressure"
+    },
+    "contradiction": {
+      "ru": "защищает вариативность, но болезненно реагирует на хаос",
+      "en": "defends flexibility but reacts badly to chaos"
+    },
+    "boundaries": {
+      "ru": "не обещает результат и не принимает фальшивые данные",
+      "en": "promises no outcome and accepts no false data"
+    },
+    "false_belief": {
+      "ru": "если формула достаточно точна, людям не понадобится его участие",
+      "en": "if the formula is precise enough, people will not need him"
+    },
+    "strength": {
+      "ru": "отделяет данные от самооценки",
+      "en": "separates data from self-worth"
+    },
+    "weakness": {
+      "ru": "прячет близость в техническом языке",
+      "en": "hides closeness inside technical language"
+    },
+    "voice": {
+      "ru": "точные средние фразы; инженерные метафоры; давление вопросом, а не громкостью",
+      "en": "precise medium-length lines; engineering metaphors; pressure through questions, not volume"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "показывает игроку собственный незакрытый отчёт",
+        "en": "shows the player his own unfinished report"
+      },
+      {
+        "ru": "игрок требует гарантии, которой система дать не может",
+        "en": "the player demands a guarantee the system cannot give"
+      },
+      {
+        "ru": "подделать результат ради красивого финала",
+        "en": "falsify a result for a cleaner ending"
+      },
+      {
+        "ru": "передаёт архитектуру, сохраняя право остаться человеком",
+        "en": "hands over the architecture while retaining the right to be a person"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "показывает игроку собственный незакрытый отчёт",
+      "en": "shows the player his own unfinished report"
+    },
+    "central_conflict": {
+      "ru": "игрок требует гарантии, которой система дать не может",
+      "en": "the player demands a guarantee the system cannot give"
+    },
+    "rupture_condition": {
+      "ru": "подделать результат ради красивого финала",
+      "en": "falsify a result for a cleaner ending"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "передаёт архитектуру, сохраняя право остаться человеком",
+        "en": "hands over the architecture while retaining the right to be a person"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/pavel.webp"
+  },
+  {
+    "id": "alina",
+    "name": {
+      "ru": "Алина Соколова",
+      "en": "Alina Sokolova"
+    },
+    "role": {
+      "ru": "специалист по питанию",
+      "en": "nutrition specialist"
+    },
+    "biography": {
+      "ru": "Алина пришла из индустрии идеальных планов и ушла после того, как увидела, как безупречные таблицы учат людей бояться обычной еды.",
+      "en": "Alina left the perfect-plan industry after seeing flawless spreadsheets teach people to fear ordinary food."
+    },
+    "motivation": {
+      "ru": "открыть ночную кухню с нейтральным языком и доступными продуктами",
+      "en": "open a night kitchen built on neutral language and accessible food"
+    },
+    "external_goal": {
+      "ru": "открыть ночную кухню с нейтральным языком и доступными продуктами",
+      "en": "open a night kitchen built on neutral language and accessible food"
+    },
+    "fear": {
+      "ru": "снова стать голосом контроля под видом заботы",
+      "en": "becoming the voice of control disguised as care"
+    },
+    "contradiction": {
+      "ru": "защищает гибкость, но дома готовит один и тот же безопасный ужин",
+      "en": "defends flexibility but cooks the same safe dinner at home"
+    },
+    "boundaries": {
+      "ru": "не обсуждает компенсацию, стыд и вес как моральную ценность",
+      "en": "will not frame compensation, shame or weight as moral value"
+    },
+    "false_belief": {
+      "ru": "если она допустит неоднозначность, кто-то обязательно пострадает",
+      "en": "if she allows ambiguity, someone will inevitably be harmed"
+    },
+    "strength": {
+      "ru": "делает сложное выполнимым без снисхождения",
+      "en": "makes complexity practical without condescension"
+    },
+    "weakness": {
+      "ru": "перегружает объяснениями, когда тревожится",
+      "en": "overexplains when anxious"
+    },
+    "voice": {
+      "ru": "длиннее остальных; конкретные бытовые слова; юмор через списки и упаковки",
+      "en": "longer lines; concrete domestic language; humour through lists and packaging"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "делится рецептом, связанным с её семьёй, без расчётов",
+        "en": "shares a family recipe without calculations"
+      },
+      {
+        "ru": "игрок превращает её ориентиры в новую строгую диету",
+        "en": "the player turns her estimates into another rigid diet"
+      },
+      {
+        "ru": "использовать голодание как наказание и требовать одобрения",
+        "en": "use restriction as punishment and demand approval"
+      },
+      {
+        "ru": "открывает кухню, где данные служат выбору, а не стыду",
+        "en": "opens a kitchen where data serves choice rather than shame"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "делится рецептом, связанным с её семьёй, без расчётов",
+      "en": "shares a family recipe without calculations"
+    },
+    "central_conflict": {
+      "ru": "игрок превращает её ориентиры в новую строгую диету",
+      "en": "the player turns her estimates into another rigid diet"
+    },
+    "rupture_condition": {
+      "ru": "использовать голодание как наказание и требовать одобрения",
+      "en": "use restriction as punishment and demand approval"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "открывает кухню, где данные служат выбору, а не стыду",
+        "en": "opens a kitchen where data serves choice rather than shame"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/alina.webp"
+  },
+  {
+    "id": "leon",
+    "name": {
+      "ru": "Леон Громов",
+      "en": "Leon Gromov"
+    },
+    "role": {
+      "ru": "тренер и соперник",
+      "en": "coach and rival"
+    },
+    "biography": {
+      "ru": "Леон вырос на публичных результатах и рано научился превращать страх в скорость. После ухода из спорта он не умеет жить без табло.",
+      "en": "Leon grew up on public results and learned to turn fear into speed. After leaving competition, he does not know how to live without a board."
+    },
+    "motivation": {
+      "ru": "провести команду через испытание, не ломая слабейшего",
+      "en": "take the team through the trial without breaking its weakest member"
+    },
+    "external_goal": {
+      "ru": "провести команду через испытание, не ломая слабейшего",
+      "en": "take the team through the trial without breaking its weakest member"
+    },
+    "fear": {
+      "ru": "оказаться обычным, когда скорость закончится",
+      "en": "becoming ordinary when speed is gone"
+    },
+    "contradiction": {
+      "ru": "уважает силу, но первым замечает перегруз",
+      "en": "respects strength yet notices overload first"
+    },
+    "boundaries": {
+      "ru": "не терпит жалости и публичного унижения",
+      "en": "will not tolerate pity or public humiliation"
+    },
+    "false_belief": {
+      "ru": "ценность видна только в сравнении",
+      "en": "value exists only in comparison"
+    },
+    "strength": {
+      "ru": "действует в плохих условиях",
+      "en": "acts under poor conditions"
+    },
+    "weakness": {
+      "ru": "путает близость с соревнованием",
+      "en": "confuses closeness with competition"
+    },
+    "voice": {
+      "ru": "коротко и быстро; спортивный жаргон; шутка как проверка границы",
+      "en": "quick clipped lines; sports vocabulary; jokes that test boundaries"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "снимает имя игрока с публичного табло по его просьбе",
+        "en": "removes the player's name from the public board when asked"
+      },
+      {
+        "ru": "игрок выбирает безопасность, которую Леон принимает за капитуляцию",
+        "en": "the player chooses safety that Leon mistakes for surrender"
+      },
+      {
+        "ru": "использовать его уязвимость для победы в споре",
+        "en": "use his vulnerability to win an argument"
+      },
+      {
+        "ru": "остаётся сильным, перестав нуждаться в последнем месте для другого",
+        "en": "remains strong without needing someone else to finish last"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "снимает имя игрока с публичного табло по его просьбе",
+      "en": "removes the player's name from the public board when asked"
+    },
+    "central_conflict": {
+      "ru": "игрок выбирает безопасность, которую Леон принимает за капитуляцию",
+      "en": "the player chooses safety that Leon mistakes for surrender"
+    },
+    "rupture_condition": {
+      "ru": "использовать его уязвимость для победы в споре",
+      "en": "use his vulnerability to win an argument"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "остаётся сильным, перестав нуждаться в последнем месте для другого",
+        "en": "remains strong without needing someone else to finish last"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/leon.webp"
+  },
+  {
+    "id": "max",
+    "name": {
+      "ru": "Макс Орлов",
+      "en": "Max Orlov"
+    },
+    "role": {
+      "ru": "предприниматель быстрого результата",
+      "en": "fast-results entrepreneur"
+    },
+    "biography": {
+      "ru": "Макс когда-то тренировался вместе с игроком, а затем построил сеть обещаний «за семь дней». Он искренне верит, что продаёт надежду, и не считает цену частью продукта.",
+      "en": "Max once trained beside the player, then built a network of seven-day promises. He genuinely believes he sells hope and does not count the price as part of the product."
+    },
+    "motivation": {
+      "ru": "вывести свою программу на весь Meridian",
+      "en": "scale his programme across Meridian"
+    },
+    "external_goal": {
+      "ru": "вывести свою программу на весь Meridian",
+      "en": "scale his programme across Meridian"
+    },
+    "fear": {
+      "ru": "признать, что людям нужен не его продукт, а облегчение тревоги",
+      "en": "admitting people need relief from anxiety rather than his product"
+    },
+    "contradiction": {
+      "ru": "обаятелен и щедр лично, безжалостен в метриках",
+      "en": "personally generous and charming, ruthless in metrics"
+    },
+    "boundaries": {
+      "ru": "не терпит публичного разоблачения",
+      "en": "will not tolerate public exposure"
+    },
+    "false_belief": {
+      "ru": "медленный результат — привилегия тех, кто не опоздал",
+      "en": "slow progress is a privilege for people who are not late"
+    },
+    "strength": {
+      "ru": "видит желание раньше, чем человек его назовёт",
+      "en": "sees desire before a person names it"
+    },
+    "weakness": {
+      "ru": "рационализирует вред красивой историей",
+      "en": "rationalises harm through a compelling story"
+    },
+    "voice": {
+      "ru": "гладкие короткие питчи; почти нет пауз; юмор обезоруживает возражение",
+      "en": "smooth short pitches; almost no pauses; humour disarms objections"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "признаёт, что первое фото «до» было его собственным",
+        "en": "admits the first before-photo was his own"
+      },
+      {
+        "ru": "игрок отказывается от сделки без морального превосходства",
+        "en": "the player rejects the deal without moral superiority"
+      },
+      {
+        "ru": "разрушить его бизнес публично вместо личного разговора",
+        "en": "destroy his business publicly instead of speaking directly"
+      },
+      {
+        "ru": "либо меняет обещание, либо окончательно выбирает масштаб",
+        "en": "either changes the promise or chooses scale for good"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "признаёт, что первое фото «до» было его собственным",
+      "en": "admits the first before-photo was his own"
+    },
+    "central_conflict": {
+      "ru": "игрок отказывается от сделки без морального превосходства",
+      "en": "the player rejects the deal without moral superiority"
+    },
+    "rupture_condition": {
+      "ru": "разрушить его бизнес публично вместо личного разговора",
+      "en": "destroy his business publicly instead of speaking directly"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "либо меняет обещание, либо окончательно выбирает масштаб",
+        "en": "either changes the promise or chooses scale for good"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/max.webp"
+  },
+  {
+    "id": "eva",
+    "name": {
+      "ru": "Ева Рейн",
+      "en": "Eva Rein"
+    },
+    "role": {
+      "ru": "координатор возвращения",
+      "en": "return coordinator"
+    },
+    "biography": {
+      "ru": "Ева ведёт закрытый протокол для тех, кто пропал после срыва. До LAB она четыре раза бросала собственное восстановление, каждый раз стирая контакты.",
+      "en": "Eva runs a closed protocol for people who vanish after setbacks. Before the LAB she abandoned her own recovery four times, deleting every contact each time."
+    },
+    "motivation": {
+      "ru": "сделать возвращение доступным без унижения",
+      "en": "make returning available without humiliation"
+    },
+    "external_goal": {
+      "ru": "сделать возвращение доступным без унижения",
+      "en": "make returning available without humiliation"
+    },
+    "fear": {
+      "ru": "что её терпение станет разрешением ничего не менять",
+      "en": "that her patience will become permission never to change"
+    },
+    "contradiction": {
+      "ru": "не наказывает пропуск, но тяжело переносит молчание",
+      "en": "never punishes a skip but struggles with silence"
+    },
+    "boundaries": {
+      "ru": "принимает «нет», но не принимает исчезновение вместо ответа",
+      "en": "accepts no, but not disappearance in place of an answer"
+    },
+    "false_belief": {
+      "ru": "она обязана дождаться каждого",
+      "en": "she must wait for everyone"
+    },
+    "strength": {
+      "ru": "остаётся рядом после некрасивого эпизода",
+      "en": "stays after an unflattering episode"
+    },
+    "weakness": {
+      "ru": "берёт ответственность за чужое возвращение",
+      "en": "takes responsibility for someone else's return"
+    },
+    "voice": {
+      "ru": "медленные простые фразы; бытовые детали; юмор появляется в темноте",
+      "en": "slow simple lines; everyday detail; humour appears in the dark"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "рассказывает о собственном четвёртом возвращении",
+        "en": "tells the story of her own fourth return"
+      },
+      {
+        "ru": "игрок просит наказание, чтобы снова почувствовать контроль",
+        "en": "the player asks for punishment to regain control"
+      },
+      {
+        "ru": "обвинить её поддержку в собственном бездействии",
+        "en": "blame her support for one's own inaction"
+      },
+      {
+        "ru": "учится открывать дверь, не таща человека через неё",
+        "en": "learns to open the door without dragging anyone through it"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "рассказывает о собственном четвёртом возвращении",
+      "en": "tells the story of her own fourth return"
+    },
+    "central_conflict": {
+      "ru": "игрок просит наказание, чтобы снова почувствовать контроль",
+      "en": "the player asks for punishment to regain control"
+    },
+    "rupture_condition": {
+      "ru": "обвинить её поддержку в собственном бездействии",
+      "en": "blame her support for one's own inaction"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "учится открывать дверь, не таща человека через неё",
+        "en": "learns to open the door without dragging anyone through it"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/eva.webp"
+  },
+  {
+    "id": "vera",
+    "name": {
+      "ru": "Вера Ким",
+      "en": "Vera Kim"
+    },
+    "role": {
+      "ru": "врач движения",
+      "en": "movement clinician"
+    },
+    "biography": {
+      "ru": "Вера ушла из большого спорта после того, как команда назвала боль слабостью. В клинике Южного моста она возвращает людям язык ощущений, но не обещает прежнюю форму.",
+      "en": "Vera left elite sport after her team called pain weakness. At South Bridge she restores a language for sensation without promising a former body."
+    },
+    "motivation": {
+      "ru": "защитить клинику от сделки со спортивной лигой",
+      "en": "protect the clinic from a deal with the sports league"
+    },
+    "external_goal": {
+      "ru": "защитить клинику от сделки со спортивной лигой",
+      "en": "protect the clinic from a deal with the sports league"
+    },
+    "fear": {
+      "ru": "что осторожность превратится в ещё одну клетку",
+      "en": "that caution will become another cage"
+    },
+    "contradiction": {
+      "ru": "защищает право остановиться, но сама работает с травмированной рукой",
+      "en": "defends the right to stop while working through an injured hand"
+    },
+    "boundaries": {
+      "ru": "никаких диагнозов без осмотра и никакой победы над болью",
+      "en": "no diagnosis without assessment and no victory over pain"
+    },
+    "false_belief": {
+      "ru": "если она допустит риск, то повторит ошибку прежней команды",
+      "en": "if she allows risk she will repeat her former team's mistake"
+    },
+    "strength": {
+      "ru": "различает усилие, страх и опасный сигнал",
+      "en": "distinguishes effort, fear and dangerous signals"
+    },
+    "weakness": {
+      "ru": "становится холодной, когда боится за человека",
+      "en": "becomes cold when afraid for someone"
+    },
+    "voice": {
+      "ru": "точные сенсорные глаголы; тихая строгость; юмор почти отсутствует",
+      "en": "precise sensory verbs; quiet firmness; almost no humour"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "позволяет игроку увидеть дрожь в собственной руке",
+        "en": "lets the player see the tremor in her own hand"
+      },
+      {
+        "ru": "игрок скрывает боль ради допуска к испытанию",
+        "en": "the player hides pain to enter the trial"
+      },
+      {
+        "ru": "обвинить её в трусости за остановку движения",
+        "en": "call her a coward for stopping movement"
+      },
+      {
+        "ru": "находит форму смелости, в которой риск назван вслух",
+        "en": "finds a form of courage where risk is spoken aloud"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "позволяет игроку увидеть дрожь в собственной руке",
+      "en": "lets the player see the tremor in her own hand"
+    },
+    "central_conflict": {
+      "ru": "игрок скрывает боль ради допуска к испытанию",
+      "en": "the player hides pain to enter the trial"
+    },
+    "rupture_condition": {
+      "ru": "обвинить её в трусости за остановку движения",
+      "en": "call her a coward for stopping movement"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "находит форму смелости, в которой риск назван вслух",
+        "en": "finds a form of courage where risk is spoken aloud"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/vera.webp"
+  },
+  {
+    "id": "nikita",
+    "name": {
+      "ru": "Никита Белый",
+      "en": "Nikita Bely"
+    },
+    "role": {
+      "ru": "городской медиатор",
+      "en": "city mediator"
+    },
+    "biography": {
+      "ru": "Никита вырос между районами Meridian и умеет переводить конфликт до тех пор, пока разговор не касается его собственной семьи.",
+      "en": "Nikita grew up between Meridian districts and can translate any conflict until it involves his own family."
+    },
+    "motivation": {
+      "ru": "сохранить Сад тишины общественным пространством",
+      "en": "keep the Garden of Silence public"
+    },
+    "external_goal": {
+      "ru": "сохранить Сад тишины общественным пространством",
+      "en": "keep the Garden of Silence public"
+    },
+    "fear": {
+      "ru": "что ясная граница оставит его одного",
+      "en": "that a clear boundary will leave him alone"
+    },
+    "contradiction": {
+      "ru": "учит говорить «нет», но соглашается на каждую семейную просьбу",
+      "en": "teaches people to say no while accepting every family request"
+    },
+    "boundaries": {
+      "ru": "не участвует в разговоре, где отсутствующему приписывают мотивы",
+      "en": "will not join a conversation that assigns motives to an absent person"
+    },
+    "false_belief": {
+      "ru": "хороший человек обязан быть доступен всегда",
+      "en": "a good person must always be available"
+    },
+    "strength": {
+      "ru": "слышит скрытую просьбу под обвинением",
+      "en": "hears the hidden request beneath an accusation"
+    },
+    "weakness": {
+      "ru": "слишком долго откладывает собственное нет",
+      "en": "delays his own no for too long"
+    },
+    "voice": {
+      "ru": "мягкие средние фразы; повторяет ключевое слово собеседника; тёплый абсурдный юмор",
+      "en": "soft medium lines; repeats the other person's key word; warm absurd humour"
+    },
+    "attitudes": {
+      "body": {
+        "ru": "тело — источник данных, не доказательство ценности",
+        "en": "the body is data, not proof of worth"
+      },
+      "discipline": {
+        "ru": "дисциплина должна переживать плохой день",
+        "en": "discipline must survive a bad day"
+      },
+      "closeness": {
+        "ru": "близость требует границ и памяти",
+        "en": "closeness requires boundaries and memory"
+      },
+      "success": {
+        "ru": "успех включает цену и способ продолжать",
+        "en": "success includes its cost and a way to continue"
+      }
+    },
+    "arc": [
+      {
+        "ru": "встреча через профессиональную роль",
+        "en": "meeting through a professional role"
+      },
+      {
+        "ru": "просит игрока присутствовать при его разговоре с братом",
+        "en": "asks the player to witness a conversation with his brother"
+      },
+      {
+        "ru": "игрок требует, чтобы Никита выбрал сторону",
+        "en": "the player demands that Nikita choose a side"
+      },
+      {
+        "ru": "передать доверенную реплику третьему человеку",
+        "en": "repeat a trusted line to a third person"
+      },
+      {
+        "ru": "ставит собственную границу и сохраняет контакт",
+        "en": "sets his own boundary and preserves contact"
+      }
+    ],
+    "independent_decisions": [
+      {
+        "ru": "принимает решение о собственной цели без игрока",
+        "en": "makes a decision about their own goal without the player"
+      },
+      {
+        "ru": "меняет отношение после события вне кадра",
+        "en": "changes position after an off-screen event"
+      }
+    ],
+    "closeness_moment": {
+      "ru": "просит игрока присутствовать при его разговоре с братом",
+      "en": "asks the player to witness a conversation with his brother"
+    },
+    "central_conflict": {
+      "ru": "игрок требует, чтобы Никита выбрал сторону",
+      "en": "the player demands that Nikita choose a side"
+    },
+    "rupture_condition": {
+      "ru": "передать доверенную реплику третьему человеку",
+      "en": "repeat a trusted line to a third person"
+    },
+    "final_states": {
+      "allied": {
+        "ru": "ставит собственную границу и сохраняет контакт",
+        "en": "sets his own boundary and preserves contact"
+      },
+      "distant": {
+        "ru": "сохраняет границу и уходит в собственный маршрут",
+        "en": "keeps the boundary and leaves for their own route"
+      },
+      "ruptured": {
+        "ru": "контакт прекращён, но персонаж продолжает свою арку",
+        "en": "contact ends, but the character continues their own arc"
+      }
+    },
+    "relationship_stages": [
+      "unknown",
+      "noticed",
+      "trusted",
+      "close",
+      "tested",
+      "allied",
+      "distant",
+      "ruptured"
+    ],
+    "portrait_emotions": [
+      "neutral",
+      "focused",
+      "warm",
+      "concerned",
+      "angry",
+      "tired",
+      "surprised",
+      "resolved"
+    ],
+    "relationship_axes": [
+      "trust",
+      "respect",
+      "closeness",
+      "tension",
+      "boundaries",
+      "influence"
+    ],
+    "romance_available": false,
+    "portrait_asset": "art/characters/nikita.webp"
+  }
+]
